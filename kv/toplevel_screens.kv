@@ -1,7 +1,54 @@
 <MarkingsScreen>:
+    MDScrollView:
+        GridLayout:
+            size_hint_y: None
+            cols: 1
+            height: self.minimum_height
+            spacing: "10dp"
+            padding: "15dp"
+    MDTopAppBar:
+        title: "Маркировки"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: None], ]
+
 
 <CalculationsScreen>:
+    MDScrollView:
+        GridLayout:
+            size_hint_y: None
+            cols: 1
+            height: self.minimum_height
+            spacing: "10dp"
+            padding: "15dp"
+    MDTopAppBar:
+        title: "Расчёты"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: None], ]
+
 
 <HandbookScreen>:
+    MDScrollView:
+        GridLayout:
+            size_hint_y: None
+            cols: 1
+            height: self.minimum_height
+            spacing: "10dp"
+            padding: "15dp"
+    MDTopAppBar:
+        title: "Справочник"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: None], ]
+
 
 <HelpScreen>:
+    MDScrollView:
+        GridLayout:
+            size_hint_y: None
+            cols: 1
+            height: self.minimum_height
+            spacing: "10dp"
+            padding: "15dp"
+    MDTopAppBar:
+        title: "Помощь"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: None], ]
