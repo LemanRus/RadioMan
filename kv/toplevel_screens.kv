@@ -1,15 +1,65 @@
 <MarkingsScreen>:
-    MDScrollView:
-        GridLayout:
-            size_hint_y: None
-            cols: 1
-            height: self.minimum_height
-            spacing: "10dp"
-            padding: "15dp"
-    MDTopAppBar:
-        title: "Маркировки"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: None], ]
+
+    RelativeLayout:
+
+        MDScrollView:
+            pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
+
+            MDGridLayout:
+                adaptive_height: True
+                cols: 1
+                spacing: "10dp"
+                padding: "15dp"
+
+                MDCard:
+                    ripple_behavior: True
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: "20sp"
+                    padding: "15sp"
+                    elevation: 2
+
+                    MDIconButton:
+                        ripple_scale: 0
+                        size_hint_y: None
+                        icon: "media/resistor.png"
+                        icon_size: "50sp"
+                        pos_hint: {"center_y": 0.5}
+
+                    MDLabel:
+                        text: "Резисторы"
+                        adaptive_size: True
+                        pos_hint: {"center_y": 0.5}
+
+                MDCard:
+                    ripple_behavior: True
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: "20sp"
+                    padding: "15sp"
+                    elevation: 2
+
+                    MDIconButton:
+                        ripple_scale: 0
+                        size_hint_y: None
+                        icon: "media/capacitor.png"
+                        icon_size: "50sp"
+                        pos_hint: {"center_y": 0.5}
+
+                    MDLabel:
+                        text: "Конденсаторы"
+                        adaptive_size: True
+                        pos_hint: {"center_y": 0.5}
+
+        MDTopAppBar:
+            id: markings_top_bar
+            title: "Маркировки"
+            pos_hint: {"top": 1}
+            left_action_items: [["arrow-left", lambda x: None], ]
+
+
+
+
 
 
 <CalculationsScreen>:
@@ -20,6 +70,7 @@
             height: self.minimum_height
             spacing: "10dp"
             padding: "15dp"
+
     MDTopAppBar:
         title: "Расчёты"
         pos_hint: {"top": 1}
@@ -27,13 +78,16 @@
 
 
 <HandbookScreen>:
+
     MDScrollView:
+
         GridLayout:
             size_hint_y: None
             cols: 1
             height: self.minimum_height
             spacing: "10dp"
             padding: "15dp"
+
     MDTopAppBar:
         title: "Справочник"
         pos_hint: {"top": 1}
@@ -41,13 +95,16 @@
 
 
 <HelpScreen>:
+
     MDScrollView:
+
         GridLayout:
             size_hint_y: None
             cols: 1
             height: self.minimum_height
             spacing: "10dp"
             padding: "15dp"
+
     MDTopAppBar:
         title: "Помощь"
         pos_hint: {"top": 1}
