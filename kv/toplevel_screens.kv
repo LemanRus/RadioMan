@@ -1,15 +1,13 @@
 <MarkingsScreen>:
 
-    RelativeLayout:
+    MDScrollView:
+        pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
 
-        MDScrollView:
-            pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
-
-            MDGridLayout:
-                adaptive_height: True
-                cols: 1
-                spacing: "10dp"
-                padding: "15dp"
+        MDGridLayout:
+            adaptive_height: True
+            cols: 1
+            spacing: "10dp"
+            padding: "15dp"
 
                 MDCardSh1:
                     ripple_behavior: True
@@ -19,18 +17,25 @@
                     padding: "15sp"
 #                    Until best days:
 #                    elevation: 2
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                elevation: 2
 
-                    MDIconButton:
-                        ripple_scale: 0
-                        size_hint_y: None
-                        icon: "media/resistor.png"
-                        icon_size: "50sp"
-                        pos_hint: {"center_y": 0.5}
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/resistor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
 
-                    MDLabel:
-                        text: "Резисторы"
-                        adaptive_size: True
-                        pos_hint: {"center_y": 0.5}
+                MDLabel:
+                    text: "Резисторы"
+                    adaptive_size: True
+                    pos_hint: {"center_y": 0.5}
 
                 MDCardSh2:
                     ripple_behavior: True
@@ -40,32 +45,37 @@
                     padding: "15sp"
 #                    Until best days:
 #                    elevation: 2
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                elevation: 2
 
-                    MDIconButton:
-                        ripple_scale: 0
-                        size_hint_y: None
-                        icon: "media/capacitor.png"
-                        icon_size: "50sp"
-                        pos_hint: {"center_y": 0.5}
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/capacitor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
 
-                    MDLabel:
-                        text: "Конденсаторы"
-                        adaptive_size: True
-                        pos_hint: {"center_y": 0.5}
+                MDLabel:
+                    text: "Конденсаторы"
+                    adaptive_size: True
+                    pos_hint: {"center_y": 0.5}
 
-        MDTopAppBar:
-            id: markings_top_bar
-            title: "Маркировки"
-            pos_hint: {"top": 1}
-            left_action_items: [["arrow-left", lambda x: None], ]
-
-
-
-
+    MDTopAppBar:
+        id: markings_top_bar
+        title: "Маркировки"
+        pos_hint: {"top": 1}
 
 
 <CalculationsScreen>:
     MDScrollView:
+        pos_hint: {"top": (root.height - calculations_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
         GridLayout:
             size_hint_y: None
             cols: 1
@@ -73,7 +83,129 @@
             spacing: "10dp"
             padding: "15dp"
 
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                elevation: 2
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/resistor_led.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+
+                MDLabel:
+                    text: "Расчёт резисторов для светодиодов"
+                    adaptive_size: True
+                    pos_hint: {"center_y": 0.5}
+
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                elevation: 2
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/inductor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+
+                MDLabel:
+                    text: "Расчёт катушки индуктивности"
+                    adaptive_size: True
+                    pos_hint: {"center_y": 0.5}
+
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                elevation: 2
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/resistors_par.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+
+                MDLabel:
+                    text: "Параллельное соединение резисторов"
+                    adaptive_size: True
+                    pos_hint: {"center_y": 0.5}
+
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                elevation: 2
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/capacitors_ser.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+
+                MDLabel:
+                    text: "Последовательное соединение конденсаторов"
+                    adaptive_size: True
+                    pos_hint: {"center_y": 0.5}
+
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                elevation: 2
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/divider.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+
+                MDLabel:
+                    text: "Делитель напряжения"
+                    adaptive_size: True
+                    pos_hint: {"center_y": 0.5}
+
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                elevation: 2
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/transistor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+
+                MDLabel:
+                    text: "LM317/LM350/LM338 калькулятор"
+                    adaptive_size: True
+                    pos_hint: {"center_y": 0.5}
+
+
     MDTopAppBar:
+        id: calculations_top_bar
         title: "Расчёты"
         pos_hint: {"top": 1}
         left_action_items: [["arrow-left", lambda x: None], ]
@@ -82,6 +214,7 @@
 <HandbookScreen>:
 
     MDScrollView:
+        pos_hint: {"top": (root.height - handbook_top_bar.height) / root.height}
 
         GridLayout:
             size_hint_y: None
@@ -91,14 +224,15 @@
             padding: "15dp"
 
     MDTopAppBar:
+        id: handbook_top_bar
         title: "Справочник"
         pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: None], ]
 
 
 <HelpScreen>:
 
     MDScrollView:
+        pos_hint: {"top": (root.height - help_top_bar.height) / root.height}
 
         GridLayout:
             size_hint_y: None
@@ -108,6 +242,6 @@
             padding: "15dp"
 
     MDTopAppBar:
+        id: help_top_bar
         title: "Помощь"
         pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: None], ]
