@@ -16,3 +16,7 @@ class HandbookScreen(MDScreen):
 class HelpScreen(MDScreen):
     pass
 
+
+class ResistorsMarkingScreen(MDScreen):
+    pass
+
