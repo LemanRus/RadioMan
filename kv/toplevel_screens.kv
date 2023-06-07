@@ -1,10 +1,11 @@
 <MarkingsScreenManager>:
     MarkingsScreen:
-
+    ResistorsMarkingScreen:
+    CapacitorsMarkingScreen:
 
 
 <MarkingsScreen>:
-    id: markings_screen
+    name: "markings_screen"
     md_bg_color: app.theme_cls.bg_dark
 
     MDScrollView:
@@ -21,8 +22,7 @@
                 height: self.minimum_height
                 spacing: "20sp"
                 padding: "15sp"
-                on_press: print(markings_screen.parent.manager.current)
-                on_release: markings_screen.parent.manager.current = "resistors_marking_screen"
+                on_release: root.parent.current = "resistors_marking_screen"
 #                Until best days:
 #                elevation: 2
 

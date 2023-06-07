@@ -1,4 +1,5 @@
 from kivymd.uix.screen import MDScreen
+from kivymd.uix.screenmanager import MDScreenManager
 
 
 class MarkingsScreen(MDScreen):
@@ -18,5 +19,13 @@ class HelpScreen(MDScreen):
 
 
 class ResistorsMarkingScreen(MDScreen):
+    pass
+
+
+class CapacitorsMarkingScreen(MDScreen):
+    pass
+
+
+class MarkingsScreenManager(MDScreenManager):
     pass
 

@@ -1,2 +1,11 @@
 <ResistorsMarkingScreen>:
     name: "resistors_marking_screen"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDFlatButton:
+            text: "Назад"
+            on_release: root.parent.current = "markings_screen"
+
+
+<CapacitorsMarkingScreen>:
+    name: "capacitors_marking_screen"
