@@ -32,6 +32,7 @@
                     icon: "media/resistor.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "resistors_marking_screen"
 
                 MDLabel:
                     text: "Резисторы"
@@ -46,6 +47,7 @@
                 height: self.minimum_height
                 spacing: "20sp"
                 padding: "15sp"
+                on_release: root.parent.current = "capacitors_marking_screen"
 #                Until best days:
 #                elevation: 2
 
@@ -55,6 +57,7 @@
                     icon: "media/capacitor.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "capacitors_marking_screen"
 
                 MDLabel:
                     text: "Конденсаторы"

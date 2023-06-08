@@ -1,11 +1,67 @@
 <ResistorsMarkingScreen>:
     name: "resistors_marking_screen"
-    MDBoxLayout:
-        orientation: "vertical"
-        MDFlatButton:
-            text: "Назад"
-            on_release: root.parent.current = "markings_screen"
+    MDScrollView:
+        pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDGridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: root.height / 3
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: root.height / 3
+                    pos_hint: {"top": 1}
+
+                    Image:
+                        source: "media/resistor.png"
+                        pos_hint: {"top": 1}
+                        fit_mode: "fill"
+
+                BoxLayout:
+                    id: resistor_bands
+                    size_hint_y: None
+                    height: root.height / 3
+                    pos_hint: {"top": 1}
+
+            MDLabel:
+                text: "Резисторы сквозного монтажа"
+                pos_hint: {"center_x": 0.5}
+                size_hint_y: None
+                size: self.texture_size
+
+            MDLabel:
+                text: "Резисторы сквозного монтажа"
+                pos_hint: {"center_x": 0.5}
+                size_hint_y: None
+                size: self.texture_size
+
+
+    MDFlatButton:
+        text: "Назад"
+        on_release: root.parent.current = "markings_screen"
+
+    MDTopAppBar:
+        id: markings_top_bar
+        title: "Маркировки"
+        pos_hint: {"top": 1}
+#        Until best days:
+        elevation: 0
 
 
 <CapacitorsMarkingScreen>:
     name: "capacitors_marking_screen"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDFlatButton:
+            text: "Назад"
+            on_release: root.parent.current = "markings_screen"
