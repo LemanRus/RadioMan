@@ -19,7 +19,15 @@ class HelpScreen(MDScreen):
     pass
 
 
-class ResistorsMarkingScreen(MDScreen):
+class ResistorsMarkingsSelectScreen(MDScreen):
+    pass
+
+
+class THResistorsMarkingScreen(MDScreen):
+    pass
+
+
+class SMDResistorsMarkingScreen(MDScreen):
     pass
 
 

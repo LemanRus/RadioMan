@@ -1,7 +1,9 @@
 <MarkingsScreenManager>:
     MarkingsScreen:
-    ResistorsMarkingScreen:
+    THResistorsMarkingScreen:
+    SMDResistorsMarkingScreen:
     CapacitorsMarkingScreen:
+    ResistorsMarkingsSelectScreen:
 
 
 <MarkingsScreen>:
@@ -22,7 +24,7 @@
                 height: self.minimum_height
                 spacing: "20sp"
                 padding: "15sp"
-                on_release: root.parent.current = "resistors_marking_screen"
+                on_release: root.parent.current = "resistors_markings_select_screen"
 #                Until best days:
 #                elevation: 2
 
@@ -32,7 +34,7 @@
                     icon: "media/resistor.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
-                    on_release: root.parent.current = "resistors_marking_screen"
+                    on_release: root.parent.current = "resistors_markings_select_screen"
 
                 MDLabel:
                     text: "Резисторы"
