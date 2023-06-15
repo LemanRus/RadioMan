@@ -37,3 +37,15 @@ class CapacitorsMarkingScreen(MDScreen):
 
 class MarkingsScreenManager(MDScreenManager):
     pass
+
+
+class CalculationsScreenManager(MDScreenManager):
+    pass
+
+
+class HandbookScreenManager(MDScreenManager):
+    pass
+
+
+class HelpScreenManager(MDScreenManager):
+    pass
