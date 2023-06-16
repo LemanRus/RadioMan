@@ -120,11 +120,6 @@
                 size_hint_y: None
                 size: self.texture_size
 
-
-    MDFlatButton:
-        text: "Назад"
-        on_release: root.parent.current = "markings_screen"
-
     MDTopAppBar:
         id: markings_top_bar
         title: "Маркировки"
@@ -178,11 +173,6 @@
                 size_hint_y: None
                 size: self.texture_size
 
-
-    MDFlatButton:
-        text: "Назад"
-        on_release: root.parent.current = "markings_screen"
-
     MDTopAppBar:
         id: markings_top_bar
         title: "Маркировки"
@@ -196,7 +186,3 @@
 
     MDBoxLayout:
         orientation: "vertical"
-
-        MDFlatButton:
-            text: "Назад"
-            on_release: root.parent.current = "markings_screen"

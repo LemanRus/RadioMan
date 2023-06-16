@@ -7,10 +7,10 @@ from kivymd.uix.button import MDIconButton
 
 import screens
 
-markings_backs = {"resistors_markings_select_screen": "markings_screen"}
-calculations_backs = {}
-handbook_backs = {}
-help_backs = {}
+backs = {"resistors_markings_select_screen": "markings_screen",
+         "th_resistors_marking_screen": "resistors_markings_select_screen",
+         "smd_resistors_marking_screen": "resistors_markings_select_screen",
+         "capacitors_marking_screen": "markings_screen"}
 
 
 class RadioMan(MDApp):
@@ -25,11 +25,15 @@ class RadioMan(MDApp):
         return Builder.load_file("kv/main.kv")
 
     def android_back_click(self, window, key, *args):
-        markings_tab_sm = self.root.children[1].children[0].children[0]
-        if key == 27:
+        try:
+            markings_tab_sm = self.root.children[1].children[0].children[0]
+        except IndexError:
             pass
+        else:
+            if key == 27:
+                if markings_tab_sm.current in backs:
+                    markings_tab_sm.current = backs[markings_tab_sm.current]
         return True
-
 
 
 RadioMan().run()
