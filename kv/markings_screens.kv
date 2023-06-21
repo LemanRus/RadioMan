@@ -88,6 +88,15 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                MDFlatButton:
+                    id: bands_select_menu
+                    text: "Press me"
+                    on_parent: root.build_menu()
+                    on_release: root.menu.open()
+
             MDRelativeLayout:
                 size_hint_y: None
                 height: root.height / 3
@@ -103,12 +112,19 @@
                         fit_mode: "fill"
 
                 BoxLayout:
-                    id: resistor_bands
+                    id: bands
                     size_hint_y: None
                     height: root.height / 3
                     pos_hint: {"top": 1}
+                    padding: [root.width / 6, sp(20)]
+                    spacing: sp(15)
+                    MDFlatButton:
+                        text: "Prior"
+                        size_hint_y: None
+                        height: self.height
 
             MDLabel:
+                id: result
                 text: "Резисторы сквозного монтажа"
                 pos_hint: {"center_x": 0.5}
                 size_hint_y: None
