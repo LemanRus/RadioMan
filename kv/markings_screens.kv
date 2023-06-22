@@ -78,6 +78,7 @@
 <THResistorsMarkingScreen>:
     name: "th_resistors_marking_screen"
     MDScrollView:
+        on_parent: root.build_menu()
         pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
         size_hint_y: (root.height - sp(60)) / root.height
 
@@ -94,7 +95,6 @@
                 MDFlatButton:
                     id: bands_select_menu
                     text: "Press me"
-                    on_parent: root.build_menu()
                     on_release: root.menu.open()
 
             MDRelativeLayout:
@@ -118,6 +118,7 @@
                     pos_hint: {"top": 1}
                     padding: [root.width / 6, sp(20)]
                     spacing: sp(15)
+                    on_parent: root.build_bands(3)
                     MDFlatButton:
                         text: "Prior"
                         size_hint_y: None

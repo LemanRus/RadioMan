@@ -28,8 +28,14 @@ class ResistorsMarkingsSelectScreen(MDScreen):
 
 class ResistorBand(MDFlatButton):
     menu_items_3 = [
-        {"text": "First"},
-        {"text": "Second"}
+        {
+            "text": "First",
+            "md_bg_color": (1, 1, 0, 1),
+        },
+        {
+            "text": "Second",
+            "md_bg_color": (1, 0, 1, 1),
+        }
     ]
 
     def __init__(self, *args, **kwargs):
@@ -37,12 +43,12 @@ class ResistorBand(MDFlatButton):
         super().__init__(*args, **kwargs)
         self.menu = MDDropdownMenu(
             caller=self,
-            items=getattr(self, f"menu_items_{self.bands_qty}")
+            items=getattr(self, f"menu_items_{self.bands_qty}"),
+            position="bottom"
         )
         self.bind(on_release=self.menu_open)
 
     def menu_open(self, *args):
-        print(args)
         self.menu.open()
 
 
