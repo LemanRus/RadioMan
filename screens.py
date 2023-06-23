@@ -72,7 +72,8 @@ class ResistorBand(MDFlatButton):
         self.menu = MDDropdownMenu(
             caller=self,
             items=self.get_band(self.band_no, self.band_qty),
-            position="bottom"
+            position="center",
+            # position="bottom",
         )
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
         self.md_bg_color = list(self.my_color.values())[0]
@@ -80,6 +81,7 @@ class ResistorBand(MDFlatButton):
             self.theme_text_color = "Custom"
             self.text_color = "white"
         self.bind(on_release=self.menu_open)
+        print("Init")
 
     def get_band(self, band_no, band_qty):
         band = []
