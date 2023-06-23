@@ -77,17 +77,18 @@ class ResistorBand(MDFlatButton):
         )
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
         self.md_bg_color = list(self.my_color.values())[0]
+        self.text = list(self.my_color.keys())[0]
         if list(self.my_color.keys())[0] in ["Чёрный", "Коричневый"]:
             self.theme_text_color = "Custom"
             self.text_color = "white"
         self.bind(on_release=self.menu_open)
-        print("Init")
 
     def get_band(self, band_no, band_qty):
         band = []
         for k, v in self.bands_accordance[band_qty][band_no].items():
             temp = {"text": k}
             temp.update({"md_bg_color": v})
+            temp.update({"on_release": lambda x=(k,v): self.set_item(x)})
             if k in ["Чёрный", "Коричневый"]:
                 temp.update({"text_color": "white"})
             else:
@@ -97,6 +98,15 @@ class ResistorBand(MDFlatButton):
 
     def menu_open(self, *args):
         self.menu.open()
+
+    def set_item(self, param_item):
+        self.text = param_item[0]
+        self.md_bg_color = param_item[1]
+        if param_item[0] in ["Чёрный", "Коричневый"]:
+            self.text_color = "white"
+        else:
+            self.text_color = "black"
+        self.menu.dismiss()
 
 
 class THResistorsMarkingScreen(MDScreen):
@@ -126,8 +136,7 @@ class THResistorsMarkingScreen(MDScreen):
     def build_bands(self, value):
         self.ids.bands.clear_widgets()
         for i in range(0, int(value)):
-            band = ResistorBand(text=f"PM{i}", size_hint=(1, 1), band_no=i, band_qty=int(value),
-                                on_text=self.print_me)
+            band = ResistorBand(size_hint=(1, 1), band_no=i, band_qty=int(value))
             self.ids.bands.add_widget(band)
             self.ids.bands.ids["band" + str(i)] = weakref.ref(band)
 

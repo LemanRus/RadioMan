@@ -92,9 +92,12 @@
             MDCard:
                 size_hint_y: None
                 height: self.minimum_height
+                MDLabel:
+                    text: "Выберите количество полос:"
                 MDFlatButton:
                     id: bands_select_menu
-                    text: "Press me"
+                    text: "3"
+                    width: root.width / 3
                     on_release: root.menu.open()
 
             MDRelativeLayout:
