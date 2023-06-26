@@ -3,7 +3,7 @@ import weakref
 
 from kivy.metrics import dp
 from kivy.uix.button import Button
-from kivymd.uix.button import MDIconButton, MDFlatButton
+from kivymd.uix.button import MDIconButton, MDFlatButton, MDRectangleFlatIconButton
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.screenmanager import MDScreenManager
@@ -29,7 +29,7 @@ class ResistorsMarkingsSelectScreen(MDScreen):
     pass
 
 
-class ResistorBand(MDFlatButton):
+class ResistorBand(MDIconButton):
     colors = {
         "Золотой": [1, 0.84, 0, 1], "Серебристый": [0.8, 0.8, 0.8, 1], "Чёрный": [0, 0, 0, 1],
         "Коричневый": [0.4, 0.22, 0, 1], "Красный": [1, 0, 0, 1], "Оранжевый": [0.98, 0.45, 0.02, 1],
@@ -77,10 +77,11 @@ class ResistorBand(MDFlatButton):
         )
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
         self.md_bg_color = list(self.my_color.values())[0]
-        self.text = list(self.my_color.keys())[0]
+        self.theme_icon_color = self.theme_text_color = "Custom"
+        # self.text = list(self.my_color.keys())[0]
+        self.icon = "chevron-down"
         if list(self.my_color.keys())[0] in ["Чёрный", "Коричневый"]:
-            self.theme_text_color = "Custom"
-            self.text_color = "white"
+            self.icon_color = self.text_color = "white"
         self.bind(on_release=self.menu_open)
 
     def get_band(self, band_no, band_qty):
@@ -88,24 +89,28 @@ class ResistorBand(MDFlatButton):
         for k, v in self.bands_accordance[band_qty][band_no].items():
             temp = {"text": k}
             temp.update({"md_bg_color": v})
-            temp.update({"on_release": lambda x=(k,v): self.set_item(x)})
+            temp.update({"on_release": lambda x=(k, v): self.set_item(x)})
             if k in ["Чёрный", "Коричневый"]:
                 temp.update({"text_color": "white"})
+                temp.update({"icon_color": "white"})
             else:
                 temp.update({"text_color": "black"})
+                temp.update({"icon_color": "black"})
             band.append(temp)
         return band
 
     def menu_open(self, *args):
+        self.icon = "chevron-up"
         self.menu.open()
 
     def set_item(self, param_item):
         self.text = param_item[0]
         self.md_bg_color = param_item[1]
+        self.icon = "chevron-down"
         if param_item[0] in ["Чёрный", "Коричневый"]:
-            self.text_color = "white"
+            self.icon_color = self.text_color = "white"
         else:
-            self.text_color = "black"
+            self.icon_color = self.text_color = "black"
         self.menu.dismiss()
 
 
