@@ -2,6 +2,7 @@ import itertools
 import weakref
 
 from kivy.metrics import dp
+from kivy.properties import BoundedNumericProperty
 from kivy.uix.button import Button
 from kivymd.uix.button import MDIconButton, MDFlatButton, MDRectangleFlatIconButton
 from kivymd.uix.menu import MDDropdownMenu
@@ -74,6 +75,7 @@ class ResistorBand(MDIconButton):
             items=self.get_band(self.band_no, self.band_qty),
             position="center",
             # position="bottom",
+            width=dp(30)
         )
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
         self.md_bg_color = list(self.my_color.values())[0]
@@ -83,6 +85,9 @@ class ResistorBand(MDIconButton):
         if list(self.my_color.keys())[0] in ["Чёрный", "Коричневый"]:
             self.icon_color = self.text_color = "white"
         self.bind(on_release=self.menu_open)
+        self.menu.bind(on_dismiss=lambda _: self.__setattr__("icon", "chevron-down"))
+        self.rounded_button = False
+        self._radius = dp(3)
 
     def get_band(self, band_no, band_qty):
         band = []
@@ -144,9 +149,6 @@ class THResistorsMarkingScreen(MDScreen):
             band = ResistorBand(size_hint=(1, 1), band_no=i, band_qty=int(value))
             self.ids.bands.add_widget(band)
             self.ids.bands.ids["band" + str(i)] = weakref.ref(band)
-
-    def print_me(self):
-        print(self.ids)
 
 
 class SMDResistorsMarkingScreen(MDScreen):
