@@ -1,6 +1,7 @@
 import itertools
 import weakref
 
+from kivy.core.window import Window
 from kivy.metrics import dp
 from kivy.properties import BoundedNumericProperty
 from kivy.uix.button import Button
@@ -28,6 +29,25 @@ class HelpScreen(MDScreen):
 
 class ResistorsMarkingsSelectScreen(MDScreen):
     pass
+
+
+class ResistorBandDropdownMennu(MDDropdownMenu):
+    def open(self) -> None:
+        """Animate the opening of a menu window."""
+
+        self.set_menu_properties()
+        Window.add_widget(self)
+        self.position = self.adjust_position()
+
+        self.width = dp(120)
+
+        self.height = self.target_height
+        self._tar_x, self._tar_y = self.get_target_pos()
+        self.x = self._tar_x
+        self.y = self._tar_y - self.target_height
+        self.scale_value_center = self.caller.center
+        self.set_menu_pos()
+        self.on_open()
 
 
 class ResistorBand(MDIconButton):
@@ -70,13 +90,14 @@ class ResistorBand(MDIconButton):
         self.band_no = kwargs.pop("band_no")
         self.band_qty = kwargs.pop("band_qty")
         super().__init__(*args, **kwargs)
-        self.menu = MDDropdownMenu(
+        self.menu = ResistorBandDropdownMennu(
             caller=self,
             items=self.get_band(self.band_no, self.band_qty),
-            position="center",
-            # position="bottom",
-            width=dp(30)
+            position="bottom",
+            border_margin=dp(12),
+            width=dp(100)
         )
+        self.menu.width = self.menu.minimum_width
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
         self.md_bg_color = list(self.my_color.values())[0]
         self.theme_icon_color = self.theme_text_color = "Custom"
@@ -87,7 +108,7 @@ class ResistorBand(MDIconButton):
         self.bind(on_release=self.menu_open)
         self.menu.bind(on_dismiss=lambda _: self.__setattr__("icon", "chevron-down"))
         self.rounded_button = False
-        self._radius = dp(3)
+        self._radius = dp(7)
 
     def get_band(self, band_no, band_qty):
         band = []
@@ -106,6 +127,7 @@ class ResistorBand(MDIconButton):
 
     def menu_open(self, *args):
         self.icon = "chevron-up"
+        print(self.menu.pos)
         self.menu.open()
 
     def set_item(self, param_item):
