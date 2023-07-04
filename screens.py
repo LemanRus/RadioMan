@@ -93,7 +93,7 @@ class ResistorBand(MDIconButton):
         self.menu = ResistorBandDropdownMennu(
             caller=self,
             items=self.get_band(self.band_no, self.band_qty),
-            position="bottom",
+            position="center",
             border_margin=dp(12),
             width=dp(100)
         )
@@ -127,7 +127,6 @@ class ResistorBand(MDIconButton):
 
     def menu_open(self, *args):
         self.icon = "chevron-up"
-        print(self.menu.pos)
         self.menu.open()
 
     def set_item(self, param_item):
