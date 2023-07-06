@@ -92,8 +92,10 @@
             MDCard:
                 size_hint_y: None
                 height: self.minimum_height
+
                 MDLabel:
                     text: "Выберите количество полос:"
+
                 MDFlatButton:
                     id: bands_select_menu
                     text: "3"
@@ -120,21 +122,25 @@
                     height: root.height / 3
                     pos_hint: {"top": 1}
                     padding: [root.width / 6, sp(20)]
-                    spacing: sp(15)
+                    spacing: sp(10)
                     on_parent: root.build_bands(3)
 
-            MDLabel:
-                id: result
-                text: "Резисторы сквозного монтажа"
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                size: self.texture_size
+            MDCard:
+                size_hint: (1, None)
+                height: self.minimum_height
+                padding: sp(15)
 
-            MDLabel:
-                text: "Резисторы сквозного монтажа"
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                size: self.texture_size
+                MDLabel:
+                    id: result
+                    text: "Резисторы сквозного монтажа"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    size_hint_y: None
+                    size: self.texture_size
+
+                MDRaisedButton:
+                    text: "Рассчитать"
+                    pos_hint: {"center_y": 0.5}
+                    size_hint_y: None
 
     MDTopAppBar:
         id: markings_top_bar

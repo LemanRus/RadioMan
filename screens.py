@@ -3,7 +3,7 @@ import weakref
 
 from kivy.core.window import Window
 from kivy.metrics import dp
-from kivy.properties import BoundedNumericProperty
+from kivy.properties import BoundedNumericProperty, ObjectProperty
 from kivy.uix.button import Button
 from kivymd.uix.button import MDIconButton, MDFlatButton, MDRectangleFlatIconButton
 from kivymd.uix.menu import MDDropdownMenu
@@ -51,6 +51,7 @@ class ResistorBandDropdownMennu(MDDropdownMenu):
 
 
 class ResistorBand(MDIconButton):
+
     colors = {
         "Золотой": [1, 0.84, 0, 1], "Серебристый": [0.8, 0.8, 0.8, 1], "Чёрный": [0, 0, 0, 1],
         "Коричневый": [0.4, 0.22, 0, 1], "Красный": [1, 0, 0, 1], "Оранжевый": [0.98, 0.45, 0.02, 1],
