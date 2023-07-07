@@ -2,8 +2,8 @@ import itertools
 import weakref
 
 from kivy.core.window import Window
-from kivy.metrics import dp
-from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty
+from kivy.metrics import dp, sp
+from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty, NumericProperty
 from kivy.uix.button import Button
 from kivymd.uix.button import MDIconButton, MDFlatButton, MDRectangleFlatIconButton
 from kivymd.uix.menu import MDDropdownMenu
@@ -57,7 +57,7 @@ class ResistorBand(MDIconButton):
         "Жёлтый": [1, 1, 0, 1], "Зелёный": [0.05, 0.64, 0.05, 1], "Синий": [0.05, 0.54, 0.95, 1],
         "Фиолетовый": [0.54, 0.14, 0.59, 1], "Серый": [0.5, 0.5, 0.5, 1], "Белый": [1, 1, 1, 1]
     }
-# TODO: make band to reset result when changed
+    # TODO: make band to reset result when changed
     bands_accordance = {
         3: {
             0: dict(itertools.islice(colors.items(), 3, None)),
@@ -68,19 +68,19 @@ class ResistorBand(MDIconButton):
             0: dict(itertools.islice(colors.items(), 3, None)),
             1: dict(itertools.islice(colors.items(), 2, None)),
             2: dict(itertools.islice(colors.items(), 0, len(colors.keys()))),
-            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()))),
+            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
         }, 5: {
             0: dict(itertools.islice(colors.items(), 3, None)),
             1: dict(itertools.islice(colors.items(), 2, None)),
             2: dict(itertools.islice(colors.items(), 2, None)),
-            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()))),
-            4: dict(itertools.islice(colors.items(), 0, len(colors.keys()))),
+            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
+            4: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
         }, 6: {
             0: dict(itertools.islice(colors.items(), 3, None)),
             1: dict(itertools.islice(colors.items(), 2, None)),
             2: dict(itertools.islice(colors.items(), 2, None)),
-            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()))),
-            4: dict(itertools.islice(colors.items(), 0, len(colors.keys()))),
+            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
+            4: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
             5: dict(itertools.islice(colors.items(), 0, 2)) | dict(itertools.islice(colors.items(), 3, 7)) |
                dict(itertools.islice(colors.items(), 8, 10)) | dict(itertools.islice(colors.items(), 11, 12))
         }
@@ -181,11 +181,13 @@ class THResistorsMarkingScreen(MDScreen):
         self.build_bands(self.ids.bands_select_menu.text)
 
     def build_bands(self, value):
+        self.bands_qty = int(value)
         self.ids.bands.clear_widgets()
         self.ids.bands.ids.clear()
+        self.ids.bands.spacing = sp(Window.width / (self.bands_qty - 1) - (self.bands_qty + 1) * Window.width / 12 )
         self.ids.result.text = "Результат:"
-        for i in range(0, int(value)):
-            band = ResistorBand(size_hint=(1, 1), band_no=i, band_qty=int(value))
+        for i in range(0, self.bands_qty):
+            band = ResistorBand(size_hint=(1, 1), band_no=i, band_qty=self.bands_qty)
             self.ids.bands.add_widget(band)
             self.ids.bands.ids["band" + str(i)] = weakref.ref(band)
 
@@ -214,13 +216,13 @@ class THResistorsMarkingScreen(MDScreen):
 
         if resistance < 1000:
             self.ids.result.text = "Результат: {:g} Ом {}{}".format(resistance, tolerance,
-                                                             (", ТКС: " + thermal) if thermal else "")
+                                                                    (", ТКС: " + thermal) if thermal else "")
         elif resistance < 1000000:
             self.ids.result.text = "Результат: {:g} кОм {}{}".format(resistance / 1000, tolerance,
-                                                              (", ТКС: " + thermal) if thermal else "")
+                                                                     (", ТКС: " + thermal) if thermal else "")
         else:
             self.ids.result.text = "Результат: {:g} МОм {}{}".format(resistance / 1000000, tolerance,
-                                                              (", ТКС: " + thermal) if thermal else "")
+                                                                     (", ТКС: " + thermal) if thermal else "")
 
 
 class SMDResistorsMarkingScreen(MDScreen):
