@@ -184,7 +184,9 @@ class THResistorsMarkingScreen(MDScreen):
         self.bands_qty = int(value)
         self.ids.bands.clear_widgets()
         self.ids.bands.ids.clear()
-        self.ids.bands.spacing = sp(Window.width / (self.bands_qty - 1) - (self.bands_qty + 1) * Window.width / 12 )
+        self.ids.bands.spacing = sp(
+            (Window.width * 3 / 5) / (self.bands_qty * 3 + (self.bands_qty - 1))
+        )
         self.ids.result.text = "Результат:"
         for i in range(0, self.bands_qty):
             band = ResistorBand(size_hint=(1, 1), band_no=i, band_qty=self.bands_qty)
