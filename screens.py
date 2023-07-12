@@ -1,6 +1,7 @@
 import itertools
 import weakref
 
+from kivy.app import App
 from kivy.core.window import Window
 from kivy.metrics import dp, sp
 from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty, NumericProperty
@@ -39,7 +40,7 @@ class ResistorBandDropdownMennu(MDDropdownMenu):
         Window.add_widget(self)
         self.position = self.adjust_position()
 
-        self.width = dp(120)
+        self.width = dp(130)
 
         self.height = self.target_height
         self._tar_x, self._tar_y = self.get_target_pos()
@@ -67,7 +68,7 @@ class ResistorBand(MDIconButton):
         4: {
             0: dict(itertools.islice(colors.items(), 3, None)),
             1: dict(itertools.islice(colors.items(), 2, None)),
-            2: dict(itertools.islice(colors.items(), 0, len(colors.keys()))),
+            2: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
             3: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
         }, 5: {
             0: dict(itertools.islice(colors.items(), 3, None)),
@@ -137,6 +138,7 @@ class ResistorBand(MDIconButton):
             self.icon_color = self.text_color = "white"
         else:
             self.icon_color = self.text_color = "black"
+        self.parent.parent.parent.parent.parent.ids.result.text = "Результат: "
         self.menu.dismiss()
 
 
