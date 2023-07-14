@@ -42,7 +42,7 @@ class ResistorBandDropdownMennu(MDDropdownMenu):
 
         self.width = dp(130)
 
-        self.height = self.target_height
+        self.height = Window.height / 2
         self._tar_x, self._tar_y = self.get_target_pos()
         self.x = self._tar_x
         self.y = self._tar_y - self.target_height
@@ -187,7 +187,7 @@ class THResistorsMarkingScreen(MDScreen):
         self.ids.bands.clear_widgets()
         self.ids.bands.ids.clear()
         self.ids.bands.spacing = sp(
-            (Window.width * 3 / 5) / (self.bands_qty * 3 + (self.bands_qty - 1))
+            (Window.width * 3 / 5) / (self.bands_qty * 4)
         )
         self.ids.result.text = "Результат:"
         for i in range(0, self.bands_qty):

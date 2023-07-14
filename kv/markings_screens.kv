@@ -100,12 +100,13 @@
                     on_release: root.menu.open()
 
             MDRelativeLayout:
+                id: resistor_view
                 size_hint_y: None
-                height: root.height / 2.5
+                height: root.height / 3
 
                 BoxLayout:
                     size_hint_y: None
-                    height: root.height / 2.5
+                    height: resistor_view.height
                     pos_hint: {"top": 1}
 
                     Image:
@@ -116,7 +117,7 @@
                 BoxLayout:
                     id: bands
                     size_hint_y: None
-                    height: root.height / 2.5
+                    height: resistor_view.height
                     pos_hint: {"top": 1}
                     padding: [root.width / 5, sp(40)]
                     spacing: sp(10)
