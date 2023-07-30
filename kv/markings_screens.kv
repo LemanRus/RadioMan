@@ -70,6 +70,7 @@
         id: resistors_markings_top_bar
         title: "Маркировки резисторов"
         pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
         elevation: 1
 
 <THResistorsMarkingScreen>:
@@ -143,8 +144,9 @@
 
     MDTopAppBar:
         id: markings_top_bar
-        title: "Маркировки"
+        title: "Резисторы свозного монтажа"
         pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
         elevation: 1
 
 
@@ -195,8 +197,9 @@
 
     MDTopAppBar:
         id: markings_top_bar
-        title: "Маркировки"
+        title: "SMD резисторы"
         pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
         elevation: 1
 
 
