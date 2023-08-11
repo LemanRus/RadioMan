@@ -187,18 +187,25 @@
                     font_size: "72sp"
                     max_text_length: 4
                     pos_hint: {"center_y": 0.5, "center_x": 0.5}
+                    on_text_validate: root.calculate_resistor(self.text)
 
-            MDLabel:
-                text: "Резисторы сквозного монтажа"
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                size: self.texture_size
+            MDCard:
+                size_hint: (1, None)
+                height: self.minimum_height
+                padding: sp(15)
 
-            MDLabel:
-                text: "Резисторы сквозного монтажа"
-                pos_hint: {"center_x": 0.5}
-                size_hint_y: None
-                size: self.texture_size
+                MDLabel:
+                    id: smd_result
+                    text: "Результат:"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    size_hint_y: None
+                    size: self.texture_size
+
+                MDRaisedButton:
+                    text: "Рассчитать"
+                    pos_hint: {"center_y": 0.5}
+                    size_hint_y: None
+                    on_release: root.calculate_resistor()
 
     MDTopAppBar:
         id: markings_top_bar
@@ -213,3 +220,10 @@
 
     MDBoxLayout:
         orientation: "vertical"
+
+    MDTopAppBar:
+        id: resistors_markings_top_bar
+        title: "Маркировки конденсаторов"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1

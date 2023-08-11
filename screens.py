@@ -230,7 +230,70 @@ class THResistorsMarkingScreen(MDScreen):
 
 
 class SMDResistorsMarkingScreen(MDScreen):
-    pass
+    eia96 = {"01": 100, "02": 102, "03": 105, "04": 107, "05": 110, "06": 113, "07": 115, "08": 118, "09": 121,
+             "10": 124, "11": 127, "12": 130, "13": 133, "14": 137, "15": 140, "16": 143, "17": 147, "18": 150,
+             "19": 154, "20": 158, "21": 162, "22": 165, "23": 169, "24": 174, "25": 178, "26": 182, "27": 187,
+             "28": 191, "29": 196, "30": 200, "31": 205, "32": 210, "33": 215, "34": 221, "35": 226, "36": 232,
+             "37": 237, "38": 243, "39": 249, "40": 255, "41": 261, "42": 267, "43": 274, "44": 280, "45": 287,
+             "46": 294, "47": 301, "48": 309, "49": 316, "50": 324, "51": 332, "52": 340, "53": 348, "54": 357,
+             "55": 365, "56": 374, "57": 383, "58": 392, "59": 402, "60": 412, "61": 422, "62": 432, "63": 442,
+             "64": 453, "65": 464, "66": 475, "67": 487, "68": 499, "69": 511, "70": 523, "71": 536, "72": 549,
+             "73": 562, "74": 576, "75": 590, "76": 604, "77": 619, "78": 634, "79": 649, "80": 665, "81": 681,
+             "82": 698, "83": 715, "84": 732, "85": 750, "86": 768, "87": 787, "88": 806, "89": 825, "90": 845,
+             "91": 866, "92": 887, "93": 909, "94": 931, "95": 953, "96": 976}
+
+    eia96_multiplier = {"z": 0.001, "y": 0.01, "r": 0.01, "x": 0.1, "s": 0.1, "a": 1, "b": 10, "h": 10, "c": 100,
+                        "d": 1000, "e": 10000, "f": 100000}
+
+    def calculate_resistor(self, marking):
+        try:
+            self.ids.smd_result.text = ""
+            resistance = ""
+            precision = False
+            marking = marking.lower()
+            if marking in ["0", "00", "000", "0000"]:
+                resistance = 0
+            elif "r" in marking:
+                if len(marking) in (3, 4):
+                    markings = marking.split("r")
+                    resistance = float("{}.{}".format(markings[0], markings[1]))
+                    if len(marking) == 4:
+                        precision = True
+                else:
+                    self.ids.smd_result.text = "Неверный ввод"
+            elif len(marking) == 3:
+                if marking[2].isalpha() and marking[2].lower() in self.eia96_multiplier.keys():
+                    multiplier = self.eia96_multiplier[marking[2]]
+                    resistance = self.eia96[marking[:2]] * multiplier
+                    precision = True
+                else:
+                    resistance = float(marking[:2]) * 10 ** (float(marking[2]))
+            elif len(marking) == 4:
+                resistance = float(marking[:3]) * 10 ** (float(marking[3]))
+                precision = True
+            else:
+                self.ids.smd_result.text = "Неверный ввод"
+
+            if resistance != "":
+                try:
+                    resistance = float(resistance)
+                    self.ids.smd_result.text = "Результат: "
+                    if resistance == 0:
+                        self.ids.smd_result.text += "0 Ом (перемычка)"
+                    elif resistance < 1000:
+                        self.ids.smd_result.text += "{:g} Ом".format(resistance)
+                    elif resistance < 1000000:
+                        self.ids.smd_result.text += "{:g} кОм".format(resistance / 1000)
+                    else:
+                        self.ids.smd_result.text += "{:g} МОм".format(resistance / 1000000)
+                    if precision and resistance != 0:
+                        self.ids.smd_result.text += " ±1%"
+                    elif resistance != 0:
+                        self.ids.smd_result.text += " ±5%"
+                except ValueError:
+                    return "Неверный ввод"
+        except ValueError:
+            self.ids.smd_result.text = "Неверный ввод"
 
 
 class CapacitorsMarkingScreen(MDScreen):
