@@ -40,7 +40,7 @@
                 height: self.minimum_height
                 spacing: "20sp"
                 padding: "15sp"
-                on_release: root.parent.current = "capacitors_marking_screen"
+                on_release: root.parent.current = "capacitors_marking_select_screen"
                 elevation: 1
 
                 MDIconButton:
@@ -49,7 +49,7 @@
                     icon: "media/capacitor.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
-                    on_release: root.parent.current = "capacitors_marking_screen"
+                    on_release: root.parent.current = "capacitors_marking_select_screen"
 
                 MDLabel:
                     text: "Конденсаторы"

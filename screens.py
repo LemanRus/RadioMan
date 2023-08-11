@@ -296,7 +296,15 @@ class SMDResistorsMarkingScreen(MDScreen):
             self.ids.smd_result.text = "Неверный ввод"
 
 
-class CapacitorsMarkingScreen(MDScreen):
+class CapacitorsMarkingSelectScreen(MDScreen):
+    pass
+
+
+class THCapacitorsMarkingScreen(MDScreen):
+    pass
+
+
+class SMDCapacitorsMarkingScreen(MDScreen):
     pass
 
 

@@ -9,7 +9,10 @@ import screens
 backs = {"resistors_markings_select_screen": "markings_screen",
          "th_resistors_marking_screen": "resistors_markings_select_screen",
          "smd_resistors_marking_screen": "resistors_markings_select_screen",
-         "capacitors_marking_screen": "markings_screen"}
+         "capacitors_marking_select_screen": "markings_screen",
+         "th_capacitors_marking_screen": "capacitors_marking_select_screen",
+         "smd_capacitors_marking_screen": "capacitors_marking_select_screen",
+         }
 
 
 class RadioMan(MDApp):
