@@ -181,6 +181,7 @@
                         fit_mode: "fill"
 
                 MDTextField:
+                    id: resistor_marking_input
                     halign: "center"
                     line_color_normal: 1, 1, 1, 0.3
                     line_color_focus: 1, 1, 1, 0.4
@@ -208,7 +209,7 @@
                     text: "Рассчитать"
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None
-                    on_release: root.calculate_resistor()
+                    on_release: root.calculate_resistor(resistor_marking_input.text)
 
     MDTopAppBar:
         id: smd_resistors_top_bar
@@ -288,6 +289,62 @@
 <THCapacitorsMarkingScreen>:
     name: "th_capacitors_marking_screen"
 
+    MDScrollView:
+        pos_hint: {"top": (root.height - th_capacitor_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDGridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: root.height / 3
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: root.height / 3
+                    pos_hint: {"top": 1}
+
+                    Image:
+                        source: "media/smd_resistor_bg.png"
+                        pos_hint: {"top": 1}
+                        fit_mode: "fill"
+
+                MDTextField:
+                    id: capacitor_marking_input
+                    halign: "center"
+                    line_color_normal: 1, 1, 1, 0.3
+                    line_color_focus: 1, 1, 1, 0.4
+                    text_color_normal: 1, 1, 1, 0.9
+                    text_color_focus: 1, 1, 1, 1
+                    size_hint: 0.6, None
+                    font_size: "72sp"
+                    max_text_length: 4
+                    pos_hint: {"center_y": 0.5, "center_x": 0.5}
+                    on_text_validate: root.calculate_capacitor(self.text)
+
+            MDCard:
+                size_hint: (1, None)
+                height: self.minimum_height
+                padding: sp(15)
+
+                MDLabel:
+                    id: th_capacitor_result
+                    text: "Результат:"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    size_hint_y: None
+                    size: self.texture_size
+
+                MDRaisedButton:
+                    text: "Рассчитать"
+                    pos_hint: {"center_y": 0.5}
+                    size_hint_y: None
+                    on_release: root.calculate_capacitor(capacitor_marking_input.text)
+
     MDTopAppBar:
         id: th_capacitor_top_bar
         title: "Конденсаторы свозного монтажа"
@@ -297,6 +354,62 @@
 
 <SMDCapacitorsMarkingScreen>:
     name: "smd_capacitors_marking_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - smd_capacitor_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDGridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: root.height / 3
+
+                BoxLayout:
+                    size_hint_y: None
+                    height: root.height / 3
+                    pos_hint: {"top": 1}
+
+                    Image:
+                        source: "media/smd_resistor_bg.png"
+                        pos_hint: {"top": 1}
+                        fit_mode: "fill"
+
+                MDTextField:
+                    id: smd_capacitor_marking_input
+                    halign: "center"
+                    line_color_normal: 1, 1, 1, 0.3
+                    line_color_focus: 1, 1, 1, 0.4
+                    text_color_normal: 1, 1, 1, 0.9
+                    text_color_focus: 1, 1, 1, 1
+                    size_hint: 0.6, None
+                    font_size: "72sp"
+                    max_text_length: 4
+                    pos_hint: {"center_y": 0.5, "center_x": 0.5}
+                    on_text_validate: root.calculate_smd_capacitor(self.text)
+
+            MDCard:
+                size_hint: (1, None)
+                height: self.minimum_height
+                padding: sp(15)
+
+                MDLabel:
+                    id: smd_capacitor_result
+                    text: "Результат:"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    size_hint_y: None
+                    size: self.texture_size
+
+                MDRaisedButton:
+                    text: "Рассчитать"
+                    pos_hint: {"center_y": 0.5}
+                    size_hint_y: None
+                    on_release: root.calculate_smd_capacitor(smd_capacitor_marking_input.text)
 
     MDTopAppBar:
         id: smd_capacitor_top_bar
