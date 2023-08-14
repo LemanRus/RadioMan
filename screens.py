@@ -301,8 +301,6 @@ class CapacitorsMarkingSelectScreen(MDScreen):
 
 class THCapacitorsMarkingScreen(MDScreen):
     decimal_point = {"μ": 1000000, "u": 1000000, "p": 1, "n": 1000, "мк": 1000000, "н": 1000, "п": 1}
-    voltage = {"G": 4, "J": 7, "A": 10, "C": 16, "D": 20, "E": 25, "V": 35}
-    smd_capacity = {"A": 1., "E": 1.5, "J": 2.2, "N": 3.3, "S": 4.7, "W": 6.8}
 
     def calculate_capacitor(self, value):
         capacity = ""
@@ -311,8 +309,8 @@ class THCapacitorsMarkingScreen(MDScreen):
                 capacity = int(value)
             else:
                 capacity = int(value[-2::-1][::-1]) * 10 ** int(value[-1])
-        elif "R" in value:
-            capacity = float("{}.{}".format(value.split("R")[0], value.split("R")[1]))
+        elif "r" in value.lower():
+            capacity = float("{}.{}".format(value.lower().split("R")[0], value.lower().split("R")[1]))
         elif any(ext in value for ext in self.decimal_point.keys()):
             intersection = "".join([inter for inter in self.decimal_point.keys() if (inter in value)])
             capacity = float("{}.{}".format(value.split(intersection)[0], value.split(intersection)[1])) * \
@@ -322,55 +320,73 @@ class THCapacitorsMarkingScreen(MDScreen):
 
         if capacity != "":
             try:
+                self.ids.th_capacitor_result.text = "Результат: "
                 capacity = float(capacity)
                 if capacity == 0:
-                    return "0 мкФ (перемычка)"
+                    self.ids.th_capacitor_result.text += "0 мкФ (перемычка)"
                 elif capacity < 1000:
-                    return "{:g} пФ".format(capacity)
+                    self.ids.th_capacitor_result.text += "{:g} пФ".format(capacity)
                 elif capacity < 1000000:
-                    return "{:g} нФ".format(capacity / 1000)
+                    self.ids.th_capacitor_result.text += "{:g} нФ".format(capacity / 1000)
                 elif capacity < 1000000000:
-                    return "{:g} мкФ".format(capacity / 1000000)
+                    self.ids.th_capacitor_result.text += "{:g} мкФ".format(capacity / 1000000)
                 else:
-                    return "{:g} мФ".format(capacity / 1000000000)
+                    self.ids.th_capacitor_result.text += "{:g} мФ".format(capacity / 1000000000)
             except ValueError:
                 return "Неверный ввод!"
 
 
 class SMDCapacitorsMarkingScreen(MDScreen):
-    voltage = {"G": 4, "J": 7, "A": 10, "C": 16, "D": 20, "E": 25, "V": 35}
+    voltage = {"e": 2.5, "G": 4, "J": 7, "A": 10, "C": 16, "D": 20, "E": 25, "V": 35, "H": 50}
+    smd_capacity = {"A": 1., "B": 1.1, "C": 1.2, "D": 1.3, "E": 1.5, "F": 1.6, "G": 1.8, "H": 2.0, "J": 2.2, "K": 2.4,
+                    "L": 2.7, "M": 3.0, "N": 3.3, "P": 3.6, "Q": 3.9, "R": 4.3, "S": 4.7, "T": 5.1, "U": 5.6, "V": 6.2,
+                    "W": 6.8, "X": 7.5, "Y": 8.2, "Z": 9.1, "a": 2.5, "b": 3.5, "d": 4.0, "e": 4.5, "f": 5.0, "m": 6.0,
+                    "n": 7.0, "t": 8.0}
 
     def calculate_smd_capacitor(self, value):
         capacity = ""
-        if len(value) == 3:
-            values = list(value)
+        voltage = "?"
+        values = list(value)
+        if len(values) == 2:
+            if values[0] in self.smd_capacity.keys():
+                capacity = self.smd_capacity[values[0]] * 10 ** int(values[1])
+            else:
+                self.ids.smd_capacitor_result.text = "Неверный ввод"
+        elif len(values) == 3:
             if values[0] in self.voltage.keys():
                 voltage = self.voltage[values[0]]
-            if values[0] not in self.voltage.keys():
+            else:
                 self.ids.smd_capacitor_result.text = "Неверный ввод"
-            elif values[1] in self.smd_capacity.keys():
+            if values[1] in self.smd_capacity.keys():
                 capacity = self.smd_capacity[values[1]] * 10 ** int(values[2])
             else:
                 self.ids.smd_capacitor_result.text = "Неверный ввод"
+        elif len(values) == 4:
+            if values[0] in self.voltage.keys():
+                voltage = self.voltage[values[0]]
+            else:
+                self.ids.smd_capacitor_result.text = "Неверный ввод"
+            capacity = int(''.join((str(i) for i in values[1:3]))) * 10 ** int(values[3])
         else:
             self.ids.smd_capacitor_result.text = "Неверный ввод"
 
         if capacity != "":
             try:
+                self.ids.smd_capacitor_result.text = "Результат: "
                 capacity = float(capacity)
                 if capacity == 0:
-                    return "0 мкФ (перемычка)"
+                    self.ids.smd_capacitor_result.text += "0 мкФ (перемычка)"
                 elif capacity < 1000:
-                    return "{:g} пФ".format(capacity)
+                    self.ids.smd_capacitor_result.text += "{:g} пФ".format(capacity)
                 elif capacity < 1000000:
-                    return "{:g} нФ".format(capacity / 1000)
+                    self.ids.smd_capacitor_result.text += "{:g} нФ".format(capacity / 1000)
                 elif capacity < 1000000000:
-                    return "{:g} мкФ".format(capacity / 1000000)
+                    self.ids.smd_capacitor_result.text += "{:g} мкФ".format(capacity / 1000000)
                 else:
-                    return "{:g} мФ".format(capacity / 1000000000)
+                    self.ids.smd_capacitor_result.text += "{:g} мФ".format(capacity / 1000000000)
             except ValueError:
                 return "Неверный ввод!"
-            # self.ids.smd_capacity.text = StandardRows.format_output_capacitor(capacity) + ", " + str(voltage) + " В"
+            self.ids.smd_capacitor_result.text += ", " + str(voltage) + " В"
 
 
 class MarkingsScreenManager(MDScreenManager):
