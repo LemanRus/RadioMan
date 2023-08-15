@@ -12,6 +12,7 @@ backs = {"resistors_markings_select_screen": "markings_screen",
          "capacitors_marking_select_screen": "markings_screen",
          "th_capacitors_marking_screen": "capacitors_marking_select_screen",
          "smd_capacitors_marking_screen": "capacitors_marking_select_screen",
+         "led_resistor_calculation_screen": "calculations_screen"
          }
 
 

@@ -65,6 +65,7 @@
         elevation: 1
 
 <CalculationsScreen>:
+    name: "calculations_screen"
     md_bg_color: app.theme_cls.bg_dark
 
     MDScrollView:
@@ -82,6 +83,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "led_resistor_calculation_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -89,6 +91,7 @@
                     icon: "media/resistor_led.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "led_resistor_calculation_screen"
 
                 MDLabel:
                     text: "Расчёт резисторов для светодиодов"

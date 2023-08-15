@@ -11,11 +11,10 @@
 
 <ResistorsMarkingsSelectScreen>:
     name: "resistors_markings_select_screen"
-    md_bg_color: app.theme_cls.bg_dark
 
     MDScrollView:
         pos_hint: {"top": (root.height - resistors_markings_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
+        size_hint_y: (root.height - resistors_markings_top_bar.height) / root.height
 
         MDList:
             spacing: "10dp"
@@ -78,10 +77,11 @@
 
 <THResistorsMarkingScreen>:
     name: "th_resistors_marking_screen"
+
     MDScrollView:
         on_parent: root.build_menu()
         pos_hint: {"top": (root.height - th_resistor_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
+        size_hint_y: (root.height - th_resistor_top_bar.height) / root.height
 
         MDGridLayout:
             cols: 1
@@ -225,7 +225,7 @@
 
     MDScrollView:
         pos_hint: {"top": (root.height - capacitors_markings_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
+        size_hint_y: (root.height - capacitors_markings_top_bar.height) / root.height
 
         MDList:
             spacing: "10dp"
@@ -291,7 +291,7 @@
 
     MDScrollView:
         pos_hint: {"top": (root.height - th_capacitor_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
+        size_hint_y: (root.height - th_capacitor_top_bar.height) / root.height
 
         MDGridLayout:
             cols: 1
@@ -356,7 +356,7 @@
 
     MDScrollView:
         pos_hint: {"top": (root.height - smd_capacitor_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
+        size_hint_y: (root.height - smd_capacitor_top_bar.height) / root.height
 
         MDGridLayout:
             cols: 1

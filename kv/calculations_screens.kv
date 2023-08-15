@@ -1,3 +1,159 @@
 <CalculationsScreenManager>:
     CalculationsScreen:
+    LEDResistorCalculationScreen:
 
+<LEDResistorCalculationScreen>:
+    name: "led_resistor_calculation_screen"
+
+    MDScrollView:
+        on_parent: root.build_menu()
+        pos_hint: {"top": (root.height - led_resistor_top_bar.height) / root.height}
+        size_hint_y: (root.height - led_resistor_top_bar.height) / root.height
+
+        MDGridLayout:
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+
+                MDLabel:
+                    text: "Напряжение источника питания, В:"
+
+                MDTextField:
+                    id: led_resistor_source_voltage_input
+                    halign: "center"
+                    on_text_validate: root.led_calculate(self.text)
+
+#                MDCard:
+#                    size_hint_x: 0.2
+#                    TextInput:
+#                        id: led_vol
+#                        text: '5'
+#                        multiline: False
+#                        halign: "center"
+#                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+#                MDCard:
+#                    size_hint_x: 0.1
+#                    MDLabel:
+#                        text: "В"
+#                MDCard:
+#                    size_hint_x: 0.52
+#            BoxLayout:
+#                size_hint_y: 2
+#                BoxLayout:
+#                    orientation: "vertical"
+#                    BoxLayout:
+#                        MDCard:
+#                            MDLabel:
+#                                text: "Напряжение питания светодиода:"
+#                        MDCard:
+#                            size_hint_x: 0.2
+#                            TextInput:
+#                                id: led_vol_input
+#                                multiline: False
+#                                halign: "center"
+#                                padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+#                        MDCard:
+#                            size_hint_x: 0.1
+#                            MDLabel:
+#                                text: "В"
+#                    BoxLayout:
+#                        MDCard:
+#                            MDLabel:
+#                                text: "Ток светодиода:"
+#                        MDCard:
+#                            size_hint_x: 0.2
+#                            TextInput:
+#                                id: led_cur_input
+#                                multiline: False
+#                                halign: "center"
+#                                padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+#                        MDCard:
+#                            size_hint_x: 0.1
+#                            MDLabel:
+#                                text: "мА"
+#                MDCard:
+#                    size_hint_x: 0.4
+#                    on_parent: root.build_menu()
+#                    on_release: root.menu.open()
+#                    id: resistor_marking_menu
+#                    MDLabel:
+#                        id: resistor_marking_menu_name
+#                        text: "Выберите"
+#                        on_text: led_vol_input.text = str(root.diodes[self.text][0])
+#                        on_text: led_cur_input.text = str(root.diodes[self.text][1])
+#                    BoxLayout:
+#                        size_hint_x: 0.2
+#                        MDIcon:
+#                            icon: "chevron-down"
+#                            pos_hint: {"center_x": .5, "center_y": .5}
+#
+#            BoxLayout:
+#                MDCard:
+#                    MDLabel:
+#                        text: "Количество светодиодов:"
+#                MDCard:
+#                    size_hint_x: 0.2
+#                    TextInput:
+#                        id: led_quantity
+#                        text: '1'
+#                        multiline: False
+#                        halign: "center"
+#                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+#                MDCard:
+#                    size_hint_x: 0.1
+#                    MDLabel:
+#                        text: "шт"
+#                MDCard:
+#                    size_hint_x: 0.52
+#            MDSeparator:
+#            Button:
+#                on_release: root.led_calculate(led_vol.text, led_vol_input.text, led_cur_input.text, led_quantity.text)
+#            MDSeparator:
+#            MDCard:
+#                MDLabel:
+#                    text: "Результат:"
+#            BoxLayout:
+#                MDCard:
+#                    MDLabel:
+#                        text: "Расчётное сопротивление:"
+#                MDCard:
+#                    size_hint_x: 0.5
+#                    MDLabel:
+#                        id: led_result
+#            BoxLayout:
+#                MDCard:
+#                    MDLabel:
+#                        text: "Стандартное значение:"
+#                MDCard:
+#                    size_hint_x: 0.5
+#                    MDLabel:
+#                        id: led_e24
+#            BoxLayout:
+#                MDCard:
+#                    MDLabel:
+#                        text: "Рассеиваемая на резисторе мощность:"
+#                MDCard:
+#                    size_hint_x: 0.5
+#                    MDLabel:
+#                        id: led_res_power
+#            BoxLayout:
+#                MDCard:
+#                    MDLabel:
+#                        text: "Потребляемый ток:"
+#                MDCard:
+#                    size_hint_x: 0.5
+#                    MDLabel:
+#                        id: led_cur
+
+    MDTopAppBar:
+        id: led_resistor_top_bar
+        title: "Расчёт резисторов для светодиодов"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1

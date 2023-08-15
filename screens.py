@@ -10,14 +10,7 @@ from kivymd.uix.button import MDIconButton, MDFlatButton, MDRectangleFlatIconBut
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.screenmanager import MDScreenManager
-
-
-class MarkingsScreen(MDScreen):
-    pass
-
-
-class CalculationsScreen(MDScreen):
-    pass
+from e24_nominals import E24Nominals as e24
 
 
 class HandbookScreen(MDScreen):
@@ -25,6 +18,14 @@ class HandbookScreen(MDScreen):
 
 
 class HelpScreen(MDScreen):
+    pass
+
+
+class MarkingsScreenManager(MDScreenManager):
+    pass
+
+
+class MarkingsScreen(MDScreen):
     pass
 
 
@@ -389,11 +390,98 @@ class SMDCapacitorsMarkingScreen(MDScreen):
             self.ids.smd_capacitor_result.text += ", " + str(voltage) + " В"
 
 
-class MarkingsScreenManager(MDScreenManager):
+class CalculationsScreenManager(MDScreenManager):
     pass
 
 
-class CalculationsScreenManager(MDScreenManager):
+class CalculationsScreen(MDScreen):
+    pass
+
+
+class LEDResistorCalculationScreen(MDScreen):
+    diodes = {'3 мм зелёный': (2.3, 20), '3 мм красный': (1.9, 20), '3 мм жёлтый': (2.1, 20), '3 мм синий': (2.9, 20),
+              '5 мм зелёный': (2.3, 20), '5 мм красный': (1.9, 20), '5 мм жёлтый': (2.1, 20), '5 мм синий': (3.6, 75),
+              '5 мм белый': (3.6, 75), '10 мм синий': (3.2, 20), '10 мм белый': (3.2, 20), 'Cree MX-3': (3.7, 350)}
+
+    def build_menu(self, *args, **kwargs):
+        # [{"center_text": "3",
+        #   "viewclass": "CenterList",
+        #   "on_release": lambda x="3": self.set_item(x),
+        #   "height": dp(56), },
+        #  {"center_text": "4",
+        #   "viewclass": "CenterList",
+        #   "on_release": lambda x="4": self.set_item(x),
+        #   "height": dp(56), },
+        #  {"center_text": "5",
+        #   "viewclass": "CenterList",
+        #   "on_release": lambda x="5": self.set_item(x),
+        #   "height": dp(56), },
+        #  {"center_text": "6",
+        #   "viewclass": "CenterList",
+        #   "on_release": lambda x="6": self.set_item(x),
+        #   "height": dp(56), }, ]
+        self.menu_items = []
+        for i in range(len(self.diodes.keys())):
+            self.menu_items.append({"text": list(self.diodes.keys())[i],
+                                    "on_release": lambda x=list(self.diodes.keys())[i]: self.set_item(x),
+                                    "height": dp(56), "text_color": "black", "md_bg_color": "red"})
+        self.menu = MDDropdownMenu(
+            caller=self,
+            items=self.menu_items,
+        )
+
+    def set_item(self, text_item):
+        self.ids.resistor_marking_menu_name.text = text_item
+        self.menu.dismiss()
+
+    def led_calculate(self, vol, led_vol, led_cur, led_quant):
+        try:
+            led_resistance = (float(vol) - (float(led_vol) * float(led_quant))) / (float(led_cur) / 1000)
+            if led_resistance < 0:
+                self.ids.led_result.text = "Слишком малое напряжение источника питания!"
+                self.ids.led_res_power.text = ''
+                self.ids.led_cur.text = ''
+                self.ids.led_e24.text = ''
+            else:
+                # self.ids.led_result.text = StandardRows.format_output_resistor(led_resistance)
+                e24_result = e24.calculate_standard_resistor(led_resistance, True)
+                # self.ids.led_e24.text = StandardRows.format_output_resistor(e24_result)
+
+                self.ids.led_res_power.text = "{:g} мВт".format((float(vol) - float(led_vol)) *
+                                                                float(led_cur) * float(led_quant))
+                self.ids.led_cur.text = "{:g} мА".format(float(led_cur) * float(led_quant))
+        except ValueError:
+            self.ids.led_e24.text = "Неверный ввод!"
+            self.ids.led_result.text = "Неверный ввод!"
+            self.ids.led_res_power.text = "Неверный ввод!"
+            self.ids.led_cur.text = "Неверный ввод!"
+
+
+class InductorSelectScreen(MDScreen):
+    pass
+
+
+class InductorCalculateInductionScreen(MDScreen):
+    pass
+
+
+class InductorCalculateSizeScreen(MDScreen):
+    pass
+
+
+class ParallelResistorCalculationScreen(MDScreen):
+    pass
+
+
+class SerialCapacitorCalculateScreen(MDScreen):
+    pass
+
+
+class VoltageDividerCalculateScreen(MDScreen):
+    pass
+
+
+class LMRegulatorCalculateScreen(MDScreen):
     pass
 
 
