@@ -420,6 +420,8 @@ class LEDResistorCalculationScreen(MDScreen):
         #   "viewclass": "CenterList",
         #   "on_release": lambda x="6": self.set_item(x),
         #   "height": dp(56), }, ]
+
+
         self.menu_items = []
         for i in range(len(self.diodes.keys())):
             self.menu_items.append({"text": list(self.diodes.keys())[i],
@@ -457,7 +459,7 @@ class LEDResistorCalculationScreen(MDScreen):
             self.ids.led_cur.text = "Неверный ввод!"
 
 
-class InductorSelectScreen(MDScreen):
+class InductorCalculationSelectScreen(MDScreen):
     pass
 
 

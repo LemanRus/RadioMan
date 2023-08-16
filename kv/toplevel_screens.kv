@@ -66,7 +66,6 @@
 
 <CalculationsScreen>:
     name: "calculations_screen"
-    md_bg_color: app.theme_cls.bg_dark
 
     MDScrollView:
         pos_hint: {"top": (root.height - calculations_top_bar.height) / root.height}
@@ -107,6 +106,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "inductor_calculation_select_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -114,6 +114,7 @@
                     icon: "media/inductor.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "inductor_calculation_select_screen"
 
                 MDLabel:
                     text: "Расчёт катушки индуктивности"
@@ -129,6 +130,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "parallel_resistor_calculation_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -136,6 +138,7 @@
                     icon: "media/resistors_par.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "parallel_resistor_calculation_screen"
 
                 MDLabel:
                     text: "Параллельное соединение резисторов"
@@ -151,6 +154,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "serial_capacitor_calculate_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -158,6 +162,7 @@
                     icon: "media/capacitors_ser.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "serial_capacitor_calculate_screen"
 
                 MDLabel:
                     text: "Последовательное соединение конденсаторов"
@@ -173,6 +178,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "voltage_divider_calculate_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -180,6 +186,7 @@
                     icon: "media/divider.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "voltage_divider_calculate_screen"
 
                 MDLabel:
                     text: "Делитель напряжения"
@@ -195,6 +202,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "lm_regulator_calculate_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -202,6 +210,7 @@
                     icon: "media/transistor.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "lm_regulator_calculate_screen"
 
                 MDLabel:
                     text: "LM317/LM350/LM338 калькулятор"
