@@ -11,15 +11,19 @@
         size_hint_y: (root.height - led_resistor_top_bar.height) / root.height
 
         MDGridLayout:
+            id: grid
             cols: 1
-            size_hint_y: None
-            height: self.minimum_height
+            adaptive_height: True
+            size_hint_x: None
+            width: root.width
             spacing: "10dp"
             padding: "15dp", "10dp"
 
             MDCard:
                 size_hint_y: None
                 height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(5)
 
                 MDLabel:
                     text: "Напряжение источника питания, В:"
@@ -27,33 +31,65 @@
                 MDTextField:
                     id: led_resistor_source_voltage_input
                     halign: "center"
-                    on_text_validate: root.led_calculate(self.text)
+                    on_text_validate:
+                        root.led_calculate(self.text, \
+                        led_resistor_led_voltage_input.text, \
+                        led_resistor_led_current_input.text, \
+                        led_resistor_led_qty_input.text)
+
             MDCard:
                 size_hint_y: None
                 height: self.minimum_height
+                padding: sp(15), 0
 
                 MDLabel:
                     text: "Напряжение питания светодиода, В:"
 
                 MDTextField:
-                    id: led_resistor_source_voltage_input
+                    id: led_resistor_led_voltage_input
                     halign: "center"
-                    on_text_validate: root.led_calculate(self.text)
-#                    BoxLayout:
-#                        MDCard:
-#                            MDLabel:
-#                                text: "Ток светодиода:"
-#                        MDCard:
-#                            size_hint_x: 0.2
-#                            TextInput:
-#                                id: led_cur_input
-#                                multiline: False
-#                                halign: "center"
-#                                padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
-#                        MDCard:
-#                            size_hint_x: 0.1
-#                            MDLabel:
-#                                text: "мА"
+                    on_text_validate:
+                        root.led_calculate(led_resistor_source_voltage_input.text, \
+                        self.text, \
+                        led_resistor_led_current_input.text, \
+                        led_resistor_led_qty_input.text)
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(5)
+
+                MDLabel:
+                    text: "Ток светодиода, мА:"
+
+                MDTextField:
+                    id: led_resistor_led_current_input
+                    halign: "center"
+                    on_text_validate:
+                        root.led_calculate(led_resistor_source_voltage_input.text, \
+                        led_resistor_led_voltage_input.text, \
+                        self.text, \
+                        led_resistor_led_qty_input.text)
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(5)
+
+                MDLabel:
+                    text: "Количество светодиодов:"
+
+                MDTextField:
+                    id: led_resistor_led_qty_input
+                    halign: "center"
+                    on_text_validate:
+                        root.led_calculate(led_resistor_source_voltage_input.text, \
+                        led_resistor_led_voltage_input.text, \
+                        led_resistor_led_current_input.text, \
+                        self.text)
+
 #                MDCard:
 #                    size_hint_x: 0.4
 #                    on_parent: root.build_menu()
@@ -70,28 +106,23 @@
 #                            icon: "chevron-down"
 #                            pos_hint: {"center_x": .5, "center_y": .5}
 #
-#            BoxLayout:
-#                MDCard:
-#                    MDLabel:
-#                        text: "Количество светодиодов:"
-#                MDCard:
-#                    size_hint_x: 0.2
-#                    TextInput:
-#                        id: led_quantity
-#                        text: '1'
-#                        multiline: False
-#                        halign: "center"
-#                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
-#                MDCard:
-#                    size_hint_x: 0.1
-#                    MDLabel:
-#                        text: "шт"
-#                MDCard:
-#                    size_hint_x: 0.52
-#            MDSeparator:
-#            Button:
-#                on_release: root.led_calculate(led_vol.text, led_vol_input.text, led_cur_input.text, led_quantity.text)
-#            MDSeparator:
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_led_resistor.height
+
+                MDRaisedButton:
+                    id: calc_led_resistor
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"center_x": 0.5}
+                    on_release:
+                        root.led_calculate(led_resistor_source_voltage_input.text, \
+                        led_resistor_led_voltage_input.text, \
+                        led_resistor_led_current_input.text, \
+                        led_resistor_led_qty_input.text)
+
+
 #            MDCard:
 #                MDLabel:
 #                    text: "Результат:"
@@ -99,34 +130,64 @@
 #                MDCard:
 #                    MDLabel:
 #                        text: "Расчётное сопротивление:"
-#                MDCard:
-#                    size_hint_x: 0.5
-#                    MDLabel:
-#                        id: led_result
-#            BoxLayout:
-#                MDCard:
-#                    MDLabel:
-#                        text: "Стандартное значение:"
-#                MDCard:
-#                    size_hint_x: 0.5
-#                    MDLabel:
-#                        id: led_e24
-#            BoxLayout:
-#                MDCard:
-#                    MDLabel:
-#                        text: "Рассеиваемая на резисторе мощность:"
-#                MDCard:
-#                    size_hint_x: 0.5
-#                    MDLabel:
-#                        id: led_res_power
-#            BoxLayout:
-#                MDCard:
-#                    MDLabel:
-#                        text: "Потребляемый ток:"
-#                MDCard:
-#                    size_hint_x: 0.5
-#                    MDLabel:
-#                        id: led_cur
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15)
+                spacing: sp(5)
+                orientation: "vertical"
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: sp(self.font_size + 10)
+                        text: "Расчётное сопротивление:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: sp(self.font_size + 10)
+                        id: led_result
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: sp(self.font_size + 10)
+                        text: "Стандартное значение:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: sp(self.font_size + 10)
+                        id: led_e24
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: sp(self.font_size + 10)
+                        text: "Рассеиваемая на резисторе мощность:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: sp(self.font_size + 10)
+                        id: led_res_power
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: sp(self.font_size + 10)
+                        text: "Потребляемый ток:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: sp(self.font_size + 10)
+                        id: led_cur
 
     MDTopAppBar:
         id: led_resistor_top_bar

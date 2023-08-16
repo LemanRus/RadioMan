@@ -443,9 +443,9 @@ class LEDResistorCalculationScreen(MDScreen):
                 self.ids.led_cur.text = ''
                 self.ids.led_e24.text = ''
             else:
-                # self.ids.led_result.text = StandardRows.format_output_resistor(led_resistance)
+                self.ids.led_result.text = str(led_resistance)
                 e24_result = e24.calculate_standard_resistor(led_resistance, True)
-                # self.ids.led_e24.text = StandardRows.format_output_resistor(e24_result)
+                self.ids.led_e24.text = str(e24_result)
 
                 self.ids.led_res_power.text = "{:g} мВт".format((float(vol) - float(led_vol)) *
                                                                 float(led_cur) * float(led_quant))
