@@ -88,6 +88,7 @@ class ResistorBand(MDIconButton):
     }
 
     def __init__(self, *args, **kwargs):
+        self.app = App.get_running_app()
         self.band_no = kwargs.pop("band_no")
         self.band_qty = kwargs.pop("band_qty")
         super().__init__(*args, **kwargs)
@@ -137,7 +138,7 @@ class ResistorBand(MDIconButton):
             self.icon_color = self.text_color = "white"
         else:
             self.icon_color = self.text_color = "black"
-        self.parent.parent.parent.parent.parent.ids.result.text = "Результат: "
+        self.parent.parent.parent.parent.parent.calculate_resistor()
         self.menu.dismiss()
 
 
@@ -187,13 +188,19 @@ class THResistorsMarkingScreen(MDScreen):
         self.ids.bands.clear_widgets()
         self.ids.bands.ids.clear()
         self.ids.bands.spacing = sp(
-            (Window.width * 3 / 5) / (self.bands_qty * 4)
+            (Window.width * 3 / 5) / (self.bands_qty * 5)
         )
         self.ids.result.text = "Результат:"
         for i in range(0, self.bands_qty):
-            band = ResistorBand(size_hint=(1, None), pos_hint={"center_y":0.5}, height=dp(90), band_no=i, band_qty=self.bands_qty)
+            band = ResistorBand(
+                pos_hint={"center_y": 0.5},
+                size_hint=(1, 1),
+                band_no=i,
+                band_qty=self.bands_qty
+            )
             self.ids.bands.add_widget(band)
             self.ids.bands.ids["band" + str(i)] = weakref.ref(band)
+        self.calculate_resistor()
 
     def calculate_resistor(self):
         thermal = ""
@@ -311,7 +318,7 @@ class THCapacitorsMarkingScreen(MDScreen):
             else:
                 capacity = int(value[-2::-1][::-1]) * 10 ** int(value[-1])
         elif "r" in value.lower():
-            capacity = float("{}.{}".format(value.lower().split("R")[0], value.lower().split("R")[1]))
+            capacity = float("{}.{}".format(value.lower().split("r")[0], value.lower().split("r")[1]))
         elif any(ext in value for ext in self.decimal_point.keys()):
             intersection = "".join([inter for inter in self.decimal_point.keys() if (inter in value)])
             capacity = float("{}.{}".format(value.split(intersection)[0], value.split(intersection)[1])) * \

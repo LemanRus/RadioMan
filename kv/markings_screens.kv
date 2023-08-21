@@ -97,7 +97,7 @@
                 MDLabel:
                     text: "Выберите количество полос:"
 
-                MDFlatButton:
+                MDRaisedButton:
                     id: bands_select_menu
                     text: "3"
                     width: root.width / 4
@@ -109,21 +109,21 @@
                 height: root.height / 4
 
                 BoxLayout:
-                    size_hint_y: None
-                    height: resistor_view.height
+#                    size_hint_y: None
+#                    height: resistor_view.height
                     pos_hint: {"center_y": 0.5}
 
                     Image:
-                        source: "media/resistor2.png"
+                        source: "media/th_resistor_bg.png"
                         pos_hint: {"center_y": 0.5}
                         fit_mode: "fill"
 
                 BoxLayout:
                     id: bands
-                    size_hint_y: None
-                    height: resistor_view.height
+#                    size_hint_y: None
+#                    height: resistor_view.height
                     pos_hint: {"center_y": 0.5}
-                    padding: [root.width / 5, sp(40)]
+                    padding: [root.width / 5, self.height / 4.4]
                     spacing: sp(10)
                     on_parent: root.build_bands(3)
 
@@ -138,12 +138,6 @@
                     pos_hint: {"center_x": 0.5, "center_y": 0.5}
                     size_hint_y: None
                     size: self.texture_size
-
-                MDRaisedButton:
-                    text: "Рассчитать"
-                    pos_hint: {"center_y": 0.5}
-                    size_hint_y: None
-                    on_release: root.calculate_resistor()
 
     MDTopAppBar:
         id: th_resistor_top_bar
@@ -302,15 +296,15 @@
 
             MDRelativeLayout:
                 size_hint_y: None
-                height: root.height / 3
+                height: root.height / 2
 
                 BoxLayout:
                     size_hint_y: None
-                    height: root.height / 3
+                    height: root.height / 2
                     pos_hint: {"top": 1}
 
                     Image:
-                        source: "media/smd_resistor_bg.png"
+                        source: "media/th_capacitor_bg.png"
                         pos_hint: {"top": 1}
                         fit_mode: "fill"
 
@@ -323,7 +317,7 @@
                     text_color_focus: 1, 1, 1, 1
                     size_hint: 0.6, None
                     font_size: "72sp"
-                    pos_hint: {"center_y": 0.5, "center_x": 0.5}
+                    pos_hint: {"center_y": 0.6, "center_x": 0.5}
                     on_text_validate: root.calculate_capacitor(self.text)
 
             MDCard:
@@ -375,7 +369,7 @@
                     pos_hint: {"top": 1}
 
                     Image:
-                        source: "media/smd_resistor_bg.png"
+                        source: "media/smd_capacitor_bg.png"
                         pos_hint: {"top": 1}
                         fit_mode: "fill"
 
