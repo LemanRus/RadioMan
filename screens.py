@@ -96,7 +96,6 @@ class ResistorBand(MDIconButton):
             items=self.get_band(self.band_no, self.band_qty),
             position="center",
             border_margin=dp(12),
-            width=dp(100)
         )
         self.menu.width = self.menu.minimum_width
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
@@ -175,6 +174,7 @@ class THResistorsMarkingScreen(MDScreen):
         self.menu = MDDropdownMenu(
             caller=self.ids.bands_select_menu,
             items=self.menu_items,
+            width=dp(101),
         )
 
     def set_item(self, text_item):
@@ -191,7 +191,7 @@ class THResistorsMarkingScreen(MDScreen):
         )
         self.ids.result.text = "Результат:"
         for i in range(0, self.bands_qty):
-            band = ResistorBand(size_hint=(1, 1), band_no=i, band_qty=self.bands_qty)
+            band = ResistorBand(size_hint=(1, None), pos_hint={"center_y":0.5}, height=dp(90), band_no=i, band_qty=self.bands_qty)
             self.ids.bands.add_widget(band)
             self.ids.bands.ids["band" + str(i)] = weakref.ref(band)
 
@@ -420,7 +420,6 @@ class LEDResistorCalculationScreen(MDScreen):
         #   "viewclass": "CenterList",
         #   "on_release": lambda x="6": self.set_item(x),
         #   "height": dp(56), }, ]
-
 
         self.menu_items = []
         for i in range(len(self.diodes.keys())):
