@@ -7,7 +7,7 @@ title = RadioMan
 package.name = radioman
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = ru.radioman
+package.domain = io.github.lemanrus
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -29,7 +29,7 @@ source.exclude_dirs = tests, bin, venv, venv-test
 #source.exclude_patterns = license,bin,venv,venv-test
 
 # (str) Application versioning (method 1)
-version = 0.0.1
+version = 0.1
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
