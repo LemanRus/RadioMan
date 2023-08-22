@@ -18,8 +18,9 @@ class E24Nominals:
             interact /= 10
         e24_result = E24Nominals.E24[result_index] * 10 ** power
         if go_up:
-            if result_index != len(E24Nominals.E24) - 1:
-                e24_result = E24Nominals.E24[result_index + 1] * 10 ** power
-            else:
-                e24_result = E24Nominals.E24[0] * 10 ** (power + 1)
+            if e24_result < resistance:
+                if result_index != len(E24Nominals.E24) - 1:
+                    e24_result = E24Nominals.E24[result_index + 1] * 10 ** power
+                else:
+                    e24_result = E24Nominals.E24[0] * 10 ** (power + 1)
         return e24_result

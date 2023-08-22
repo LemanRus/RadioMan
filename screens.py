@@ -11,6 +11,7 @@ from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.screenmanager import MDScreenManager
 from e24_nominals import E24Nominals as e24
+from output_value_methods import format_output_resistor
 
 
 class HandbookScreen(MDScreen):
@@ -451,9 +452,9 @@ class LEDResistorCalculationScreen(MDScreen):
                 self.ids.led_cur.text = ''
                 self.ids.led_e24.text = ''
             else:
-                self.ids.led_result.text = str(led_resistance)
+                self.ids.led_result.text = format_output_resistor(led_resistance)
                 e24_result = e24.calculate_standard_resistor(led_resistance, True)
-                self.ids.led_e24.text = str(e24_result)
+                self.ids.led_e24.text = format_output_resistor(e24_result)
 
                 self.ids.led_res_power.text = "{:g} мВт".format((float(vol) - float(led_vol)) *
                                                                 float(led_cur) * float(led_quant))

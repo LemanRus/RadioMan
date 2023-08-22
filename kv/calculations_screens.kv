@@ -33,11 +33,8 @@
                 MDTextField:
                     id: led_resistor_source_voltage_input
                     halign: "center"
-                    on_text_validate:
-                        root.led_calculate(self.text, \
-                        led_resistor_led_voltage_input.text, \
-                        led_resistor_led_current_input.text, \
-                        led_resistor_led_qty_input.text)
+                    size_hint_x: 0.6
+                    on_text_validate: led_resistor_led_voltage_input.focus = True
 
             MDCard:
                 size_hint_y: None
@@ -51,12 +48,8 @@
                 MDTextField:
                     id: led_resistor_led_voltage_input
                     halign: "center"
-                    size_hint_x: 0.66
-                    on_text_validate:
-                        root.led_calculate(led_resistor_source_voltage_input.text, \
-                        self.text, \
-                        led_resistor_led_current_input.text, \
-                        led_resistor_led_qty_input.text)
+                    size_hint_x: 0.6
+                    on_text_validate: led_resistor_led_current_input.focus = True
 
             MDCard:
                 size_hint_y: None
@@ -70,11 +63,8 @@
                 MDTextField:
                     id: led_resistor_led_current_input
                     halign: "center"
-                    on_text_validate:
-                        root.led_calculate(led_resistor_source_voltage_input.text, \
-                        led_resistor_led_voltage_input.text, \
-                        self.text, \
-                        led_resistor_led_qty_input.text)
+                    size_hint_x: 0.6
+                    on_text_validate: led_resistor_led_qty_input.focus = True
 
             MDCard:
                 size_hint_y: None
@@ -88,6 +78,7 @@
                 MDTextField:
                     id: led_resistor_led_qty_input
                     halign: "center"
+                    size_hint_x: 0.6
                     on_text_validate:
                         root.led_calculate(led_resistor_source_voltage_input.text, \
                         led_resistor_led_voltage_input.text, \
