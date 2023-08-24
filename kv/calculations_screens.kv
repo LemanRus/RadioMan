@@ -262,6 +262,86 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Число витков:"
+
+                MDTextField:
+                    id: inductor_turns_input
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: inductor_diameter_input.focus = True
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Диаметр каркаса, мм:"
+
+                MDTextField:
+                    id: inductor_diameter_input
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: inductor_length_input.focus = True
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Длина намотки, мм:"
+
+                MDTextField:
+                    id: inductor_length_input
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate:
+                        root.inductor_calculate_henrys(inductor_turns_input.text, \
+                        inductor_diameter_input.text, inductor_length_input.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_led_resistor.height
+
+                MDRaisedButton:
+                    id: calc_led_resistor
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"center_x": 0.5}
+                    on_release:
+                        root.inductor_calculate_henrys(inductor_turns_input.text, \
+                        inductor_diameter_input.text, inductor_length_input.text)
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15)
+                spacing: sp(20)
+                orientation: "vertical"
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Расчётная индуктивность:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: induction
+
     MDTopAppBar:
         id: inductor_induction_top_bar
         title: "Расчёт индуктивности"
@@ -280,6 +360,125 @@
         MDList:
             spacing: "10dp"
             padding: "15dp", "10dp"
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Индуктивность, мкГн:"
+
+                MDTextField:
+                    id: induction_input
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: inductor_diameter_input.focus = True
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Диаметр каркаса, мм:"
+
+                MDTextField:
+                    id: inductor_diameter_input
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: inductor_wire_diameter_input.focus = True
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Диаметр провода, мм:"
+
+                MDTextField:
+                    id: inductor_wire_diameter_input
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate:
+                        root.inductor_calculate_turns(induction_input.text, \
+                        inductor_diameter_input.text, inductor_wire_diameter_input.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_led_resistor.height
+
+                MDRaisedButton:
+                    id: calc_led_resistor
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"center_x": 0.5}
+                    on_release:
+                        root.inductor_calculate_turns(induction_input.text, \
+                        inductor_diameter_input.text, inductor_wire_diameter_input.text)
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15)
+                spacing: sp(20)
+                orientation: "vertical"
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Расчётное число витков:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: inductor_turns
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Целое число витков:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: inductor_turns_int
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Расчётная длина намотки, мм:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: inductor_length
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Округлённая длина намотки, мм:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: inductor_length_int
 
     MDTopAppBar:
         id: inductor_size_top_bar
