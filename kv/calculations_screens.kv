@@ -490,6 +490,7 @@
 
 <ParallelResistorCalculationScreen>:
     name: "parallel_resistor_calculation_screen"
+    on_pre_enter: self.reset()
 
     MDScrollView:
         pos_hint: {"top": (root.height - parallel_resistor_top_bar.height) / root.height}
@@ -498,6 +499,56 @@
         MDList:
             spacing: "10dp"
             padding: "15dp", "10dp"
+
+            MDList:
+                id: par_res_box
+                spacing: "10dp"
+                padding: "15dp", "10dp"
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: add_parallel_resistor_btn.height
+
+                MDRaisedButton:
+                    id: add_parallel_resistor_btn
+                    text: "Добавить резистор"
+                    size_hint: None, None
+                    pos_hint: {"left": 0}
+                    on_release: root.add_resistor()
+
+                MDRaisedButton:
+                    id: reset_parallel_resistor_btn
+                    text: "Очистить"
+                    size_hint: None, None
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.reset()
+
+                MDRaisedButton:
+                    id: calc_parallel_resistor_btn
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"right": 1}
+                    on_release: root.par_res_calculate()
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15)
+                spacing: sp(25)
+                orientation: "vertical"
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Сопротивление:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: par_res_output
 
     MDTopAppBar:
         id: parallel_resistor_top_bar
@@ -509,6 +560,7 @@
 
 <SerialCapacitorCalculateScreen>:
     name: "serial_capacitor_calculate_screen"
+    on_pre_enter: self.reset()
 
     MDScrollView:
         pos_hint: {"top": (root.height - serial_capacitor_top_bar.height) / root.height}
@@ -517,7 +569,40 @@
         MDList:
             spacing: "10dp"
             padding: "15dp", "10dp"
-
+                
+            BoxLayout:
+                size_hint_y: 5
+                BoxLayout:
+                    id: ser_cap_box
+                    orientation: "vertical"
+                BoxLayout:
+                    orientation: "vertical"
+                    MDCard:
+                    MDRaisedButton:
+                        on_release: root.add_capacitor()
+                        MDLabel:
+                            theme_text_color: "Custom"
+                            text_color: 1, 1, 1, 1
+                            text: "Добавить конденсатор"
+                    MDCard:
+            MDSeparator:
+            MDRaisedButton:
+                on_release: root.reset()
+                MDLabel:
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    text: "Очистить"
+            MDSeparator:
+            MDRaisedButton:
+                on_release: root.ser_cap_calculate()
+            MDSeparator:
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Результат:"
+                MDCard:
+                    MDLabel:
+                        id: ser_cap_output
     MDTopAppBar:
         id: serial_capacitor_top_bar
         title: "Последовательное соединение конденсаторов"
