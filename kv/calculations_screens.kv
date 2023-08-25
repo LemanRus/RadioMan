@@ -569,40 +569,57 @@
         MDList:
             spacing: "10dp"
             padding: "15dp", "10dp"
-                
-            BoxLayout:
-                size_hint_y: 5
-                BoxLayout:
-                    id: ser_cap_box
-                    orientation: "vertical"
-                BoxLayout:
-                    orientation: "vertical"
-                    MDCard:
-                    MDRaisedButton:
-                        on_release: root.add_capacitor()
-                        MDLabel:
-                            theme_text_color: "Custom"
-                            text_color: 1, 1, 1, 1
-                            text: "Добавить конденсатор"
-                    MDCard:
-            MDSeparator:
-            MDRaisedButton:
-                on_release: root.reset()
-                MDLabel:
-                    theme_text_color: "Custom"
-                    text_color: 1, 1, 1, 1
+
+            MDList:
+                id: ser_cap_box
+                spacing: "10dp"
+                padding: "15dp", "10dp"
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: add_serial_capacitor_btn.height
+
+                MDRaisedButton:
+                    id: add_serial_capacitor_btn
+                    text: "Добавить конденсатор"
+                    size_hint: None, None
+                    pos_hint: {"left": 0}
+                    on_release: root.add_capacitor()
+
+                MDRaisedButton:
+                    id: reset_serial_capacitor_btn
                     text: "Очистить"
-            MDSeparator:
-            MDRaisedButton:
-                on_release: root.ser_cap_calculate()
-            MDSeparator:
-            BoxLayout:
-                MDCard:
+                    size_hint: None, None
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.reset()
+
+                MDRaisedButton:
+                    id: calc_serial_capacitor_btn
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"right": 1}
+                    on_release: root.ser_cap_calculate()
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15)
+                spacing: sp(25)
+                orientation: "vertical"
+
+                MDBoxLayout:
+                    adaptive_height: True
+
                     MDLabel:
-                        text: "Результат:"
-                MDCard:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Ёмкость:"
+
                     MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
                         id: ser_cap_output
+
     MDTopAppBar:
         id: serial_capacitor_top_bar
         title: "Последовательное соединение конденсаторов"

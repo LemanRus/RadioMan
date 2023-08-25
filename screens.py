@@ -17,7 +17,7 @@ from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.textfield import MDTextField
 
 from e24_nominals import E24Nominals as e24
-from output_value_methods import format_output_resistor
+from output_value_methods import format_output_resistor, format_output_capacitor
 
 
 class HandbookScreen(MDScreen):
@@ -535,7 +535,7 @@ class ParallelResistorCalculationScreen(MDScreen):
                            padding=(sp(15), 0),
                            spacing=sp(15))
         self.ids.par_res_box.add_widget(input_card)
-        label = MDLabel(text="Резистор " + str(self.counter),
+        label = MDLabel(text="Резистор " + str(self.counter) + ", Ом",
                         size_hint_y=None,)
         resistor_input = MDTextField(halign="center",
                                      size_hint_x=0.6,
@@ -563,48 +563,36 @@ class SerialCapacitorCalculateScreen(MDScreen):
     def reset(self):
         self.ids.ser_cap_box.clear_widgets()
         self.counter = 0
+        self.ids.ser_cap_output.text = ""
         for i in range(0, 2):
             self.add_capacitor()
 
     def add_capacitor(self):
-        try:
-            # self.dynamic_vars["box{}".format(self.counter)] = BoxLayout()
-            # self.ids["ser_cap_box"].add_widget(self.dynamic_vars["box{}".format(self.counter)])
-            # self.dynamic_vars["card{}".format(self.counter)] = MDCard(padding=(10, 10, 10, 10))
-            # self.dynamic_vars["box{}".format(self.counter)].add_widget(self.dynamic_vars["card{}".format(self.counter)])
-            # self.dynamic_vars["input{}".format(self.counter)] = MDTextFieldRect(multiline=False,
-            #                                                                     halign="center",
-            #                                                                     size_hint=(1, None),
-            #                                                                     height="30dp",
-            #                                                                     pos_hint={"left": 1, "center_y": .5})
-            # self.dynamic_vars["card{}".format(self.counter)].add_widget(self.dynamic_vars["input{}".format(self.counter)
-            #                                                             ])
-            # self.dynamic_vars["card_picofarad{}".format(self.counter)] = MDCard(padding=(10, 10, 10, 10),
-            #                                                                     size_hint=(0.3, 1), )
-            # self.dynamic_vars["box{}".format(self.counter)].add_widget(
-            #     self.dynamic_vars["card_picofarad{}".format(self.counter)])
-            # self.dynamic_vars["picofarad{}".format(self.counter)] = MDLabel(text="пФ",
-            #                                                                 halign="center")
-            # self.dynamic_vars["card_picofarad{}".format(self.counter)].add_widget(
-            #     self.dynamic_vars["picofarad{}".format(self.counter)])
-            self.counter += 1
-        except Exception:
-            print("Heresy!!")
+        self.counter += 1
+        input_card = MDCard(size_hint_y=None,
+                            padding=(sp(15), 0),
+                            spacing=sp(15))
+        self.ids.ser_cap_box.add_widget(input_card)
+        label = MDLabel(text="Конденсатор " + str(self.counter) + ", пФ",
+                        size_hint_y=None, )
+        capacitor_input = MDTextField(halign="center",
+                                     size_hint_x=0.6,
+                                     size_hint_y=None, )
+        input_card.add_widget(label)
+        input_card.add_widget(capacitor_input)
+        self.ids.ser_cap_box.ids["capacitor_input" + str(self.counter)] = weakref.ref(capacitor_input)
 
     def ser_cap_calculate(self):
-        # res_list = []
-        # try:
-        #     for ids, value in self.dynamic_vars.items():
-        #         if ids.startswith("input"):
-        #             res_list.append(1 / float(value.text))
-        #     resistance = 1 / (sum(res_list))
-        #     self.ids.ser_cap_output.text = format_output_resistor(resistance)
-        # except ValueError:
-        #     self.ids.ser_cap_output.text = "Неверный ввод!"
-        # except ZeroDivisionError:
-        #     self.ids.ser_cap_output.text = format_output_resistor(0)
-
-        print(self.counter)
+        cap_list = []
+        try:
+            for widget in self.ids.ser_cap_box.children:
+                cap_list.append(1 / float(widget.children[0].text))
+            capacitance = 1 / (sum(cap_list))
+            self.ids.ser_cap_output.text = format_output_capacitor(capacitance)
+        except ValueError:
+            self.ids.ser_cap_output.text = "Неверный ввод!"
+        except ZeroDivisionError:
+            self.ids.ser_cap_output.text = format_output_capacitor(0)
 
 
 class VoltageDividerCalculateScreen(MDScreen):
