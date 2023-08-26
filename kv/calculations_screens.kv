@@ -6,8 +6,13 @@
     InductorCalculateSizeScreen:
     ParallelResistorCalculationScreen:
     SerialCapacitorCalculateScreen:
-    VoltageDividerCalculateScreen:
-    LMRegulatorCalculateScreen:
+    VoltageDividerCalculateSelectScreen:
+    VoltageDividerCalculateVoltageScreen:
+    VoltageDividerCalculateResistanceScreen:
+    LMRegulatorCalculateSelectScreen:
+    LMRegulatorCalculateVoltageScreen:
+    LMRegulatorCalculateCurrentScreen:
+
 
 <LEDResistorCalculationScreen>:
     name: "led_resistor_calculation_screen"
@@ -628,8 +633,8 @@
         elevation: 1
 
 
-<VoltageDividerCalculateScreen>:
-    name: "voltage_divider_calculate_screen"
+<VoltageDividerCalculateSelectScreen>:
+    name: "voltage_divider_calculate_select_screen"
 
     MDScrollView:
         pos_hint: {"top": (root.height - voltage_divider_top_bar.height) / root.height}
@@ -639,6 +644,54 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                on_release: root.parent.current = "voltage_divider_calculate_voltage_screen"
+                elevation: 1
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/th_resistor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "voltage_divider_calculate_voltage_screen"
+
+                MDLabel:
+                    text: "Расчёт выходного напряжения"
+                    shorten: True
+                    shorten_from: "right"
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.5}
+
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                on_release: root.parent.current = "voltage_divider_calculate_resistance_screen"
+                elevation: 1
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/smd_resistor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "voltage_divider_calculate_resistance_screen"
+
+                MDLabel:
+                    text: "Расчёт сопротивления"
+                    shorten: True
+                    shorten_from: "right"
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.5}
+
     MDTopAppBar:
         id: voltage_divider_top_bar
         title: "Делитель напряжения"
@@ -647,8 +700,250 @@
         elevation: 1
 
 
-<LMRegulatorCalculateScreen>:
-    name: "lm_regulator_calculate_screen"
+<VoltageDividerCalculateVoltageScreen>:
+    name: "voltage_divider_calculate_voltage_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - voltage_divider_voltage_top_bar.height) / root.height}
+        size_hint_y: (root.height - voltage_divider_voltage_top_bar.height) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Напряжение источника питания, В"
+
+                MDTextField:
+                    id: v_in
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: r1.focus = True
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Сопротивление R1, Ом:"
+
+                MDTextField:
+                    id: r1
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: r2.focus = True
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Сопротивление R2, Ом:"
+
+                MDTextField:
+                    id: r2
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: root.divider_calculate_vout(v_in.text, r1.text, r2.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_divider_voltage.height
+
+                MDRaisedButton:
+                    id: calc_divider_voltage
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.divider_calculate_vout(v_in.text, r1.text, r2.text)
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15)
+                spacing: sp(25)
+                orientation: "vertical"
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Выходное напряжение, В:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: v_out
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Коэффициент делителя:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: divider_rate
+
+    MDTopAppBar:
+        id: voltage_divider_voltage_top_bar
+        title: "Делитель напряжения"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<VoltageDividerCalculateResistanceScreen>:
+    name: "voltage_divider_calculate_resistance_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - voltage_divider_resistance_top_bar.height) / root.height}
+        size_hint_y: (root.height - voltage_divider_resistance_top_bar.height) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Напряжение источника питания, В"
+
+                MDTextField:
+                    id: v_in_r
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: v_out_r.focus = True
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Выходное напряжение, В:"
+
+                MDTextField:
+                    id: v_out_r
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: r1_input.focus = True
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15), 0
+                spacing: sp(15)
+
+                MDLabel:
+                    text: "Сопротивление R1, Ом:"
+
+                MDTextField:
+                    id: r1_input
+                    halign: "center"
+                    size_hint_x: 0.6
+                    on_text_validate: root.divider_calculate_r(v_in_r.text, v_out_r.text, r1_input.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_divider_resistance.height
+
+                MDRaisedButton:
+                    id: calc_divider_resistance
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.divider_calculate_r(v_in_r.text, v_out_r.text, r1_input.text)
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+                padding: sp(15)
+                spacing: sp(25)
+                orientation: "vertical"
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Сопротивление R2, Ом:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: r2_calculated
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Коэффициент делителя:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: divider_rate_r
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Резистор стандартного ряда, Ом:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: r2_e24
+
+                MDBoxLayout:
+                    adaptive_height: True
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        text: "Выходное напряжение с резистором из стандартного ряда:"
+
+                    MDLabel:
+                        size_hint_y: None
+                        height: self.font_size
+                        id: vout_e24
+
+    MDTopAppBar:
+        id: voltage_divider_resistance_top_bar
+        title: "Делитель напряжения"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<LMRegulatorCalculateSelectScreen>:
+    name: "lm_regulator_calculate_select_screen"
 
     MDScrollView:
         pos_hint: {"top": (root.height - lm_regulator_top_bar.height) / root.height}
@@ -658,9 +953,296 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                on_release: root.parent.current = "lm_regulator_voltage_screen"
+                elevation: 1
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/th_resistor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "lm_regulator_voltage_screen"
+
+                MDLabel:
+                    text: "Стабилизатор напряжения"
+                    shorten: True
+                    shorten_from: "right"
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.5}
+
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                on_release: root.parent.current = "lm_regulator_current_screen"
+                elevation: 1
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/smd_resistor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "lm_regulator_current_screen"
+
+                MDLabel:
+                    text: "Стабилизатор тока"
+                    shorten: True
+                    shorten_from: "right"
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.5}
+
     MDTopAppBar:
         id: lm_regulator_top_bar
         title: "LM317/LM350/LM338 калькулятор"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<LMRegulatorCalculateVoltageScreen>:
+    name: "lm_regulator_voltage_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - lm_regulator_voltage_top_bar.height) / root.height}
+        size_hint_y: (root.height - lm_regulator_voltage_top_bar.height) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Выходное напряжение:"
+                MDCard:
+                    size_hint_x: 0.2
+                    TextInput:
+                        id: lm317_vout_input
+    #                    hint_text: "test me"
+                        multiline: False
+                        halign: "center"
+                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+                MDCard:
+                    size_hint_x: 0.1
+                    MDLabel:
+                        text: "В"
+
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Сопротивление R1:"
+                MDCard:
+                    size_hint_x: 0.2
+                    TextInput:
+                        id: lm317_r1_input
+                        multiline: False
+                        halign: "center"
+                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+                MDCard:
+                    size_hint_x: 0.1
+                    MDLabel:
+                        text: "Ом"
+
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Ток нагрузки:"
+                MDCard:
+                    size_hint_x: 0.2
+                    TextInput:
+                        id: lm317_iout_input
+                        multiline: False
+                        halign: "center"
+                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+                MDCard:
+                    size_hint_x: 0.1
+                    MDLabel:
+                        text: "А"
+
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Входное напряжение:"
+                MDCard:
+                    size_hint_x: 0.2
+                    TextInput:
+                        id: lm317_vin_input
+                        multiline: False
+                        halign: "center"
+                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+                MDCard:
+                    size_hint_x: 0.1
+                    MDLabel:
+                        text: "В"
+
+            MDSeparator:
+            MDRaisedButton:
+                on_release: root.calculate_lm317_voltage(lm317_vout_input.text, lm317_r1_input.text, lm317_iout_input.text, lm317_vin_input.text)
+            MDSeparator:
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Сопротивление R2:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_r2_output
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Стандартное сопротивление R2:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_r2_corrected_output
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Выходное напряжение:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_vout_output
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Рекомендуемый тип стабилизатора:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_recommend_output
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Рассеиваемая мощность:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_power_output
+
+    MDTopAppBar:
+        id: lm_regulator_voltage_top_bar
+        title: "LM317/LM350/LM338 - стабилизатор напряжения"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<LMRegulatorCalculateCurrentScreen>:
+    name: "lm_regulator_current_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - lm_regulator_current_top_bar.height) / root.height}
+        size_hint_y: (root.height - lm_regulator_current_top_bar.height) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Выходной ток:"
+                MDCard:
+                    size_hint_x: 0.2
+                    TextInput:
+                        id: lm317_iout_input_cur
+                        multiline: False
+                        halign: "center"
+                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+                MDCard:
+                    size_hint_x: 0.1
+                    MDLabel:
+                        text: "А"
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Падение напряжения на нагрузке:"
+                MDCard:
+                    size_hint_x: 0.2
+                    TextInput:
+                        id: lm317_vout_input_cur
+                        multiline: False
+                        halign: "center"
+                        padding: [0, self.height / 2.0 - (self.line_height / 2.0) * len(self._lines), 0, 0]
+                MDCard:
+                    size_hint_x: 0.1
+                    MDLabel:
+                        text: "В"
+            MDSeparator:
+            MDRaisedButton:
+                on_release: root.calculate_lm317_current(lm317_iout_input_cur.text, lm317_vout_input_cur.text)
+            MDSeparator:
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Сопротивление R1:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_r1_output_cur
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Сопротивление R1 из стандартного ряда:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_r1_corrected_output_cur
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Мощность:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_r1_power_output_cur
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Мощность с резистором из стандартного ряда:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_r1_power_corrected_output_cur
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Выходной ток с резистором из стандартного ряда:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_iout_corrected_output_cur
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Рекомендуемый тип стабилизатора:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_recommend_output_cur
+            BoxLayout:
+                MDCard:
+                    MDLabel:
+                        text: "Входное напряжение, не менее:"
+                MDCard:
+                    size_hint_x: 0.3
+                    MDLabel:
+                        id: lm317_vin_output_cur
+
+    MDTopAppBar:
+        id: lm_regulator_current_top_bar
+        title: "LM317/LM350/LM338 - стабилизатор тока"
         pos_hint: {"top": 1}
         left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
         elevation: 1

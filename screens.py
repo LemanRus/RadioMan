@@ -595,12 +595,179 @@ class SerialCapacitorCalculateScreen(MDScreen):
             self.ids.ser_cap_output.text = format_output_capacitor(0)
 
 
-class VoltageDividerCalculateScreen(MDScreen):
+class VoltageDividerCalculateSelectScreen(MDScreen):
     pass
 
 
-class LMRegulatorCalculateScreen(MDScreen):
+class VoltageDividerCalculateVoltageScreen(MDScreen):
+    def divider_calculate_vout(self, vin, r1, r2):
+        try:
+            vin = float(vin)
+            r1 = float(r1)
+            r2 = float(r2)
+
+            vout = r2 * vin / (r1 + r2)
+            rate = vin / vout
+
+            self.ids.v_out.text = "{:g}".format(vout)
+            self.ids.divider_rate.text = "{:g}".format(rate)
+        except Exception:
+            self.ids.v_out.text = "Неверный ввод!"
+            self.ids.divider_rate.text = ""
+
+
+class VoltageDividerCalculateResistanceScreen(MDScreen):
+    def divider_calculate_r(self, vin, vout, r1):
+        try:
+            vin = float(vin)
+            vout = float(vout)
+            r1 = float(r1)
+
+            if vin <= vout:
+                self.ids.r2_calculated.text = "Проверьте напряжения!"
+                self.ids.divider_rate_r.text = ""
+            else:
+                r2 = r1 * vout / (vin - vout)
+                rate = vin / vout
+
+                self.ids.r2_calculated.text = "{:g}".format(r2)
+                if r2 == 0:
+                    self.ids.r2_calculated.text = "0 Ом (перемычка)"
+                elif r2 < 1000:
+                    self.ids.r2_calculated.text = "{:g} Ом".format(r2)
+                elif r2 < 1000000:
+                    self.ids.r2_calculated.text = "{:g} кОм".format(r2 / 1000)
+                else:
+                    self.ids.r2_calculated.text = "{:g} МОм".format(r2 / 1000000)
+
+                self.ids.divider_rate_r.text = "{:g}".format(rate)
+
+                e6_result = e24.calculate_standard_resistor(r2, False)
+                if e6_result == 0:
+                    self.ids.r2_e24.text = "0 Ом (перемычка)"
+                elif e6_result < 1000:
+                    self.ids.r2_e24.text = "{:g} Ом".format(e6_result)
+                elif e6_result < 1000000:
+                    self.ids.r2_e24.text = "{:g} кОм".format(e6_result / 1000)
+                else:
+                    self.ids.r2_e24.text = "{:g} МОм".format(e6_result / 1000000)
+
+                vout_corrected = e6_result * vin / (r1 + e6_result)
+                self.ids.vout_e24.text = "{:g} В".format(vout_corrected)
+        except (ZeroDivisionError, ValueError):
+            self.ids.r2_calculated.text = "Неверный ввод!"
+            self.ids.divider_rate_r.text = ""
+
+
+
+class LMRegulatorCalculateSelectScreen(MDScreen):
     pass
+
+
+class LMRegulatorCalculateVoltageScreen(MDScreen):
+    def calculate_lm317_voltage(self, vout, r1, iout, vin):
+        try:
+            vout = float(vout)
+            r1 = float(r1)
+            iout = float(iout)
+            vin = float(vin)
+            if iout > 5:
+                self.ids.lm317_r2_output.text = "Ток нагрузки должен быть меньше 5А!"
+                self.ids.lm317_r2_corrected_output.text = "Ток нагрузки должен быть меньше 5А!"
+                self.ids.lm317_r2_output.text = ""
+                self.ids.lm317_vout_output.text = ""
+                self.ids.lm317_recommend_output.text = ""
+                self.ids.lm317_power_output.text = ""
+            else:
+                r2 = r1 * (vout / 1.25 - 1)
+                result = format_output_resistor(r2)
+
+                r2_corrected = e24.calculate_standard_resistor(r2, False)
+
+                power = (vin - vout) * iout
+
+                vout_corrected = 1.25 * (1 + r2_corrected / r1)
+
+                if iout > 3:
+                    recommend = "LM338"
+                elif iout > 1.5:
+                    recommend = "LM350"
+                else:
+                    recommend = "LM317"
+                result_corrected = format_output_resistor(r2_corrected)
+
+                self.ids.lm317_r2_corrected_output.text = result_corrected
+                self.ids.lm317_r2_output.text = result
+                self.ids.lm317_vout_output.text = "{:g} В".format(vout_corrected)
+                self.ids.lm317_recommend_output.text = recommend
+                self.ids.lm317_power_output.text = "{:g} Вт".format(power)
+
+        except Exception:
+            self.ids.lm317_r2_output.text = "Неверный ввод!"
+            self.ids.lm317_r2_corrected_output.text = "Неверный ввод!"
+            self.ids.lm317_r2_output.text = "Неверный ввод!"
+            self.ids.lm317_vout_output.text = "Неверный ввод!"
+            self.ids.lm317_recommend_output.text = "Неверный ввод!"
+            self.ids.lm317_power_output.text = "Неверный ввод!"
+
+
+class LMRegulatorCalculateCurrentScreen(MDScreen):
+    def calculate_lm317_current(self, iout, vout):
+        try:
+            iout = float(iout)
+            if iout <= 5:
+                r1 = 1.25 / iout
+
+                r1_corrected = e24.calculate_standard_resistor(r1, True)
+
+                if iout > 3:
+                    recommend = "LM338"
+                elif iout > 1.5:
+                    recommend = "LM350"
+                else:
+                    recommend = "LM317"
+                result = format_output_resistor(r1)
+                result_corrected = format_output_resistor(r1_corrected)
+
+                iout_corrected = 1.25 / r1_corrected
+
+                power_r1 = iout ** 2 * r1
+                power_corrected = iout_corrected ** 2 * r1_corrected
+
+                if vout:
+                    vout = float(vout)
+                    if not (3 <= vout <= 38):
+                        self.ids.lm317_vin_output_cur.text = "Падение напряжения должно быть больше 2В и меньше 38В!"
+                        self.ids.lm317_vin_output_cur.font_size = "10sp"
+                    else:
+                        vin_corrected = vout + 3.7
+                        self.ids.lm317_vin_output_cur.text = "{:g} В".format(vin_corrected)
+                else:
+                    self.ids.lm317_vin_output_cur.text = ""
+
+                self.ids.lm317_r1_output_cur.text = result
+                self.ids.lm317_r1_corrected_output_cur.text = result_corrected
+                self.ids.lm317_r1_power_output_cur.text = "{:g} Вт".format(power_r1)
+                self.ids.lm317_r1_power_corrected_output_cur.text = "{:g} Вт".format(power_corrected)
+                self.ids.lm317_iout_corrected_output_cur.text = "{:g} А".format(iout_corrected)
+                self.ids.lm317_recommend_output_cur.text = recommend
+            else:
+                self.ids.lm317_r1_output_cur.text = "Ток должен быть менее 5А!"
+                self.ids.lm317_r1_corrected_output_cur.text = ""
+                self.ids.lm317_r1_power_output_cur.text = ""
+                self.ids.lm317_r1_power_corrected_output_cur.text = ""
+                self.ids.lm317_iout_corrected_output_cur.text = ""
+                self.ids.lm317_recommend_output_cur.text = ""
+                self.ids.lm317_vin_output_cur.text = ""
+
+        except Exception:
+            self.ids.lm317_r1_output_cur.text = "Неверный ввод!"
+            self.ids.lm317_r1_corrected_output_cur.text = "Неверный ввод!"
+            self.ids.lm317_r1_power_output_cur.text = "Неверный ввод!"
+            self.ids.lm317_r1_power_corrected_output_cur.text = "Неверный ввод!"
+            self.ids.lm317_iout_corrected_output_cur.text = "Неверный ввод!"
+            self.ids.lm317_recommend_output_cur.text = "Неверный ввод!"
+            self.ids.lm317_vin_output_cur.text = "Неверный ввод!"
 
 
 class HandbookScreenManager(MDScreenManager):

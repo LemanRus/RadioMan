@@ -18,8 +18,12 @@ backs = {"resistors_markings_select_screen": "markings_screen",
          "inductor_calculate_size_screen": "inductor_calculation_select_screen",
          "parallel_resistor_calculation_screen": "calculations_screen",
          "serial_capacitor_calculate_screen": "calculations_screen",
-         "voltage_divider_calculate_screen": "calculations_screen",
-         "lm_regulator_calculate_screen": "calculations_screen",
+         "voltage_divider_calculate_select_screen": "calculations_screen",
+         "voltage_divider_calculate_voltage_screen": "voltage_divider_calculate_select_screen",
+         "voltage_divider_calculate_resistance_screen": "voltage_divider_calculate_select_screen",
+         "lm_regulator_calculate_select_screen": "calculations_screen",
+         "lm_regulator_voltage_screen": "lm_regulator_calculate_select_screen",
+         "lm_regulator_current_screen": "lm_regulator_calculate_select_screen",
          }
 
 
