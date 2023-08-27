@@ -24,6 +24,8 @@ backs = {"resistors_markings_select_screen": "markings_screen",
          "lm_regulator_calculate_select_screen": "calculations_screen",
          "lm_regulator_voltage_screen": "lm_regulator_calculate_select_screen",
          "lm_regulator_current_screen": "lm_regulator_calculate_select_screen",
+         "how_to_screen": "help_screen",
+         "about_screen": "help_screen",
          }
 
 

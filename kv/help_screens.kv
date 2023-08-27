@@ -1,2 +1,96 @@
 <HelpScreenManager>:
     HelpScreen:
+    HowToScreeen:
+    AboutScreen:
+
+
+<HowToScreeen>:
+    name: "how_to_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - how_to_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            MDLabel:
+                text:
+                    """
+                    Пользоваться приложением достаточно просто.
+                    \n
+                    В нижней части расположены вкладки для навигации по разделам. Внутри раздела навигация осуществляется по соответствующим ссылкам и с помощью кнопки "назад".
+                    \n
+                    Все значения выбираются или из выпадающего списка (как в маркировке резисторов), или вводятся с клавиатуры.
+                    \n
+                    ВАЖНО! Десятичным разделителем является точка! "0.5" - правильно, "0,5" - неправильно.
+                    \n
+                    Там, где это возможно, расчёт производится автоматически. Если результат не отобразился - нужно нажать кнопку "Рассчитать".
+                    """
+                size_hint_y: None
+                size: self.texture_size
+                markup: True
+
+    MDTopAppBar:
+        id: how_to_top_bar
+        title: "Как пользоваться"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<AboutScreen>:
+    name: "about_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - about_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+            MDLabel:
+                text:
+                    """
+                    Идея программы родилась вместе с тем, как я увлёкся радиолюбительством.
+                    Всегда было неудобно искать информацию в разных источниках и пользваться приложениями, где что-то есть, а чего-то нет. Поэтому я решил сделать своё приложение [s]с блэкджеком...[/s], где решил собрать всю необходимую информацию в одном месте.
+                    \n
+                    Пожелания и отзывы можно направить по почте [u][ref=mailto]electronics@hand-made-tlt.ru[/ref][/u].
+                    """
+                size_hint_y: None
+                size: self.texture_size
+                markup: True
+                on_ref_press: root.mailto()
+
+            MDLabel:
+                text:
+                    """
+                    [u][ref=git]Исходный код[/ref][/u]
+                    """
+                size_hint_y: None
+                size: self.texture_size
+                markup: True
+                on_ref_press: root.git()
+                halign: "center"
+
+            MDLabel:
+                text:
+                    """
+                    Приложение доступно абсолютно безвозмездно.
+                    Но при желании вы можете [u][ref=pay]поддержать автора[/ref][/u].
+                    """
+                size_hint_y: None
+                size: self.texture_size
+                markup: True
+                on_ref_press: root.pay()
+
+    MDTopAppBar:
+        id: about_top_bar
+        title: "О программе"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1

@@ -377,6 +377,7 @@
         elevation: 1
 
 <HelpScreen>:
+    name: "help_screen"
     md_bg_color: app.theme_cls.bg_dark
 
     MDScrollView:
@@ -387,8 +388,58 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                on_release: root.parent.current = "how_to_screen"
+                elevation: 1
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/th_resistor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "how_to_screen"
+
+                MDLabel:
+                    text: "Как пользоваться"
+                    shorten: True
+                    shorten_from: "right"
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.5}
+
+            MDCard:
+                ripple_behavior: True
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "20sp"
+                padding: "15sp"
+                on_release: root.parent.current = "about_screen"
+                elevation: 1
+
+                MDIconButton:
+                    ripple_scale: 0
+                    size_hint_y: None
+                    icon: "media/smd_resistor.png"
+                    icon_size: "50sp"
+                    pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "about_screen"
+
+                MDLabel:
+                    text: "О программе"
+                    shorten: True
+                    shorten_from: "right"
+                    size_hint_y: None
+                    pos_hint: {"center_y": 0.5}
+
     MDTopAppBar:
         id: help_top_bar
         title: "Помощь"
         pos_hint: {"top": 1}
         elevation: 1
+
+

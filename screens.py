@@ -1,6 +1,7 @@
 import itertools
 import math
 import weakref
+import webbrowser
 
 from kivy.app import App
 from kivy.core.window import Window
@@ -21,10 +22,6 @@ from output_value_methods import format_output_resistor, format_output_capacitor
 
 
 class HandbookScreen(MDScreen):
-    pass
-
-
-class HelpScreen(MDScreen):
     pass
 
 
@@ -776,3 +773,22 @@ class HandbookScreenManager(MDScreenManager):
 
 class HelpScreenManager(MDScreenManager):
     pass
+
+
+class HelpScreen(MDScreen):
+    pass
+
+
+class HowToScreeen(MDScreen):
+    pass
+
+
+class AboutScreen(MDScreen):
+    def mailto(self):
+        webbrowser.open("mailto:electronics@hand-made-tlt.ru")
+
+    def pay(self):
+        webbrowser.open("https://yoomoney.ru/fundraise/2SFAdwO6BB0.230827")
+
+    def git(self):
+        webbrowser.open("https://github.com/LemanRus/RadioMan")
