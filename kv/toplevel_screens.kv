@@ -227,6 +227,7 @@
         elevation: 1
 
 <HandbookScreen>:
+    name: "handbook_screen"
     md_bg_color: app.theme_cls.bg_dark
 
     MDScrollView:
@@ -244,6 +245,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "theory_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -251,6 +253,7 @@
                     icon: "media/theory.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "theory_screen"
 
                 MDLabel:
                     text: "Теория"
@@ -266,6 +269,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "schematics_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -273,6 +277,7 @@
                     icon: "media/transistor_scheme.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "schematics_screen"
 
                 MDLabel:
                     text: "Обозначения на схемах"
@@ -288,6 +293,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "pinout_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -295,6 +301,7 @@
                     icon: "media/pinout.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "pinout_screen"
 
                 MDLabel:
                     text: "Распиновки"
@@ -310,6 +317,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "connections_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -317,6 +325,7 @@
                     icon: "media/connection.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "connections_screen"
 
                 MDLabel:
                     text: "Типы соединений"
@@ -332,6 +341,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "chips_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -339,6 +349,7 @@
                     icon: "media/chip.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "chips_screen"
 
                 MDLabel:
                     text: "Микросхемы и компоненты"
@@ -354,6 +365,7 @@
                 spacing: "20sp"
                 padding: "15sp"
                 elevation: 1
+                on_release: root.parent.current = "lifehacks_screen"
 
                 MDIconButton:
                     ripple_scale: 0
@@ -361,6 +373,7 @@
                     icon: "media/lifehack.png"
                     icon_size: "50sp"
                     pos_hint: {"center_y": 0.5}
+                    on_release: root.parent.current = "lifehacks_screen"
 
                 MDLabel:
                     text: "Лайфхаки"

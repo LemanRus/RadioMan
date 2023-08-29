@@ -1,2 +1,134 @@
 <HandbookScreenManager>:
     HandbookScreen:
+    TheoryScreen:
+    SchematicsScreen:
+    PinoutScreen:
+    ConnectionsScreen:
+    ChipsScreen:
+    LifehacksScreen:
+
+
+<TheoryScreen>:
+    name: "theory_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - theory_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+
+    MDTopAppBar:
+        id: theory_top_bar
+        title: "Теория"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<SchematicsScreen>:
+    name: "schematics_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - schematics_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+
+    MDTopAppBar:
+        id: schematics_top_bar
+        title: "Обозначения на схемах"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<PinoutScreen>:
+    name: "pinout_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - pinout_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+
+    MDTopAppBar:
+        id: pinout_top_bar
+        title: "Распиновки"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<ConnectionsScreen>:
+    name: "connections_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - connections_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+
+    MDTopAppBar:
+        id: connections_top_bar
+        title: "Типы соединений"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<ChipsScreen>:
+    name: "chips_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - chips_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+
+    MDTopAppBar:
+        id: chips_top_bar
+        title: "Микросхемы и компоненты"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1
+
+
+<LifehacksScreen>:
+    name: "lifehacks_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - lifehacks_top_bar.height) / root.height}
+        size_hint_y: (root.height - sp(60)) / root.height
+
+        MDList:
+            spacing: "10dp"
+            padding: "15dp", "10dp"
+
+
+    MDTopAppBar:
+        id: lifehacks_top_bar
+        title: "Лайфхаки"
+        pos_hint: {"top": 1}
+        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+        elevation: 1

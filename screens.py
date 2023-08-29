@@ -21,10 +21,6 @@ from e24_nominals import E24Nominals as e24
 from output_value_methods import format_output_resistor, format_output_capacitor
 
 
-class HandbookScreen(MDScreen):
-    pass
-
-
 class MarkingsScreenManager(MDScreenManager):
     pass
 
@@ -483,7 +479,7 @@ class InductorCalculateInductionScreen(MDScreen):
 
             formfactor = length / diameter
 
-            induction = 0.0002 * math.pi * diameter * turns ** 2 * (math.log(1 + math.pi/(2 * formfactor)) +
+            induction = 0.0002 * math.pi * diameter * turns ** 2 * (math.log(1 + math.pi / (2 * formfactor)) +
                                                                     1 / (2.3004 + 3.437 * formfactor + 1.7636 *
                                                                          formfactor ** 2 - 0.47 / (0.755 + 1 /
                                                                                                    formfactor) ** 1.44))
@@ -496,10 +492,10 @@ class InductorCalculateSizeScreen(MDScreen):
     def inductor_calculate_turns(self, henrys, diameter, oneturn):
         try:
             henrys = float(henrys)
-            diameter = float(diameter) / 10                                 # в формуле сантиметры, во вводе миллиметры
+            diameter = float(diameter) / 10  # в формуле сантиметры, во вводе миллиметры
             oneturn = float(oneturn) / 10
             inductor_length = (50 * oneturn ** 2 * henrys + math.sqrt(5) * math.sqrt(500 * oneturn ** 4 * henrys ** 2 +
-                               9 * oneturn ** 2 * diameter ** 3 * henrys)) / diameter ** 2
+                                                                                     9 * oneturn ** 2 * diameter ** 3 * henrys)) / diameter ** 2
 
             inductor_turns = inductor_length / oneturn
             inductor_turns_int = round(inductor_turns, 0)
@@ -529,14 +525,14 @@ class ParallelResistorCalculationScreen(MDScreen):
     def add_resistor(self):
         self.counter += 1
         input_card = MDCard(size_hint_y=None,
-                           padding=(sp(15), 0),
-                           spacing=sp(15))
+                            padding=(sp(15), 0),
+                            spacing=sp(15))
         self.ids.par_res_box.add_widget(input_card)
         label = MDLabel(text="Резистор " + str(self.counter) + ", Ом",
-                        size_hint_y=None,)
+                        size_hint_y=None, )
         resistor_input = MDTextField(halign="center",
                                      size_hint_x=0.6,
-                                     size_hint_y=None,)
+                                     size_hint_y=None, )
         input_card.add_widget(label)
         input_card.add_widget(resistor_input)
         self.ids.par_res_box.ids["resistor_input" + str(self.counter)] = weakref.ref(resistor_input)
@@ -573,8 +569,8 @@ class SerialCapacitorCalculateScreen(MDScreen):
         label = MDLabel(text="Конденсатор " + str(self.counter) + ", пФ",
                         size_hint_y=None, )
         capacitor_input = MDTextField(halign="center",
-                                     size_hint_x=0.6,
-                                     size_hint_y=None, )
+                                      size_hint_x=0.6,
+                                      size_hint_y=None, )
         input_card.add_widget(label)
         input_card.add_widget(capacitor_input)
         self.ids.ser_cap_box.ids["capacitor_input" + str(self.counter)] = weakref.ref(capacitor_input)
@@ -654,7 +650,6 @@ class VoltageDividerCalculateResistanceScreen(MDScreen):
         except (ZeroDivisionError, ValueError):
             self.ids.r2_calculated.text = "Неверный ввод!"
             self.ids.divider_rate_r.text = ""
-
 
 
 class LMRegulatorCalculateSelectScreen(MDScreen):
@@ -768,6 +763,34 @@ class LMRegulatorCalculateCurrentScreen(MDScreen):
 
 
 class HandbookScreenManager(MDScreenManager):
+    pass
+
+
+class HandbookScreen(MDScreen):
+    pass
+
+
+class TheoryScreen(MDScreen):
+    pass
+
+
+class SchematicsScreen(MDScreen):
+    pass
+
+
+class PinoutScreen(MDScreen):
+    pass
+
+
+class ConnectionsScreen(MDScreen):
+    pass
+
+
+class ChipsScreen(MDScreen):
+    pass
+
+
+class LifehacksScreen(MDScreen):
     pass
 
 
