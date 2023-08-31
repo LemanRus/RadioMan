@@ -1,0 +1,3 @@
+This app is a very simple Kivy app to help developers explore development
+with Kivy to learn how to build and submit an app to f-droid repository.
+It has zero dependency other than Python and Kivy, enjoy!
