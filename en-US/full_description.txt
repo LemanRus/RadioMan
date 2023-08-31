@@ -1,3 +1,2 @@
-This app is a very simple Kivy app to help developers explore development
-with Kivy to learn how to build and submit an app to f-droid repository.
-It has zero dependency other than Python and Kivy, enjoy!
+This application is designed to help anyone who wants to create their own electronic design.
+It includes a guide to component markings, various calculators and other useful information for every radio amateur.
