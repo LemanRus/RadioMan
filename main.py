@@ -1,5 +1,6 @@
 import os
 
+from kivy.uix.screenmanager import FadeTransition, SlideTransition
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.core.window import Window
@@ -43,18 +44,15 @@ class RadioMan(MDApp):
         self.load_all_kv_files("kv")
         return Builder.load_file("kv/main.kv")
 
-    def back_to_screen(self):
-        try:
-            markings_tab_sm = self.root.children[1].children[0].children[0]
-        except IndexError:
-            pass
-        else:
-            if markings_tab_sm.current in backs:
-                markings_tab_sm.current = backs[markings_tab_sm.current]
-
     def android_back_click(self, window, key, *args):
         if key == 27:
-            self.back_to_screen()
+            try:
+                markings_tab_sm = self.root.children[1].children[0].children[0]
+            except IndexError:
+                pass
+            else:
+                if markings_tab_sm.current in backs:
+                    markings_tab_sm.current = backs[markings_tab_sm.current]
         return True
 
 
