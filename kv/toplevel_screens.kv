@@ -2,7 +2,7 @@
     name: "markings_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDScrollView:
+    MDRecycleView:
         pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
         size_hint_y: (root.height - sp(60)) / root.height
 
@@ -67,7 +67,7 @@
 <CalculationsScreen>:
     name: "calculations_screen"
 
-    MDScrollView:
+    MDRecycleView:
         pos_hint: {"top": (root.height - calculations_top_bar.height) / root.height}
         size_hint_y: (root.height - sp(60)) / root.height
 
@@ -230,7 +230,7 @@
     name: "handbook_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDScrollView:
+    MDRecycleView:
         pos_hint: {"top": (root.height - handbook_top_bar.height) / root.height}
         size_hint_y: (root.height - sp(60)) / root.height
 
@@ -393,7 +393,7 @@
     name: "help_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDScrollView:
+    MDRecycleView:
         pos_hint: {"top": (root.height - help_top_bar.height) / root.height}
         size_hint_y: (root.height - sp(60)) / root.height
 

@@ -12,7 +12,7 @@
 <ResistorsMarkingsSelectScreen>:
     name: "resistors_markings_select_screen"
 
-    MDScrollView:
+    MDRecycleView:
         pos_hint: {"top": (root.height - resistors_markings_top_bar.height) / root.height}
         size_hint_y: (root.height - resistors_markings_top_bar.height) / root.height
 
@@ -78,7 +78,7 @@
 <THResistorsMarkingScreen>:
     name: "th_resistors_marking_screen"
 
-    MDScrollView:
+    MDRecycleView:
         on_parent: root.build_menu()
         pos_hint: {"top": (root.height - th_resistor_top_bar.height) / root.height}
         size_hint_y: (root.height - th_resistor_top_bar.height) / root.height
@@ -149,7 +149,7 @@
 
 <SMDResistorsMarkingScreen>:
     name: "smd_resistors_marking_screen"
-    MDScrollView:
+    MDRecycleView:
         pos_hint: {"top": (root.height - smd_resistors_top_bar.height) / root.height}
         size_hint_y: (root.height - sp(60)) / root.height
 
@@ -217,7 +217,7 @@
     name: "capacitors_marking_select_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDScrollView:
+    MDRecycleView:
         pos_hint: {"top": (root.height - capacitors_markings_top_bar.height) / root.height}
         size_hint_y: (root.height - capacitors_markings_top_bar.height) / root.height
 
