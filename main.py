@@ -41,7 +41,11 @@ class RadioMan(MDApp):
         Window.bind(on_keyboard=self.android_back_click)
         Window.softinput_mode = 'below_target'
         self.theme_cls.primary_palette = "DeepPurple"
-        self.load_all_kv_files("kv")
+        Builder.load_file("kv/toplevel_screens.kv")
+        Builder.load_file("kv/markings_screens.kv")
+        Builder.load_file("kv/calculations_screens.kv")
+        Builder.load_file("kv/help_screens.kv")
+        Builder.load_file("kv/handbook_screens.kv")
         return Builder.load_file("kv/main.kv")
 
     def back_to_screen(self):
