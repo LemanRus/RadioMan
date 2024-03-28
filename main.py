@@ -44,15 +44,18 @@ class RadioMan(MDApp):
         self.load_all_kv_files("kv")
         return Builder.load_file("kv/main.kv")
 
+    def back_to_screen(self):
+        try:
+            markings_tab_sm = self.root.children[1].children[0].children[0]
+        except IndexError:
+            pass
+        else:
+            if markings_tab_sm.current in backs:
+                markings_tab_sm.current = backs[markings_tab_sm.current]
+
     def android_back_click(self, window, key, *args):
         if key == 27:
-            try:
-                markings_tab_sm = self.root.children[1].children[0].children[0]
-            except IndexError:
-                pass
-            else:
-                if markings_tab_sm.current in backs:
-                    markings_tab_sm.current = backs[markings_tab_sm.current]
+            self.back_to_screen()
         return True
 
 
