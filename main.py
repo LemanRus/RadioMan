@@ -5,6 +5,7 @@ from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.core.window import Window
 
+import misc
 import screens
 
 backs = {"resistors_markings_select_screen": "markings_screen",
@@ -41,6 +42,7 @@ class RadioMan(MDApp):
         Window.bind(on_keyboard=self.android_back_click)
         Window.softinput_mode = 'below_target'
         self.theme_cls.primary_palette = "DeepPurple"
+        Builder.load_file("kv/misc.kv")
         Builder.load_file("kv/toplevel_screens.kv")
         Builder.load_file("kv/markings_screens.kv")
         Builder.load_file("kv/calculations_screens.kv")

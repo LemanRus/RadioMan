@@ -50,14 +50,8 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
+            MDIconCard:
                 on_release: root.parent.current = "resistors_markings_select_screen"
-                elevation: 1
 
                 MDIconButton:
                     ripple_scale: 0
@@ -67,21 +61,11 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "resistors_markings_select_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Резисторы"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
+            MDIconCard:
                 on_release: root.parent.current = "capacitors_marking_select_screen"
-                elevation: 1
 
                 MDIconButton:
                     ripple_scale: 0
@@ -91,12 +75,8 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "capacitors_marking_select_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Конденсаторы"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
     MDTopAppBar:
         id: markings_top_bar
@@ -115,13 +95,7 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "led_resistor_calculation_screen"
 
                 MDIconButton:
@@ -132,20 +106,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "led_resistor_calculation_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Расчёт резисторов для светодиодов"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "inductor_calculation_select_screen"
 
                 MDIconButton:
@@ -156,20 +120,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "inductor_calculation_select_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Расчёт катушки индуктивности"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "parallel_resistor_calculation_screen"
 
                 MDIconButton:
@@ -180,20 +134,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "parallel_resistor_calculation_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Параллельное соединение резисторов"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "serial_capacitor_calculate_screen"
 
                 MDIconButton:
@@ -204,20 +148,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "serial_capacitor_calculate_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Последовательное соединение конденсаторов"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "voltage_divider_calculate_select_screen"
 
                 MDIconButton:
@@ -228,20 +162,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "voltage_divider_calculate_select_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Делитель напряжения"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "lm_regulator_calculate_select_screen"
 
                 MDIconButton:
@@ -252,12 +176,8 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "lm_regulator_calculate_select_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "LM317/LM350/LM338 калькулятор"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
 
     MDTopAppBar:
@@ -278,13 +198,7 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "theory_screen"
 
                 MDIconButton:
@@ -295,20 +209,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "theory_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Теория"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "schematics_screen"
 
                 MDIconButton:
@@ -319,20 +223,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "schematics_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Обозначения на схемах"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "pinout_screen"
 
                 MDIconButton:
@@ -343,20 +237,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "pinout_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Распиновки"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "connections_screen"
 
                 MDIconButton:
@@ -367,20 +251,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "connections_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Типы соединений"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "chips_screen"
 
                 MDIconButton:
@@ -391,20 +265,10 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "chips_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Микросхемы и компоненты"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
-                elevation: 1
+            MDIconCard:
                 on_release: root.parent.current = "lifehacks_screen"
 
                 MDIconButton:
@@ -415,12 +279,8 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "lifehacks_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Лайфхаки"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
 
     MDTopAppBar:
@@ -441,14 +301,8 @@
             spacing: "10dp"
             padding: "15dp", "10dp"
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
+            MDIconCard:
                 on_release: root.parent.current = "how_to_screen"
-                elevation: 1
 
                 MDIconButton:
                     ripple_scale: 0
@@ -458,21 +312,11 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "how_to_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "Как пользоваться"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
-            MDCard:
-                ripple_behavior: True
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: "20sp"
-                padding: "15sp"
+            MDIconCard:
                 on_release: root.parent.current = "about_screen"
-                elevation: 1
 
                 MDIconButton:
                     ripple_scale: 0
@@ -482,12 +326,8 @@
                     pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "about_screen"
 
-                MDLabel:
+                MDShortenLabel:
                     text: "О программе"
-                    shorten: True
-                    shorten_from: "right"
-                    size_hint_y: None
-                    pos_hint: {"center_y": 0.5}
 
     MDTopAppBar:
         id: help_top_bar
