@@ -5,19 +5,13 @@
         pos_hint: {"top": (root.height - resistors_markings_top_bar.height) / root.height}
         size_hint_y: (root.height - resistors_markings_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "th_resistors_marking_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/th_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "th_resistors_marking_screen"
 
                 MDShortenLabel:
@@ -26,23 +20,16 @@
             MDIconCard:
                 on_release: root.parent.current = "smd_resistors_marking_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/smd_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "smd_resistors_marking_screen"
 
                 MDShortenLabel:
                     text: "SMD резисторы"
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: resistors_markings_top_bar
         title: "Маркировки резисторов"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 <THResistorsMarkingScreen>:
     name: "th_resistors_marking_screen"
@@ -103,19 +90,15 @@
                     size_hint_y: None
                     size: self.texture_size
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: th_resistor_top_bar
         title: "Резисторы свозного монтажа"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <SMDResistorsMarkingScreen>:
     name: "smd_resistors_marking_screen"
-    MDRecycleView:
+    MDNoHeightRecycleView:
         pos_hint: {"top": (root.height - smd_resistors_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
 
         MDGridScreen:
 
@@ -164,12 +147,9 @@
                     size_hint_y: None
                     on_release: root.calculate_resistor(resistor_marking_input.text)
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: smd_resistors_top_bar
         title: "SMD резисторы"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <CapacitorsMarkingSelectScreen>:
@@ -180,19 +160,13 @@
         pos_hint: {"top": (root.height - capacitors_markings_top_bar.height) / root.height}
         size_hint_y: (root.height - capacitors_markings_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "th_capacitors_marking_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/th_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "th_capacitors_marking_screen"
 
                 MDShortenLabel:
@@ -201,23 +175,16 @@
             MDIconCard:
                 on_release: root.parent.current = "smd_capacitors_marking_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/smd_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "smd_capacitors_marking_screen"
 
                 MDShortenLabel:
                     text: "SMD конденсаторы"
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: capacitors_markings_top_bar
         title: "Маркировка конденсаторов"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 <THCapacitorsMarkingScreen>:
     name: "th_capacitors_marking_screen"
@@ -272,12 +239,10 @@
                     size_hint_y: None
                     on_release: root.calculate_capacitor(capacitor_marking_input.text)
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: th_capacitor_top_bar
         title: "Конденсаторы свозного монтажа"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
+
 
 <SMDCapacitorsMarkingScreen>:
     name: "smd_capacitors_marking_screen"
@@ -333,9 +298,6 @@
                     size_hint_y: None
                     on_release: root.calculate_smd_capacitor(smd_capacitor_marking_input.text)
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: smd_capacitor_top_bar
         title: "SMD конденсаторы"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1

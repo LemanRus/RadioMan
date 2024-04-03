@@ -6,9 +6,7 @@
         pos_hint: {"top": (root.height - led_resistor_top_bar.height) / root.height}
         size_hint_y: (root.height - led_resistor_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDCard:
                 size_hint_y: None
@@ -165,12 +163,9 @@
                         height: self.font_size
                         id: led_cur
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: led_resistor_top_bar
         title: "Расчёт резисторов для светодиодов"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <InductorCalculationSelectScreen>:
@@ -180,19 +175,13 @@
         pos_hint: {"top": (root.height - inductor_select_top_bar.height) / root.height}
         size_hint_y: (root.height - inductor_select_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "inductor_calculate_induction_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/th_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "inductor_calculate_induction_screen"
 
                 MDShortenLabel:
@@ -201,23 +190,16 @@
             MDIconCard:
                 on_release: root.parent.current = "inductor_calculate_size_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/smd_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "inductor_calculate_size_screen"
 
                 MDShortenLabel:
                     text: "Расчёт числа витков и размера"
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: inductor_select_top_bar
         title: "Расчёт катушки индуктивности"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <InductorCalculateInductionScreen>:
@@ -227,9 +209,7 @@
         pos_hint: {"top": (root.height - inductor_induction_top_bar.height) / root.height}
         size_hint_y: (root.height - inductor_induction_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDCard:
                 size_hint_y: None
@@ -311,12 +291,9 @@
                         height: self.font_size
                         id: induction
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: inductor_induction_top_bar
         title: "Расчёт индуктивности"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <InductorCalculateSizeScreen>:
@@ -326,9 +303,7 @@
         pos_hint: {"top": (root.height - inductor_size_top_bar.height) / root.height}
         size_hint_y: (root.height - inductor_size_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDCard:
                 size_hint_y: None
@@ -449,12 +424,9 @@
                         height: self.font_size
                         id: inductor_length_int
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: inductor_size_top_bar
         title: "Расчёт числа витков и размера"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <ParallelResistorCalculationScreen>:
@@ -465,9 +437,7 @@
         pos_hint: {"top": (root.height - parallel_resistor_top_bar.height) / root.height}
         size_hint_y: (root.height - parallel_resistor_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDList:
                 id: par_res_box
@@ -519,12 +489,9 @@
                         height: self.font_size
                         id: par_res_output
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: parallel_resistor_top_bar
         title: "Параллельное соединение резисторов"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <SerialCapacitorCalculateScreen>:
@@ -535,9 +502,7 @@
         pos_hint: {"top": (root.height - serial_capacitor_top_bar.height) / root.height}
         size_hint_y: (root.height - serial_capacitor_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDList:
                 id: ser_cap_box
@@ -589,12 +554,9 @@
                         height: self.font_size
                         id: ser_cap_output
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: serial_capacitor_top_bar
         title: "Последовательное соединение конденсаторов"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <VoltageDividerCalculateSelectScreen>:
@@ -604,19 +566,13 @@
         pos_hint: {"top": (root.height - voltage_divider_top_bar.height) / root.height}
         size_hint_y: (root.height - voltage_divider_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "voltage_divider_calculate_voltage_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/th_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "voltage_divider_calculate_voltage_screen"
 
                 MDShortenLabel:
@@ -625,23 +581,16 @@
             MDIconCard:
                 on_release: root.parent.current = "voltage_divider_calculate_resistance_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/smd_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "voltage_divider_calculate_resistance_screen"
 
                 MDShortenLabel:
                     text: "Расчёт сопротивления"
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: voltage_divider_top_bar
         title: "Делитель напряжения"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <VoltageDividerCalculateVoltageScreen>:
@@ -651,9 +600,7 @@
         pos_hint: {"top": (root.height - voltage_divider_voltage_top_bar.height) / root.height}
         size_hint_y: (root.height - voltage_divider_voltage_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDCard:
                 size_hint_y: None
@@ -744,12 +691,9 @@
                         height: self.font_size
                         id: divider_rate
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: voltage_divider_voltage_top_bar
         title: "Делитель напряжения"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <VoltageDividerCalculateResistanceScreen>:
@@ -759,9 +703,7 @@
         pos_hint: {"top": (root.height - voltage_divider_resistance_top_bar.height) / root.height}
         size_hint_y: (root.height - voltage_divider_resistance_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDCard:
                 size_hint_y: None
@@ -878,12 +820,9 @@
                         height: self.font_size
                         id: vout_e24
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: voltage_divider_resistance_top_bar
         title: "Делитель напряжения"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <LMRegulatorCalculateSelectScreen>:
@@ -893,19 +832,13 @@
         pos_hint: {"top": (root.height - lm_regulator_top_bar.height) / root.height}
         size_hint_y: (root.height - lm_regulator_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "lm_regulator_voltage_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/th_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "lm_regulator_voltage_screen"
 
                 MDShortenLabel:
@@ -914,23 +847,16 @@
             MDIconCard:
                 on_release: root.parent.current = "lm_regulator_current_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/smd_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "lm_regulator_current_screen"
 
                 MDShortenLabel:
                     text: "Стабилизатор тока"
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: lm_regulator_top_bar
         title: "LM317/LM350/LM338 калькулятор"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <LMRegulatorCalculateVoltageScreen>:
@@ -940,9 +866,7 @@
         pos_hint: {"top": (root.height - lm_regulator_voltage_top_bar.height) / root.height}
         size_hint_y: (root.height - lm_regulator_voltage_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDCard:
                 size_hint_y: None
@@ -1091,12 +1015,9 @@
                         height: self.font_size
                         id: lm317_power_output
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: lm_regulator_voltage_top_bar
         title: "LM317/LM350/LM338 - стабилизатор напряжения"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 
 
 <LMRegulatorCalculateCurrentScreen>:
@@ -1106,9 +1027,7 @@
         pos_hint: {"top": (root.height - lm_regulator_current_top_bar.height) / root.height}
         size_hint_y: (root.height - lm_regulator_current_top_bar.height) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDCard:
                 size_hint_y: None
@@ -1253,10 +1172,7 @@
                         height: self.font_size
                         id: lm317_vin_output_cur
 
-    MDTopAppBar:
+    MDBackTopBar:
         id: lm_regulator_current_top_bar
         title: "LM317/LM350/LM338 - стабилизатор тока"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1
 

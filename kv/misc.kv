@@ -20,3 +20,30 @@
     shorten_from: "right"
     size_hint_y: None
     pos_hint: {"center_y": 0.5}
+
+
+<MDPaddedList>:
+    spacing: "10dp"
+    padding: "15dp", "10dp"
+
+
+<MDBackTopBar>:
+    pos_hint: {"top": 1}
+    left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
+    elevation: 1
+
+
+<MDNoBackTopBar>:
+    pos_hint: {"top": 1}
+    elevation: 1
+
+
+<MD50spIconButton>:
+    ripple_scale: 0
+    size_hint_y: None
+    icon_size: "50sp"
+    pos_hint: {"center_y": 0.5}
+
+
+<MDNoHeightRecycleView>:
+    size_hint_y: (root.height - sp(60)) / root.height

@@ -42,23 +42,16 @@
     name: "markings_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDRecycleView:
+    MDNoHeightRecycleView:
         pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "resistors_markings_select_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "resistors_markings_select_screen"
 
                 MDShortenLabel:
@@ -67,43 +60,31 @@
             MDIconCard:
                 on_release: root.parent.current = "capacitors_marking_select_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/capacitor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "capacitors_marking_select_screen"
 
                 MDShortenLabel:
                     text: "Конденсаторы"
 
-    MDTopAppBar:
+    MDNoBackTopBar:
         id: markings_top_bar
         title: "Маркировки"
-        pos_hint: {"top": 1}
-        elevation: 1
+
 
 <CalculationsScreen>:
     name: "calculations_screen"
 
-    MDRecycleView:
+    MDNoHeightRecycleView:
         pos_hint: {"top": (root.height - calculations_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "led_resistor_calculation_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/resistor_led.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "led_resistor_calculation_screen"
 
                 MDShortenLabel:
@@ -112,12 +93,8 @@
             MDIconCard:
                 on_release: root.parent.current = "inductor_calculation_select_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/inductor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "inductor_calculation_select_screen"
 
                 MDShortenLabel:
@@ -126,12 +103,8 @@
             MDIconCard:
                 on_release: root.parent.current = "parallel_resistor_calculation_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/resistors_par.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "parallel_resistor_calculation_screen"
 
                 MDShortenLabel:
@@ -140,12 +113,8 @@
             MDIconCard:
                 on_release: root.parent.current = "serial_capacitor_calculate_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/capacitors_ser.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "serial_capacitor_calculate_screen"
 
                 MDShortenLabel:
@@ -154,12 +123,8 @@
             MDIconCard:
                 on_release: root.parent.current = "voltage_divider_calculate_select_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/divider.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "voltage_divider_calculate_select_screen"
 
                 MDShortenLabel:
@@ -168,45 +133,33 @@
             MDIconCard:
                 on_release: root.parent.current = "lm_regulator_calculate_select_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/transistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "lm_regulator_calculate_select_screen"
 
                 MDShortenLabel:
                     text: "LM317/LM350/LM338 калькулятор"
 
 
-    MDTopAppBar:
+    MDNoBackTopBar:
         id: calculations_top_bar
         title: "Расчёты"
-        pos_hint: {"top": 1}
-        elevation: 1
+
 
 <HandbookScreen>:
     name: "handbook_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDRecycleView:
+    MDNoHeightRecycleView:
         pos_hint: {"top": (root.height - handbook_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "theory_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/theory.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "theory_screen"
 
                 MDShortenLabel:
@@ -215,12 +168,8 @@
             MDIconCard:
                 on_release: root.parent.current = "schematics_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/transistor_scheme.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "schematics_screen"
 
                 MDShortenLabel:
@@ -229,12 +178,8 @@
             MDIconCard:
                 on_release: root.parent.current = "pinout_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/pinout.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "pinout_screen"
 
                 MDShortenLabel:
@@ -243,12 +188,8 @@
             MDIconCard:
                 on_release: root.parent.current = "connections_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/connection.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "connections_screen"
 
                 MDShortenLabel:
@@ -257,12 +198,8 @@
             MDIconCard:
                 on_release: root.parent.current = "chips_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/chip.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "chips_screen"
 
                 MDShortenLabel:
@@ -271,45 +208,33 @@
             MDIconCard:
                 on_release: root.parent.current = "lifehacks_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/lifehack.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "lifehacks_screen"
 
                 MDShortenLabel:
                     text: "Лайфхаки"
 
 
-    MDTopAppBar:
+    MDNoBackTopBar:
         id: handbook_top_bar
         title: "Справочник"
-        pos_hint: {"top": 1}
-        elevation: 1
+
 
 <HelpScreen>:
     name: "help_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDRecycleView:
+    MDNoHeightRecycleView:
         pos_hint: {"top": (root.height - help_top_bar.height) / root.height}
-        size_hint_y: (root.height - sp(60)) / root.height
 
-        MDList:
-            spacing: "10dp"
-            padding: "15dp", "10dp"
+        MDPaddedList:
 
             MDIconCard:
                 on_release: root.parent.current = "how_to_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/th_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "how_to_screen"
 
                 MDShortenLabel:
@@ -318,21 +243,13 @@
             MDIconCard:
                 on_release: root.parent.current = "about_screen"
 
-                MDIconButton:
-                    ripple_scale: 0
-                    size_hint_y: None
+                MD50spIconButton:
                     icon: "media/smd_resistor.png"
-                    icon_size: "50sp"
-                    pos_hint: {"center_y": 0.5}
                     on_release: root.parent.current = "about_screen"
 
                 MDShortenLabel:
                     text: "О программе"
 
-    MDTopAppBar:
+    MDNoBackTopBar:
         id: help_top_bar
         title: "Помощь"
-        pos_hint: {"top": 1}
-        elevation: 1
-
-
