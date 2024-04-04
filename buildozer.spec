@@ -99,13 +99,13 @@ fullscreen = 0
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-android.api = 27
+android.api = 30
 
 # (int) Minimum API your APK / AAB will support.
-android.minapi = 21
+android.minapi = 25
 
 # (int) Android SDK version to use
-android.sdk = 20
+android.sdk = 25
 
 # (str) Android NDK version to use
 android.ndk = 25b
