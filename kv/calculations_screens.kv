@@ -13,10 +13,8 @@
                 MDLabel:
                     text: "Напряжение источника питания, В:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: led_resistor_source_voltage_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: led_resistor_led_voltage_input.focus = True
 
             MDPaddedCard:
@@ -24,10 +22,8 @@
                 MDLabel:
                     text: "Напряжение питания светодиода, В:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: led_resistor_led_voltage_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: led_resistor_led_current_input.focus = True
 
             MDPaddedCard:
@@ -35,10 +31,8 @@
                 MDLabel:
                     text: "Ток светодиода, мА:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: led_resistor_led_current_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: led_resistor_led_qty_input.focus = True
 
             MDPaddedCard:
@@ -46,10 +40,8 @@
                 MDLabel:
                     text: "Количество светодиодов:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: led_resistor_led_qty_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate:
                         root.led_calculate(led_resistor_source_voltage_input.text, \
                         led_resistor_led_voltage_input.text, \
@@ -184,10 +176,8 @@
                 MDLabel:
                     text: "Число витков:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: inductor_turns_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: inductor_diameter_input.focus = True
 
             MDPaddedCard:
@@ -195,10 +185,8 @@
                 MDLabel:
                     text: "Диаметр каркаса, мм:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: inductor_diameter_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: inductor_length_input.focus = True
 
             MDPaddedCard:
@@ -206,10 +194,8 @@
                 MDLabel:
                     text: "Длина намотки, мм:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: inductor_length_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate:
                         root.inductor_calculate_henrys(inductor_turns_input.text, \
                         inductor_diameter_input.text, inductor_length_input.text)
@@ -262,10 +248,8 @@
                 MDLabel:
                     text: "Индуктивность, мкГн:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: induction_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: inductor_diameter_input.focus = True
 
             MDPaddedCard:
@@ -273,10 +257,8 @@
                 MDLabel:
                     text: "Диаметр каркаса, мм:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: inductor_diameter_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: inductor_wire_diameter_input.focus = True
 
             MDPaddedCard:
@@ -284,10 +266,8 @@
                 MDLabel:
                     text: "Диаметр провода, мм:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: inductor_wire_diameter_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate:
                         root.inductor_calculate_turns(induction_input.text, \
                         inductor_diameter_input.text, inductor_wire_diameter_input.text)
@@ -523,10 +503,8 @@
                 MDLabel:
                     text: "Напряжение источника питания, В"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: v_in
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: r1.focus = True
 
             MDPaddedCard:
@@ -534,10 +512,8 @@
                 MDLabel:
                     text: "Сопротивление R1, Ом:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: r1
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: r2.focus = True
 
             MDPaddedCard:
@@ -545,10 +521,8 @@
                 MDLabel:
                     text: "Сопротивление R2, Ом:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: r2
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: root.divider_calculate_vout(v_in.text, r1.text, r2.text)
 
             MDRelativeLayout:
@@ -606,10 +580,8 @@
                 MDLabel:
                     text: "Напряжение источника питания, В"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: v_in_r
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: v_out_r.focus = True
 
             MDPaddedCard:
@@ -617,10 +589,8 @@
                 MDLabel:
                     text: "Выходное напряжение, В:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: v_out_r
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: r1_input.focus = True
 
             MDPaddedCard:
@@ -628,10 +598,8 @@
                 MDLabel:
                     text: "Сопротивление R1, Ом:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: r1_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: root.divider_calculate_r(v_in_r.text, v_out_r.text, r1_input.text)
 
             MDRelativeLayout:
@@ -741,10 +709,8 @@
                 MDLabel:
                     text: "Выходное напряжение, В"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: lm317_vout_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: lm317_r1_input.focus = True
 
             MDPaddedCard:
@@ -752,10 +718,8 @@
                 MDLabel:
                     text: "Сопротивление R1, Ом:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: lm317_r1_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: lm317_iout_input.focus = True
 
             MDPaddedCard:
@@ -763,10 +727,8 @@
                 MDLabel:
                     text: "Ток нагрузки, А:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: lm317_iout_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: lm317_vin_input.focus = True
 
             MDPaddedCard:
@@ -774,10 +736,8 @@
                 MDLabel:
                     text: "Входное напряжение, В:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: lm317_vin_input
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate:
                         root.calculate_lm317_voltage(lm317_vout_input.text, \
                         lm317_r1_input.text, lm317_iout_input.text, lm317_vin_input.text)
@@ -866,10 +826,8 @@
                 MDLabel:
                     text: "Выходной ток, А"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: lm317_iout_input_cur
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate: lm317_vout_input_cur.focus = True
 
             MDPaddedCard:
@@ -877,10 +835,8 @@
                 MDLabel:
                     text: "Падение напряжения на нагрузке, В:"
 
-                MDTextField:
+                MDCentered06TextField:
                     id: lm317_vout_input_cur
-                    halign: "center"
-                    size_hint_x: 0.6
                     on_text_validate:
                         root.calculate_lm317_current(lm317_iout_input_cur.text, \
                         lm317_vout_input_cur.text)

@@ -5,6 +5,7 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.list import MDList
 from kivymd.uix.recycleview import MDRecycleView
 from kivymd.uix.scrollview import MDScrollView
+from kivymd.uix.textfield import MDTextField
 from kivymd.uix.toolbar import MDTopAppBar
 
 
@@ -45,4 +46,8 @@ class MDTextLabel(MDLabel):
 
 
 class MDPaddedCard(MDCard):
+    pass
+
+
+class MDCentered06TextField(MDTextField):
     pass
