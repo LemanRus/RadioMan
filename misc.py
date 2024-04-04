@@ -42,3 +42,7 @@ class MDDumbLabel(MDLabel):
 
 class MDTextLabel(MDLabel):
     pass
+
+
+class MDPaddedCard(MDCard):
+    pass
