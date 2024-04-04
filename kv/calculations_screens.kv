@@ -69,11 +69,9 @@
                 size_hint_y: None
                 height: calc_led_resistor.height
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: calc_led_resistor
                     text: "Рассчитать"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release:
                         root.led_calculate(led_resistor_source_voltage_input.text, \
                         led_resistor_led_voltage_input.text, \
@@ -195,11 +193,9 @@
                 size_hint_y: None
                 height: calc_led_resistor.height
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: calc_led_resistor
                     text: "Рассчитать"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release:
                         root.inductor_calculate_henrys(inductor_turns_input.text, \
                         inductor_diameter_input.text, inductor_length_input.text)
@@ -261,11 +257,9 @@
                 size_hint_y: None
                 height: calc_led_resistor.height
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: calc_led_resistor
                     text: "Рассчитать"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release:
                         root.inductor_calculate_turns(induction_input.text, \
                         inductor_diameter_input.text, inductor_wire_diameter_input.text)
@@ -319,10 +313,8 @@
 
         MDPaddedList:
 
-            MDList:
+            MDPaddedList:
                 id: par_res_box
-                spacing: "10dp"
-                padding: "15dp", "10dp"
 
             MDRelativeLayout:
                 size_hint_y: None
@@ -335,11 +327,9 @@
                     pos_hint: {"left": 0}
                     on_release: root.add_resistor()
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: reset_parallel_resistor_btn
                     text: "Очистить"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release: root.reset()
 
                 MDRaisedButton:
@@ -374,10 +364,8 @@
 
         MDPaddedList:
 
-            MDList:
+            MDPaddedList:
                 id: ser_cap_box
-                spacing: "10dp"
-                padding: "15dp", "10dp"
 
             MDRelativeLayout:
                 size_hint_y: None
@@ -390,11 +378,9 @@
                     pos_hint: {"left": 0}
                     on_release: root.add_capacitor()
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: reset_serial_capacitor_btn
                     text: "Очистить"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release: root.reset()
 
                 MDRaisedButton:
@@ -493,11 +479,9 @@
                 size_hint_y: None
                 height: calc_divider_voltage.height
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: calc_divider_voltage
                     text: "Рассчитать"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release: root.divider_calculate_vout(v_in.text, r1.text, r2.text)
 
             MDVerticalCard:
@@ -563,11 +547,9 @@
                 size_hint_y: None
                 height: calc_divider_resistance.height
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: calc_divider_resistance
                     text: "Рассчитать"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release: root.divider_calculate_r(v_in_r.text, v_out_r.text, r1_input.text)
 
             MDVerticalCard:
@@ -694,11 +676,9 @@
                 size_hint_y: None
                 height: lm_calc_voltage.height
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: lm_calc_voltage
                     text: "Рассчитать"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release:
                         root.calculate_lm317_voltage(lm317_vout_input.text, \
                         lm317_r1_input.text, lm317_iout_input.text, lm317_vin_input.text)
@@ -783,11 +763,9 @@
                 size_hint_y: None
                 height: lm_calc_current.height
 
-                MDRaisedButton:
+                MDRaisedCenteredButton:
                     id: lm_calc_current
                     text: "Рассчитать"
-                    size_hint: None, None
-                    pos_hint: {"center_x": 0.5}
                     on_release:
                         root.calculate_lm317_current(lm317_iout_input_cur.text, \
                         lm317_vout_input_cur.text)
