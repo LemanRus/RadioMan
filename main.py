@@ -53,11 +53,13 @@ class RadioMan(MDApp):
     def back_to_screen(self):
         try:
             markings_tab_sm = self.root.children[1].children[0].children[0]
+            markings_tab_sm.transition = SlideTransition(direction='right')
         except IndexError:
             pass
         else:
             if markings_tab_sm.current in backs:
                 markings_tab_sm.current = backs[markings_tab_sm.current]
+                markings_tab_sm.transition = SlideTransition(direction='left')
 
     def android_back_click(self, window, key, *args):
         if key == 27:
