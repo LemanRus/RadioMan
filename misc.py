@@ -1,4 +1,5 @@
 from kivy.uix.gridlayout import GridLayout
+from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDIconButton
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
@@ -50,4 +51,12 @@ class MDPaddedCard(MDCard):
 
 
 class MDCentered06TextField(MDTextField):
+    pass
+
+
+class MDVerticalCard(MDCard):
+    pass
+
+
+class MDAdaptiveBoxLayout(MDBoxLayout):
     pass

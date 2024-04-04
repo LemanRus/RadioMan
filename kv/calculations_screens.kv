@@ -80,15 +80,9 @@
                         led_resistor_led_current_input.text, \
                         led_resistor_led_qty_input.text)
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Расчётное сопротивление:"
@@ -96,8 +90,7 @@
                     MDTextLabel:
                         id: led_result
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Стандартное значение:"
@@ -105,8 +98,7 @@
                     MDTextLabel:
                         id: led_e24
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Рассеиваемая на резисторе мощность:"
@@ -114,8 +106,7 @@
                     MDTextLabel:
                         id: led_res_power
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Потребляемый ток:"
@@ -213,15 +204,9 @@
                         root.inductor_calculate_henrys(inductor_turns_input.text, \
                         inductor_diameter_input.text, inductor_length_input.text)
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Расчётная индуктивность:"
@@ -285,15 +270,9 @@
                         root.inductor_calculate_turns(induction_input.text, \
                         inductor_diameter_input.text, inductor_wire_diameter_input.text)
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Расчётное число витков:"
@@ -301,8 +280,7 @@
                     MDTextLabel:
                         id: inductor_turns
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Целое число витков:"
@@ -310,8 +288,7 @@
                     MDTextLabel:
                         id: inductor_turns_int
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Расчётная длина намотки, мм:"
@@ -319,8 +296,7 @@
                     MDTextLabel:
                         id: inductor_length
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Длина намотки при целом числе витков, мм:"
@@ -373,15 +349,9 @@
                     pos_hint: {"right": 1}
                     on_release: root.par_res_calculate()
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Сопротивление:"
@@ -434,15 +404,9 @@
                     pos_hint: {"right": 1}
                     on_release: root.ser_cap_calculate()
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Ёмкость:"
@@ -536,15 +500,9 @@
                     pos_hint: {"center_x": 0.5}
                     on_release: root.divider_calculate_vout(v_in.text, r1.text, r2.text)
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Выходное напряжение, В:"
@@ -552,8 +510,7 @@
                     MDTextLabel:
                         id: v_out
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Коэффициент делителя:"
@@ -613,15 +570,9 @@
                     pos_hint: {"center_x": 0.5}
                     on_release: root.divider_calculate_r(v_in_r.text, v_out_r.text, r1_input.text)
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Сопротивление R2, Ом:"
@@ -629,8 +580,7 @@
                     MDTextLabel:
                         id: r2_calculated
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Коэффициент делителя:"
@@ -638,8 +588,7 @@
                     MDTextLabel:
                         id: divider_rate_r
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Резистор стандартного ряда, Ом:"
@@ -647,8 +596,7 @@
                     MDTextLabel:
                         id: r2_e24
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Выходное напряжение с резистором из стандартного ряда:"
@@ -755,15 +703,9 @@
                         root.calculate_lm317_voltage(lm317_vout_input.text, \
                         lm317_r1_input.text, lm317_iout_input.text, lm317_vin_input.text)
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Сопротивление R2, Ом:"
@@ -771,8 +713,7 @@
                     MDTextLabel:
                         id: lm317_r2_output
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Стандартное сопротивление R2, Ом:"
@@ -780,8 +721,7 @@
                     MDTextLabel:
                         id: lm317_r2_corrected_output
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Выходное напряжение, В:"
@@ -789,8 +729,7 @@
                     MDTextLabel:
                         id: lm317_vout_output
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Рекомендуемый тип стабилизатора:"
@@ -798,8 +737,7 @@
                     MDTextLabel:
                         id: lm317_recommend_output
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Рассеиваемая мощность:"
@@ -854,15 +792,9 @@
                         root.calculate_lm317_current(lm317_iout_input_cur.text, \
                         lm317_vout_input_cur.text)
 
-            MDCard:
-                size_hint_y: None
-                height: self.minimum_height
-                padding: sp(15)
-                spacing: sp(25)
-                orientation: "vertical"
+            MDVerticalCard:
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Сопротивление R1, Ом:"
@@ -870,8 +802,7 @@
                     MDTextLabel:
                         id: lm317_r1_output_cur
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Сопротивление R1 из стандартного ряда, Ом:"
@@ -879,8 +810,7 @@
                     MDTextLabel:
                         id: lm317_r1_corrected_output_cur
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Мощность, Вт:"
@@ -888,8 +818,7 @@
                     MDTextLabel:
                         id: lm317_r1_power_output_cur
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Мощность с резистором из стандартного ряда, Вт:"
@@ -897,8 +826,7 @@
                     MDTextLabel:
                         id: lm317_r1_power_corrected_output_cur
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Выходной ток с резистором из стандартного ряда, А:"
@@ -906,8 +834,7 @@
                     MDTextLabel:
                         id: lm317_iout_corrected_output_cur
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
                     MDTextLabel:
                         text: "Рекомендуемый тип стабилизатора:"
@@ -915,17 +842,12 @@
                     MDTextLabel:
                         id: lm317_recommend_output_cur
 
-                MDBoxLayout:
-                    adaptive_height: True
+                MDAdaptiveBoxLayout:
 
-                    MDLabel:
-                        size_hint_y: None
-                        height: self.font_size
+                    MDTextLabel:
                         text: "Входное напряжение, не менее, В:"
 
-                    MDLabel:
-                        size_hint_y: None
-                        height: self.font_size
+                    MDTextLabel:
                         id: lm317_vin_output_cur
 
     MDBackTopBar:
