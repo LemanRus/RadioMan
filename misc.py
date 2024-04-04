@@ -38,3 +38,7 @@ class MD50spIconButton(MDIconButton):
 
 class MDDumbLabel(MDLabel):
     pass
+
+
+class MDTextLabel(MDLabel):
+    pass
