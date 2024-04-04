@@ -2,16 +2,13 @@
     name: "theory_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - theory_top_bar.height) / root.height}
 
         MDPaddedList:
 
-            MDLabel:
-                text: "Этот раздел в процессе наполнения и скоро появится!"
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
+            MDDumbLabel:
 
 
     MDBackTopBar:
@@ -23,16 +20,13 @@
     name: "schematics_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - schematics_top_bar.height) / root.height}
 
         MDPaddedList:
 
-            MDLabel:
-                text: "Этот раздел в процессе наполнения и скоро появится!"
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
+            MDDumbLabel:
 
 
     MDBackTopBar:
@@ -44,16 +38,13 @@
     name: "pinout_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - pinout_top_bar.height) / root.height}
 
         MDPaddedList:
 
-            MDLabel:
-                text: "Этот раздел в процессе наполнения и скоро появится!"
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
+            MDDumbLabel:
 
 
     MDBackTopBar:
@@ -65,16 +56,13 @@
     name: "connections_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - connections_top_bar.height) / root.height}
 
         MDPaddedList:
 
-            MDLabel:
-                text: "Этот раздел в процессе наполнения и скоро появится!"
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
+            MDDumbLabel:
 
 
     MDBackTopBar:
@@ -86,16 +74,13 @@
     name: "chips_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - chips_top_bar.height) / root.height}
 
         MDPaddedList:
 
-            MDLabel:
-                text: "Этот раздел в процессе наполнения и скоро появится!"
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
+            MDDumbLabel:
 
 
     MDBackTopBar:
@@ -107,16 +92,13 @@
     name: "lifehacks_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - lifehacks_top_bar.height) / root.height}
 
         MDPaddedList:
 
-            MDLabel:
-                text: "Этот раздел в процессе наполнения и скоро появится!"
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
+            MDDumbLabel:
 
 
     MDBackTopBar:

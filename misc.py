@@ -4,6 +4,7 @@ from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.list import MDList
 from kivymd.uix.recycleview import MDRecycleView
+from kivymd.uix.scrollview import MDScrollView
 from kivymd.uix.toolbar import MDTopAppBar
 
 
@@ -35,5 +36,5 @@ class MD50spIconButton(MDIconButton):
     pass
 
 
-class MDNoHeightRecycleView(MDRecycleView):
+class MDDumbLabel(MDLabel):
     pass

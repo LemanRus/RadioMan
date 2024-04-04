@@ -97,7 +97,8 @@
 
 <SMDResistorsMarkingScreen>:
     name: "smd_resistors_marking_screen"
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - smd_resistors_top_bar.height) / root.height}
 
         MDGridScreen:

@@ -45,5 +45,8 @@
     pos_hint: {"center_y": 0.5}
 
 
-<MDNoHeightRecycleView>:
-    size_hint_y: (root.height - sp(60)) / root.height
+<MDDumbLabel>:
+    text: "Этот раздел в процессе наполнения и скоро появится!"
+    size_hint_y: None
+    size: self.texture_size
+    markup: True

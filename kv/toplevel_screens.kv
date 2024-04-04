@@ -42,7 +42,8 @@
     name: "markings_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
 
         MDPaddedList:
@@ -75,7 +76,8 @@
 <CalculationsScreen>:
     name: "calculations_screen"
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - calculations_top_bar.height) / root.height}
 
         MDPaddedList:
@@ -150,7 +152,8 @@
     name: "handbook_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - handbook_top_bar.height) / root.height}
 
         MDPaddedList:
@@ -225,7 +228,8 @@
     name: "help_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - help_top_bar.height) / root.height}
 
         MDPaddedList:

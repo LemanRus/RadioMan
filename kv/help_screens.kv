@@ -2,12 +2,13 @@
     name: "how_to_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - how_to_top_bar.height) / root.height}
 
         MDPaddedList:
 
-            MDLabel:
+            MDDumbLabel:
                 text:
                     """
                     Пользоваться приложением достаточно просто.
@@ -20,9 +21,6 @@
                     \n
                     Там, где это возможно, расчёт производится автоматически. Если результат не отобразился - нужно нажать кнопку "Рассчитать".
                     """
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
 
     MDBackTopBar:
         id: how_to_top_bar
@@ -33,12 +31,13 @@
     name: "about_screen"
     md_bg_color: app.theme_cls.bg_dark
 
-    MDNoHeightRecycleView:
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - about_top_bar.height) / root.height}
 
         MDPaddedList:
 
-            MDLabel:
+            MDDumbLabel:
                 text:
                     """
                     Идея программы родилась вместе с тем, как я увлёкся радиолюбительством.
@@ -46,31 +45,22 @@
                     \n
                     Пожелания и отзывы можно направить по почте [u][ref=mailto]electronics@hand-made-tlt.ru[/ref][/u].
                     """
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
                 on_ref_press: root.mailto()
 
-            MDLabel:
+            MDDumbLabel:
                 text:
                     """
                     [u][ref=git]Исходный код[/ref][/u]
                     """
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
                 on_ref_press: root.git()
                 halign: "center"
 
-            MDLabel:
+            MDDumbLabel:
                 text:
                     """
                     Приложение доступно абсолютно безвозмездно.
                     Но при желании вы можете [u][ref=pay]поддержать автора[/ref][/u].
                     """
-                size_hint_y: None
-                size: self.texture_size
-                markup: True
                 on_ref_press: root.pay()
 
     MDTopAppBar:
