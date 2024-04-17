@@ -4,23 +4,33 @@ class E24Nominals:
 
     @staticmethod
     def calculate_standard_resistor(resistance, go_up: bool):
-        res = resistance
-        while res >= 10:
-            res /= 10
-        list_of_diffs = [abs(res - x) for x in E24Nominals.E24]
-        result_index = list_of_diffs.index(min(list_of_diffs))
-        interact = resistance / E24Nominals.E24[result_index]
-        power = 0
-        while True:
-            if interact < 9:
-                break
-            power += 1
-            interact /= 10
-        e24_result = E24Nominals.E24[result_index] * 10 ** power
-        if go_up:
-            if e24_result < resistance:
-                if result_index != len(E24Nominals.E24) - 1:
-                    e24_result = E24Nominals.E24[result_index + 1] * 10 ** power
-                else:
-                    e24_result = E24Nominals.E24[0] * 10 ** (power + 1)
+        if resistance >= 1:
+            res = resistance
+            while res >= 10:
+                res /= 10
+            list_of_diffs = [abs(res - x) for x in E24Nominals.E24]
+            result_index = list_of_diffs.index(min(list_of_diffs))
+            interact = resistance / E24Nominals.E24[result_index]
+            power = 0
+            while True:
+                if interact < 9:
+                    break
+                power += 1
+                interact /= 10
+            e24_result = E24Nominals.E24[result_index] * 10 ** power
+            if go_up:
+                if e24_result < resistance:
+                    if result_index != len(E24Nominals.E24) - 1:
+                        e24_result = E24Nominals.E24[result_index + 1] * 10 ** power
+                    else:
+                        e24_result = E24Nominals.E24[0] * 10 ** (power + 1)
+        else:
+            power = 0
+            while resistance < 1:
+                resistance *= 10
+                power += 1
+            list_of_difs = [abs(resistance - x) for x in E24Nominals.E24]
+            result_index = list_of_difs.index(min(list_of_difs))
+
+            e24_result = E24Nominals.E24[result_index] * 10 ** -power
         return e24_result
