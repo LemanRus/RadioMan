@@ -10,6 +10,7 @@
 
 <CalculationsScreenManager>:
     CalculationsScreen:
+    ConverterCalculationScreen:
     LEDResistorCalculationScreen:
     InductorCalculationSelectScreen:
     InductorCalculateInductionScreen:
@@ -81,6 +82,16 @@
         pos_hint: {"top": (root.height - calculations_top_bar.height) / root.height}
 
         MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "converter_calculation_screen"
+
+                MD50spIconButton:
+                    icon: "media/converter.png"
+                    on_release: root.parent.current = "converter_calculation_screen"
+
+                MDShortenLabel:
+                    text: "Конвертер величин"
 
             MDIconCard:
                 on_release: root.parent.current = "led_resistor_calculation_screen"

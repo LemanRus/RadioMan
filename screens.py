@@ -405,6 +405,63 @@ class CalculationsScreen(MDScreen):
     pass
 
 
+class ConverterCalculationScreen(MDScreen):
+    def build_menu(self):
+        self.build_menu_from()
+        self.build_menu_to()
+
+    def build_menu_from(self, *args, **kwargs):
+        self.menu_items = [{"text": "3",
+                            "on_release": lambda x="3": self.set_item_from(x),
+                            },
+                           {"text": "4",
+                            "on_release": lambda x="4": self.set_item_from(x),
+                            },
+                           {"text": "5",
+                            "on_release": lambda x="5": self.set_item_from(x),
+                            },
+                           {"text": "6",
+                            "on_release": lambda x="6": self.set_item_from(x),
+                            }, ]
+
+        self.menu_from = MDDropdownMenu(
+            caller=self.ids.convert_from,
+            items=self.menu_items,
+            width=dp(101),
+        )
+
+    def set_item_from(self, text_item):
+        self.ids.convert_from.text = text_item
+        self.menu_from.dismiss()
+
+    def build_menu_to(self, *args, **kwargs):
+        self.menu_items = [{"text": "3",
+                            "on_release": lambda x="3": self.set_item_to(x),
+                            },
+                           {"text": "4",
+                            "on_release": lambda x="4": self.set_item_to(x),
+                            },
+                           {"text": "5",
+                            "on_release": lambda x="5": self.set_item_to(x),
+                            },
+                           {"text": "6",
+                            "on_release": lambda x="6": self.set_item_to(x),
+                            }, ]
+
+        self.menu_to = MDDropdownMenu(
+            caller=self.ids.convert_from,
+            items=self.menu_items,
+            width=dp(101),
+        )
+
+    def set_item_to(self, text_item):
+        self.ids.convert_to.text = text_item
+        self.menu_to.dismiss()
+
+    def calculate(self):
+        self.ids.convert_result.text = "Ready"
+
+
 class LEDResistorCalculationScreen(MDScreen):
     diodes = {'3 мм зелёный': (2.3, 20), '3 мм красный': (1.9, 20), '3 мм жёлтый': (2.1, 20), '3 мм синий': (2.9, 20),
               '5 мм зелёный': (2.3, 20), '5 мм красный': (1.9, 20), '5 мм жёлтый': (2.1, 20), '5 мм синий': (3.6, 75),
