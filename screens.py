@@ -4,12 +4,13 @@ import weakref
 import webbrowser
 
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.metrics import dp, sp
 from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty, NumericProperty
 from kivy.uix.button import Button
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.button import MDIconButton, MDFlatButton, MDRectangleFlatIconButton
+from kivymd.uix.button import MDIconButton, MDFlatButton, MDRectangleFlatIconButton, MDRaisedButton
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.menu import MDDropdownMenu
@@ -406,23 +407,23 @@ class CalculationsScreen(MDScreen):
 
 
 class ConverterCalculationScreen(MDScreen):
+    from_to = {"милдюйм": 0.001, "дюйммил": 1000, "дюймсм": 2.54, "смдюйм": 0.3937}
+
     def build_menu(self):
         self.build_menu_from()
         self.build_menu_to()
 
     def build_menu_from(self, *args, **kwargs):
-        self.menu_items = [{"text": "3",
-                            "on_release": lambda x="3": self.set_item_from(x),
+        self.menu_items = [{"text": "мил",
+                            "on_release": lambda x="мил": self.set_item_from(x),
                             },
-                           {"text": "4",
-                            "on_release": lambda x="4": self.set_item_from(x),
+                           {"text": "дюйм",
+                            "on_release": lambda x="дюйм": self.set_item_from(x),
                             },
-                           {"text": "5",
-                            "on_release": lambda x="5": self.set_item_from(x),
+                           {"text": "см",
+                            "on_release": lambda x="см": self.set_item_from(x),
                             },
-                           {"text": "6",
-                            "on_release": lambda x="6": self.set_item_from(x),
-                            }, ]
+                           ]
 
         self.menu_from = MDDropdownMenu(
             caller=self.ids.convert_from,
@@ -430,23 +431,27 @@ class ConverterCalculationScreen(MDScreen):
             width=dp(101),
         )
 
+    def set_but_width(self, *args):
+        self.ids.convert_from.width = self.width / 4
+        self.ids.convert_to.width = self.width / 4
+
     def set_item_from(self, text_item):
         self.ids.convert_from.text = text_item
+        Clock.schedule_once(self.set_but_width)
         self.menu_from.dismiss()
+        self.convert(self.ids.convert_from_input.text, self.ids.convert_from.text, self.ids.convert_to.text)
 
     def build_menu_to(self, *args, **kwargs):
-        self.menu_items = [{"text": "3",
-                            "on_release": lambda x="3": self.set_item_to(x),
+        self.menu_items = [{"text": "мил",
+                            "on_release": lambda x="мил": self.set_item_to(x),
                             },
-                           {"text": "4",
-                            "on_release": lambda x="4": self.set_item_to(x),
+                           {"text": "дюйм",
+                            "on_release": lambda x="дюйм": self.set_item_to(x),
                             },
-                           {"text": "5",
-                            "on_release": lambda x="5": self.set_item_to(x),
+                           {"text": "см",
+                            "on_release": lambda x="см": self.set_item_to(x),
                             },
-                           {"text": "6",
-                            "on_release": lambda x="6": self.set_item_to(x),
-                            }, ]
+                           ]
 
         self.menu_to = MDDropdownMenu(
             caller=self.ids.convert_from,
@@ -456,10 +461,23 @@ class ConverterCalculationScreen(MDScreen):
 
     def set_item_to(self, text_item):
         self.ids.convert_to.text = text_item
+        Clock.schedule_once(self.set_but_width)
         self.menu_to.dismiss()
+        self.convert(self.ids.convert_from_input.text, self.ids.convert_from.text, self.ids.convert_to.text)
 
-    def calculate(self):
-        self.ids.convert_result.text = "Ready"
+    def convert(self, convert_from_val, convert_from_unit, convert_to_unit):
+        try:
+            if convert_from_unit == convert_to_unit:
+                self.ids.convert_to_result.text = str(float(convert_from_val))
+            else:
+                direction = convert_from_unit + convert_to_unit
+                if direction in self.from_to.keys():
+                    result = float(convert_from_val) * self.from_to[direction]
+                    self.ids.convert_to_result.text = str(result)
+                else:
+                    self.ids.convert_to_result.text = "Непереводимые величины"
+        except ValueError:
+            self.ids.convert_to_result.text = "Неверный ввод!"
 
 
 class LEDResistorCalculationScreen(MDScreen):
