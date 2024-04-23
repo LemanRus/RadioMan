@@ -407,7 +407,10 @@ class CalculationsScreen(MDScreen):
 
 
 class ConverterCalculationScreen(MDScreen):
-    from_to = {"милдюйм": 0.001, "дюйммил": 1000, "дюймсм": 2.54, "смдюйм": 0.3937}
+    from_to = {"милдюйм": 0.001, "дюйммил": 1000, "дюймсм": 2.54, "смдюйм": 0.3937007874, "сммил": 393.7007874016,
+               "милсм": 0.00254, "сммм": 10, "ммсм": 0.1, "дюйммм": 25.4, "ммдюйм": 0.0393700787, "милмм": 0.0254,
+               "Ваттэрг/с": 10000000, "эрг/сВатт": 0.0000001,
+               }
 
     def build_menu(self):
         self.build_menu_from()
@@ -473,7 +476,7 @@ class ConverterCalculationScreen(MDScreen):
                 direction = convert_from_unit + convert_to_unit
                 if direction in self.from_to.keys():
                     result = float(convert_from_val) * self.from_to[direction]
-                    self.ids.convert_to_result.text = str(result)
+                    self.ids.convert_to_result.text = "{:g}".format(result)
                 else:
                     self.ids.convert_to_result.text = "Непереводимые величины"
         except ValueError:
