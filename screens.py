@@ -409,7 +409,8 @@ class CalculationsScreen(MDScreen):
 class ConverterCalculationScreen(MDScreen):
     from_to = {"милдюйм": 0.001, "дюйммил": 1000, "дюймсм": 2.54, "смдюйм": 0.3937007874, "сммил": 393.7007874016,
                "милсм": 0.00254, "сммм": 10, "ммсм": 0.1, "дюйммм": 25.4, "ммдюйм": 0.0393700787, "милмм": 0.0254,
-               "Ваттэрг/с": 10000000, "эрг/сВатт": 0.0000001,
+               "Ваттэрг/с": 10000000, "эрг/сВатт": 0.0000001, "нФпФ": 1000, "пФнФ": 0.001, "нФмкФ": 0.001, "мкФнФ": 1000,
+               "пФмкФ": 0.000001, "мкФпФ": 1000000
                }
 
     def build_menu(self):
@@ -425,6 +426,24 @@ class ConverterCalculationScreen(MDScreen):
                             },
                            {"text": "см",
                             "on_release": lambda x="см": self.set_item_from(x),
+                            },
+                           {"text": "мм",
+                            "on_release": lambda x="мм": self.set_item_from(x),
+                            },
+                           {"text": "Ватт",
+                            "on_release": lambda x="Ватт": self.set_item_from(x),
+                            },
+                           {"text": "эрг/с",
+                            "on_release": lambda x="эрг/с": self.set_item_from(x),
+                            },
+                           {"text": "пФ",
+                            "on_release": lambda x="пФ": self.set_item_from(x),
+                            },
+                           {"text": "нФ",
+                            "on_release": lambda x="нФ": self.set_item_from(x),
+                            },
+                           {"text": "мкФ",
+                            "on_release": lambda x="мкФ": self.set_item_from(x),
                             },
                            ]
 
@@ -453,6 +472,24 @@ class ConverterCalculationScreen(MDScreen):
                             },
                            {"text": "см",
                             "on_release": lambda x="см": self.set_item_to(x),
+                            },
+                           {"text": "мм",
+                            "on_release": lambda x="мм": self.set_item_to(x),
+                            },
+                           {"text": "Ватт",
+                            "on_release": lambda x="Ватт": self.set_item_to(x),
+                            },
+                           {"text": "эрг/с",
+                            "on_release": lambda x="эрг/с": self.set_item_to(x),
+                            },
+                           {"text": "пФ",
+                            "on_release": lambda x="пФ": self.set_item_to(x),
+                            },
+                           {"text": "нФ",
+                            "on_release": lambda x="нФ": self.set_item_to(x),
+                            },
+                           {"text": "мкФ",
+                            "on_release": lambda x="мкФ": self.set_item_to(x),
                             },
                            ]
 
