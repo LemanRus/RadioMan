@@ -1,4 +1,5 @@
 import os
+import asyncio
 
 from kivy.uix.screenmanager import FadeTransition, SlideTransition
 from kivymd.app import MDApp
@@ -38,17 +39,36 @@ backs = {"resistors_markings_select_screen": "markings_screen",
          }
 
 
+import threading
+
+def load_kv_file(file_path):
+    Builder.load_file(file_path)
+
 class RadioMan(MDApp):
     def build(self):
         Window.bind(on_keyboard=self.android_back_click)
         Window.softinput_mode = 'below_target'
         self.theme_cls.primary_palette = "DeepPurple"
-        Builder.load_file("kv/misc.kv")
-        Builder.load_file("kv/toplevel_screens.kv")
-        Builder.load_file("kv/markings_screens.kv")
-        Builder.load_file("kv/calculations_screens.kv")
-        Builder.load_file("kv/help_screens.kv")
-        Builder.load_file("kv/handbook_screens.kv")
+
+        # Создаем отдельный поток для каждого загрузочного файла KV
+        kv_files = [
+            "kv/misc.kv",
+            "kv/toplevel_screens.kv",
+            "kv/markings_screens.kv",
+            "kv/calculations_screens.kv",
+            "kv/help_screens.kv",
+            "kv/handbook_screens.kv"
+        ]
+        threads = []
+        for file_path in kv_files:
+            thread = threading.Thread(target=load_kv_file, args=(file_path,))
+            threads.append(thread)
+            thread.start()
+
+        # Ожидаем завершения всех потоков
+        for thread in threads:
+            thread.join()
+
         return Builder.load_file("kv/main.kv")
 
     def back_to_screen(self):
