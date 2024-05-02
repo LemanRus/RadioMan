@@ -41,7 +41,7 @@
 
 <MarkingsScreen>:
     name: "Маркировки"
-#    md_bg_color: app.theme_cls.bg_dark
+    md_bg_color: app.theme_cls.surfaceColor
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -70,8 +70,10 @@
                     text: "Конденсаторы"
 
     MDNoBackTopBar:
+#        md_bg_color: app.theme_cls.inversePrimaryColor
         id: markings_top_bar
         MDTopAppBarTitle:
+            md_bg_color: app.theme_cls.secondaryColor
             text: "Маркировки"
             pos_hint: {"center_x": .5}
 

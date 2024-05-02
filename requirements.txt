@@ -2,5 +2,5 @@ buildozer==1.5.0
 Kivy==2.3.0
 kivymd@https://github.com/kivymd/KivyMD/archive/master.zip
 pillow==10.3.0
-Cython==3.0.9
+Cython==3.0.10
 

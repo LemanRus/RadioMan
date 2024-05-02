@@ -50,7 +50,8 @@ class RadioMan(MDApp):
     def build(self):
         Window.bind(on_keyboard=self.android_back_click)
         Window.softinput_mode = 'below_target'
-        self.theme_cls.primary_palette = "Darkviolet"
+        self.theme_cls.primary_palette = "Magenta"
+        self.theme_cls.inversePrimaryColor
 
         # Создаем список корутин для загрузки каждого файла KV асинхронно
         kv_files = []
