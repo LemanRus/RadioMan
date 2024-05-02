@@ -1,0 +1,117 @@
+<LEDResistorCalculationScreen>:
+    name: "led_resistor_calculation_screen"
+
+    MDScrollView:
+        on_parent: root.build_menu()
+        pos_hint: {"top": (root.height - led_resistor_top_bar.height) / root.height}
+        size_hint_y: (root.height - led_resistor_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Напряжение источника питания, В:"
+
+                MDCentered06TextField:
+                    id: led_resistor_source_voltage_input
+                    on_text_validate: led_resistor_led_voltage_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Напряжение питания светодиода, В:"
+
+                MDCentered06TextField:
+                    id: led_resistor_led_voltage_input
+                    on_text_validate: led_resistor_led_current_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Ток светодиода, мА:"
+
+                MDCentered06TextField:
+                    id: led_resistor_led_current_input
+                    on_text_validate: led_resistor_led_qty_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Количество светодиодов:"
+
+                MDCentered06TextField:
+                    id: led_resistor_led_qty_input
+                    on_text_validate:
+                        root.led_calculate(led_resistor_source_voltage_input.text, \
+                        led_resistor_led_voltage_input.text, \
+                        led_resistor_led_current_input.text, \
+                        self.text)
+
+#                MDCard:
+#                    size_hint_x: 0.4
+#                    on_parent: root.build_menu()
+#                    on_release: root.menu.open()
+#                    id: resistor_marking_menu
+#                    MDLabel:
+#                        id: resistor_marking_menu_name
+#                        text: "Выберите"
+#                        on_text: led_vol_input.text = str(root.diodes[self.text][0])
+#                        on_text: led_cur_input.text = str(root.diodes[self.text][1])
+#                    BoxLayout:
+#                        size_hint_x: 0.2
+#                        MDIcon:
+#                            icon: "chevron-down"
+#                            pos_hint: {"center_x": .5, "center_y": .5}
+#
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_led_resistor.height
+
+                MDRaisedCenteredButton:
+                    id: calc_led_resistor
+                    text: "Рассчитать"
+                    on_release:
+                        root.led_calculate(led_resistor_source_voltage_input.text, \
+                        led_resistor_led_voltage_input.text, \
+                        led_resistor_led_current_input.text, \
+                        led_resistor_led_qty_input.text)
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Расчётное сопротивление:"
+
+                    MDTextLabel:
+                        id: led_result
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Стандартное значение:"
+
+                    MDTextLabel:
+                        id: led_e24
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Рассеиваемая на резисторе мощность:"
+
+                    MDTextLabel:
+                        id: led_res_power
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Потребляемый ток:"
+
+                    MDTextLabel:
+                        id: led_cur
+
+    MDBackTopBar:
+        id: led_resistor_top_bar
+        title: "Расчёт резисторов для светодиодов"

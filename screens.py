@@ -10,7 +10,7 @@ from kivy.metrics import dp, sp
 from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty, NumericProperty
 from kivy.uix.button import Button
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.button import MDIconButton, MDFlatButton, MDRectangleFlatIconButton, MDRaisedButton
+from kivymd.uix.button import MDIconButton, MDButton
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.menu import MDDropdownMenu

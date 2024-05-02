@@ -1,0 +1,32 @@
+<InductorCalculationSelectScreen>:
+    name: "inductor_calculation_select_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - inductor_select_top_bar.height) / root.height}
+        size_hint_y: (root.height - inductor_select_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "inductor_calculate_induction_screen"
+
+                MD50spIconButton:
+                    icon: "media/th_resistor.png"
+                    on_release: root.parent.current = "inductor_calculate_induction_screen"
+
+                MDShortenLabel:
+                    text: "Расчёт индуктивности"
+
+            MDIconCard:
+                on_release: root.parent.current = "inductor_calculate_size_screen"
+
+                MD50spIconButton:
+                    icon: "media/smd_resistor.png"
+                    on_release: root.parent.current = "inductor_calculate_size_screen"
+
+                MDShortenLabel:
+                    text: "Расчёт числа витков и размера"
+
+    MDBackTopBar:
+        id: inductor_select_top_bar
+        title: "Расчёт катушки индуктивности"

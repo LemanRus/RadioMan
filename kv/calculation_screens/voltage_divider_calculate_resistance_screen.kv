@@ -1,0 +1,82 @@
+<VoltageDividerCalculateResistanceScreen>:
+    name: "voltage_divider_calculate_resistance_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - voltage_divider_resistance_top_bar.height) / root.height}
+        size_hint_y: (root.height - voltage_divider_resistance_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Напряжение источника питания, В"
+
+                MDCentered06TextField:
+                    id: v_in_r
+                    on_text_validate: v_out_r.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Выходное напряжение, В:"
+
+                MDCentered06TextField:
+                    id: v_out_r
+                    on_text_validate: r1_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Сопротивление R1, Ом:"
+
+                MDCentered06TextField:
+                    id: r1_input
+                    on_text_validate: root.divider_calculate_r(v_in_r.text, v_out_r.text, r1_input.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_divider_resistance.height
+
+                MDRaisedCenteredButton:
+                    id: calc_divider_resistance
+                    text: "Рассчитать"
+                    on_release: root.divider_calculate_r(v_in_r.text, v_out_r.text, r1_input.text)
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Сопротивление R2, Ом:"
+
+                    MDTextLabel:
+                        id: r2_calculated
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Коэффициент делителя:"
+
+                    MDTextLabel:
+                        id: divider_rate_r
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Резистор стандартного ряда, Ом:"
+
+                    MDTextLabel:
+                        id: r2_e24
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Выходное напряжение с резистором из стандартного ряда:"
+
+                    MDTextLabel:
+                        id: vout_e24
+
+    MDBackTopBar:
+        id: voltage_divider_resistance_top_bar
+        title: "Делитель напряжения"

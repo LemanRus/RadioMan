@@ -1,0 +1,103 @@
+<LMRegulatorCalculateVoltageScreen>:
+    name: "lm_regulator_voltage_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - lm_regulator_voltage_top_bar.height) / root.height}
+        size_hint_y: (root.height - lm_regulator_voltage_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Выходное напряжение, В"
+
+                MDCentered06TextField:
+                    id: lm317_vout_input
+                    on_text_validate: lm317_r1_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Сопротивление R1, Ом:"
+
+                MDCentered06TextField:
+                    id: lm317_r1_input
+                    on_text_validate: lm317_iout_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Ток нагрузки, А:"
+
+                MDCentered06TextField:
+                    id: lm317_iout_input
+                    on_text_validate: lm317_vin_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Входное напряжение, В:"
+
+                MDCentered06TextField:
+                    id: lm317_vin_input
+                    on_text_validate:
+                        root.calculate_lm317_voltage(lm317_vout_input.text, \
+                        lm317_r1_input.text, lm317_iout_input.text, lm317_vin_input.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: lm_calc_voltage.height
+
+                MDRaisedCenteredButton:
+                    id: lm_calc_voltage
+                    text: "Рассчитать"
+                    on_release:
+                        root.calculate_lm317_voltage(lm317_vout_input.text, \
+                        lm317_r1_input.text, lm317_iout_input.text, lm317_vin_input.text)
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Сопротивление R2, Ом:"
+
+                    MDTextLabel:
+                        id: lm317_r2_output
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Стандартное сопротивление R2, Ом:"
+
+                    MDTextLabel:
+                        id: lm317_r2_corrected_output
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Выходное напряжение, В:"
+
+                    MDTextLabel:
+                        id: lm317_vout_output
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Рекомендуемый тип стабилизатора:"
+
+                    MDTextLabel:
+                        id: lm317_recommend_output
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Рассеиваемая мощность:"
+
+                    MDTextLabel:
+                        id: lm317_power_output
+
+    MDBackTopBar:
+        id: lm_regulator_voltage_top_bar
+        title: "LM317/LM350/LM338 - стабилизатор напряжения"

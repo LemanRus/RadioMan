@@ -48,7 +48,7 @@
                 MDLabel:
                     text: "Выберите количество полос:"
 
-                MDRaisedButton:
+                MDButton:
                     id: bands_select_menu
                     text: "3"
                     width: root.width / 4
@@ -142,7 +142,7 @@
                     size_hint_y: None
                     size: self.texture_size
 
-                MDRaisedButton:
+                MDButton:
                     text: "Рассчитать"
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None
@@ -155,7 +155,7 @@
 
 <CapacitorsMarkingSelectScreen>:
     name: "capacitors_marking_select_screen"
-    md_bg_color: app.theme_cls.bg_dark
+#    md_bg_color: app.theme_cls.bg_dark
 
     MDRecycleView:
         pos_hint: {"top": (root.height - capacitors_markings_top_bar.height) / root.height}
@@ -234,7 +234,7 @@
                     size_hint_y: None
                     size: self.texture_size
 
-                MDRaisedButton:
+                MDButton:
                     text: "Рассчитать"
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None
@@ -293,7 +293,7 @@
                     size_hint_y: None
                     size: self.texture_size
 
-                MDRaisedButton:
+                MDButton:
                     text: "Рассчитать"
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None

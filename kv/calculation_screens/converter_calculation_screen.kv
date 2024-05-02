@@ -1,0 +1,59 @@
+<ConverterCalculationScreen>:
+    name: "converter_calculation_screen"
+
+    MDScrollView:
+        on_parent: root.build_menu()
+        pos_hint: {"top": (root.height - converter_top_bar.height) / root.height}
+        size_hint_y: (root.height - converter_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Что переводим:"
+
+                MDCentered06TextField:
+                    id: convert_from_input
+                    on_text_validate: on_release: root.convert(convert_from_input.text, convert_from.text, convert_to.text)
+
+                MDButton:
+                    id: convert_from
+                    text: "мил"
+                    pos_hint: {"center_y": 0.5}
+                    width: root.width / 4
+                    on_release: root.menu_from.open()
+
+            MDPaddedCard:
+                height: self.minimum_height * 1.75
+
+                MDLabel:
+                    text: "Во что переводим:"
+
+                MDLabel:
+                    id: convert_to_result
+                    size_hint: None, None
+                    height: self.font_size
+                    width: root.width / 4
+                    halign: "right"
+                    pos_hint: {"center_y": 0.5}
+
+                MDButton:
+                    id: convert_to
+                    text: "дюйм"
+                    width: root.width / 4
+                    pos_hint: {"center_y": 0.5}
+                    on_release: root.menu_to.open()
+#
+#            MDRelativeLayout:
+#                size_hint_y: None
+#                height: calc_convert.height
+#
+#                MDRaisedCenteredButton:
+#                    id: calc_convert
+#                    text: "Рассчитать"
+#                    on_release: root.convert(convert_from_input.text, convert_from.text, convert_to.text)
+
+    MDBackTopBar:
+        id: converter_top_bar
+        title: "Конвертер величин"

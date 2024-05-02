@@ -1,0 +1,62 @@
+<InductorCalculateInductionScreen>:
+    name: "inductor_calculate_induction_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - inductor_induction_top_bar.height) / root.height}
+        size_hint_y: (root.height - inductor_induction_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Число витков:"
+
+                MDCentered06TextField:
+                    id: inductor_turns_input
+                    on_text_validate: inductor_diameter_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Диаметр каркаса, мм:"
+
+                MDCentered06TextField:
+                    id: inductor_diameter_input
+                    on_text_validate: inductor_length_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Длина намотки, мм:"
+
+                MDCentered06TextField:
+                    id: inductor_length_input
+                    on_text_validate:
+                        root.inductor_calculate_henrys(inductor_turns_input.text, \
+                        inductor_diameter_input.text, inductor_length_input.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_led_resistor.height
+
+                MDRaisedCenteredButton:
+                    id: calc_led_resistor
+                    text: "Рассчитать"
+                    on_release:
+                        root.inductor_calculate_henrys(inductor_turns_input.text, \
+                        inductor_diameter_input.text, inductor_length_input.text)
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Расчётная индуктивность:"
+
+                    MDTextLabel:
+                        id: induction
+
+    MDBackTopBar:
+        id: inductor_induction_top_bar
+        title: "Расчёт индуктивности"

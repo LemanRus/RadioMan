@@ -1,0 +1,49 @@
+<SerialCapacitorCalculateScreen>:
+    name: "serial_capacitor_calculate_screen"
+    on_pre_enter: self.reset()
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - serial_capacitor_top_bar.height) / root.height}
+        size_hint_y: (root.height - serial_capacitor_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedList:
+                id: ser_cap_box
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: add_serial_capacitor_btn.height
+
+                MDButton:
+                    id: add_serial_capacitor_btn
+                    text: "Добавить конденсатор"
+                    size_hint: None, None
+                    pos_hint: {"left": 0}
+                    on_release: root.add_capacitor()
+
+                MDRaisedCenteredButton:
+                    id: reset_serial_capacitor_btn
+                    text: "Очистить"
+                    on_release: root.reset()
+
+                MDButton:
+                    id: calc_serial_capacitor_btn
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"right": 1}
+                    on_release: root.ser_cap_calculate()
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Ёмкость:"
+
+                    MDTextLabel:
+                        id: ser_cap_output
+
+    MDBackTopBar:
+        id: serial_capacitor_top_bar
+        title: "Последовательное соединение конденсаторов"

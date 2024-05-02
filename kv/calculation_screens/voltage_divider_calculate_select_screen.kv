@@ -1,0 +1,32 @@
+<VoltageDividerCalculateSelectScreen>:
+    name: "voltage_divider_calculate_select_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - voltage_divider_top_bar.height) / root.height}
+        size_hint_y: (root.height - voltage_divider_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "voltage_divider_calculate_voltage_screen"
+
+                MD50spIconButton:
+                    icon: "media/th_resistor.png"
+                    on_release: root.parent.current = "voltage_divider_calculate_voltage_screen"
+
+                MDShortenLabel:
+                    text: "Расчёт выходного напряжения"
+
+            MDIconCard:
+                on_release: root.parent.current = "voltage_divider_calculate_resistance_screen"
+
+                MD50spIconButton:
+                    icon: "media/smd_resistor.png"
+                    on_release: root.parent.current = "voltage_divider_calculate_resistance_screen"
+
+                MDShortenLabel:
+                    text: "Расчёт сопротивления"
+
+    MDBackTopBar:
+        id: voltage_divider_top_bar
+        title: "Делитель напряжения"

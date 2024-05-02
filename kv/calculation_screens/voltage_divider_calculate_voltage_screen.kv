@@ -1,0 +1,66 @@
+<VoltageDividerCalculateVoltageScreen>:
+    name: "voltage_divider_calculate_voltage_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - voltage_divider_voltage_top_bar.height) / root.height}
+        size_hint_y: (root.height - voltage_divider_voltage_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Напряжение источника питания, В"
+
+                MDCentered06TextField:
+                    id: v_in
+                    on_text_validate: r1.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Сопротивление R1, Ом:"
+
+                MDCentered06TextField:
+                    id: r1
+                    on_text_validate: r2.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Сопротивление R2, Ом:"
+
+                MDCentered06TextField:
+                    id: r2
+                    on_text_validate: root.divider_calculate_vout(v_in.text, r1.text, r2.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_divider_voltage.height
+
+                MDRaisedCenteredButton:
+                    id: calc_divider_voltage
+                    text: "Рассчитать"
+                    on_release: root.divider_calculate_vout(v_in.text, r1.text, r2.text)
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Выходное напряжение, В:"
+
+                    MDTextLabel:
+                        id: v_out
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Коэффициент делителя:"
+
+                    MDTextLabel:
+                        id: divider_rate
+
+    MDBackTopBar:
+        id: voltage_divider_voltage_top_bar
+        title: "Делитель напряжения"

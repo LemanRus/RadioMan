@@ -1,0 +1,86 @@
+<InductorCalculateSizeScreen>:
+    name: "inductor_calculate_size_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - inductor_size_top_bar.height) / root.height}
+        size_hint_y: (root.height - inductor_size_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Индуктивность, мкГн:"
+
+                MDCentered06TextField:
+                    id: induction_input
+                    on_text_validate: inductor_diameter_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Диаметр каркаса, мм:"
+
+                MDCentered06TextField:
+                    id: inductor_diameter_input
+                    on_text_validate: inductor_wire_diameter_input.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Диаметр провода, мм:"
+
+                MDCentered06TextField:
+                    id: inductor_wire_diameter_input
+                    on_text_validate:
+                        root.inductor_calculate_turns(induction_input.text, \
+                        inductor_diameter_input.text, inductor_wire_diameter_input.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: calc_led_resistor.height
+
+                MDRaisedCenteredButton:
+                    id: calc_led_resistor
+                    text: "Рассчитать"
+                    on_release:
+                        root.inductor_calculate_turns(induction_input.text, \
+                        inductor_diameter_input.text, inductor_wire_diameter_input.text)
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Расчётное число витков:"
+
+                    MDTextLabel:
+                        id: inductor_turns
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Целое число витков:"
+
+                    MDTextLabel:
+                        id: inductor_turns_int
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Расчётная длина намотки, мм:"
+
+                    MDTextLabel:
+                        id: inductor_length
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Длина намотки при целом числе витков, мм:"
+
+                    MDTextLabel:
+                        id: inductor_length_int
+
+    MDBackTopBar:
+        id: inductor_size_top_bar
+        title: "Расчёт числа витков и размера"

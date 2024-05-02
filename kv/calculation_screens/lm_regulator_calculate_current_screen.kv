@@ -1,0 +1,101 @@
+<LMRegulatorCalculateCurrentScreen>:
+    name: "lm_regulator_current_screen"
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - lm_regulator_current_top_bar.height) / root.height}
+        size_hint_y: (root.height - lm_regulator_current_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Выходной ток, А"
+
+                MDCentered06TextField:
+                    id: lm317_iout_input_cur
+                    on_text_validate: lm317_vout_input_cur.focus = True
+
+            MDPaddedCard:
+
+                MDLabel:
+                    text: "Падение напряжения на нагрузке, В:"
+
+                MDCentered06TextField:
+                    id: lm317_vout_input_cur
+                    on_text_validate:
+                        root.calculate_lm317_current(lm317_iout_input_cur.text, \
+                        lm317_vout_input_cur.text)
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: lm_calc_current.height
+
+                MDRaisedCenteredButton:
+                    id: lm_calc_current
+                    text: "Рассчитать"
+                    on_release:
+                        root.calculate_lm317_current(lm317_iout_input_cur.text, \
+                        lm317_vout_input_cur.text)
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Сопротивление R1, Ом:"
+
+                    MDTextLabel:
+                        id: lm317_r1_output_cur
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Сопротивление R1 из стандартного ряда, Ом:"
+
+                    MDTextLabel:
+                        id: lm317_r1_corrected_output_cur
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Мощность, Вт:"
+
+                    MDTextLabel:
+                        id: lm317_r1_power_output_cur
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Мощность с резистором из стандартного ряда, Вт:"
+
+                    MDTextLabel:
+                        id: lm317_r1_power_corrected_output_cur
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Выходной ток с резистором из стандартного ряда, А:"
+
+                    MDTextLabel:
+                        id: lm317_iout_corrected_output_cur
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Рекомендуемый тип стабилизатора:"
+
+                    MDTextLabel:
+                        id: lm317_recommend_output_cur
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Входное напряжение, не менее, В:"
+
+                    MDTextLabel:
+                        id: lm317_vin_output_cur
+
+    MDBackTopBar:
+        id: lm_regulator_current_top_bar
+        title: "LM317/LM350/LM338 - стабилизатор тока"

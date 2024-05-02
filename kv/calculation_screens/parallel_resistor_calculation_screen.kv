@@ -1,0 +1,49 @@
+<ParallelResistorCalculationScreen>:
+    name: "parallel_resistor_calculation_screen"
+    on_pre_enter: self.reset()
+
+    MDScrollView:
+        pos_hint: {"top": (root.height - parallel_resistor_top_bar.height) / root.height}
+        size_hint_y: (root.height - parallel_resistor_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDPaddedList:
+                id: par_res_box
+
+            MDRelativeLayout:
+                size_hint_y: None
+                height: add_parallel_resistor_btn.height
+
+                MDButton:
+                    id: add_parallel_resistor_btn
+                    text: "Добавить резистор"
+                    size_hint: None, None
+                    pos_hint: {"left": 0}
+                    on_release: root.add_resistor()
+
+                MDRaisedCenteredButton:
+                    id: reset_parallel_resistor_btn
+                    text: "Очистить"
+                    on_release: root.reset()
+
+                MDButton:
+                    id: calc_parallel_resistor_btn
+                    text: "Рассчитать"
+                    size_hint: None, None
+                    pos_hint: {"right": 1}
+                    on_release: root.par_res_calculate()
+
+            MDVerticalCard:
+
+                MDAdaptiveBoxLayout:
+
+                    MDTextLabel:
+                        text: "Сопротивление:"
+
+                    MDTextLabel:
+                        id: par_res_output
+
+    MDBackTopBar:
+        id: parallel_resistor_top_bar
+        title: "Параллельное соединение резисторов"

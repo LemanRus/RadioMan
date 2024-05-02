@@ -40,8 +40,8 @@
 
 
 <MarkingsScreen>:
-    name: "markings_screen"
-    md_bg_color: app.theme_cls.bg_dark
+    name: "Маркировки"
+#    md_bg_color: app.theme_cls.bg_dark
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -71,11 +71,13 @@
 
     MDNoBackTopBar:
         id: markings_top_bar
-        title: "Маркировки"
+        MDTopAppBarTitle:
+            text: "Маркировки"
+            pos_hint: {"center_x": .5}
 
 
 <CalculationsScreen>:
-    name: "calculations_screen"
+    name: "Расчёты"
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -237,7 +239,7 @@
 
 <HelpScreen>:
     name: "help_screen"
-    md_bg_color: app.theme_cls.bg_dark
+#    md_bg_color: app.theme_cls.bg_dark
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height

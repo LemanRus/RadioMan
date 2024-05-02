@@ -5,6 +5,7 @@ from kivy.uix.screenmanager import FadeTransition, SlideTransition
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.core.window import Window
+from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 
 import misc
 import screens
@@ -44,21 +45,18 @@ import threading
 def load_kv_file(file_path):
     Builder.load_file(file_path)
 
+
 class RadioMan(MDApp):
     def build(self):
         Window.bind(on_keyboard=self.android_back_click)
         Window.softinput_mode = 'below_target'
-        self.theme_cls.primary_palette = "DeepPurple"
+        self.theme_cls.primary_palette = "Darkviolet"
 
-        # Создаем отдельный поток для каждого загрузочного файла KV
-        kv_files = [
-            "kv/misc.kv",
-            "kv/toplevel_screens.kv",
-            "kv/markings_screens.kv",
-            "kv/calculations_screens.kv",
-            "kv/help_screens.kv",
-            "kv/handbook_screens.kv"
-        ]
+        # Создаем список корутин для загрузки каждого файла KV асинхронно
+        kv_files = []
+        for path, subdirs, files in os.walk('kv'):
+            for name in files:
+                kv_files.append(os.path.join(path, name))
         threads = []
         for file_path in kv_files:
             thread = threading.Thread(target=load_kv_file, args=(file_path,))
@@ -70,6 +68,15 @@ class RadioMan(MDApp):
             thread.join()
 
         return Builder.load_file("kv/main.kv")
+
+    def on_switch_tabs(
+            self,
+            bar: MDNavigationBar,
+            item: MDNavigationItem,
+            item_icon: str,
+            item_text: str,
+    ):
+        self.root.ids.screen_manager.current = item_text
 
     def back_to_screen(self):
         try:
