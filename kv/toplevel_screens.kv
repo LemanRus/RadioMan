@@ -1,44 +1,3 @@
-<MarkingsScreenManager>:
-    id: msm
-    MarkingsScreen:
-    CapacitorsMarkingSelectScreen:
-    ResistorsMarkingsSelectScreen:
-    THResistorsMarkingScreen:
-    SMDResistorsMarkingScreen:
-    THCapacitorsMarkingScreen:
-    SMDCapacitorsMarkingScreen:
-
-<CalculationsScreenManager>:
-    CalculationsScreen:
-    ConverterCalculationScreen:
-    LEDResistorCalculationScreen:
-    InductorCalculationSelectScreen:
-    InductorCalculateInductionScreen:
-    InductorCalculateSizeScreen:
-    ParallelResistorCalculationScreen:
-    SerialCapacitorCalculateScreen:
-    VoltageDividerCalculateSelectScreen:
-    VoltageDividerCalculateVoltageScreen:
-    VoltageDividerCalculateResistanceScreen:
-    LMRegulatorCalculateSelectScreen:
-    LMRegulatorCalculateVoltageScreen:
-    LMRegulatorCalculateCurrentScreen:
-
-#<HandbookScreenManager>:
-#    HandbookScreen:
-#    TheoryScreen:
-#    SchematicsScreen:
-#    PinoutScreen:
-#    ConnectionsScreen:
-#    ChipsScreen:
-#    LifehacksScreen:
-
-<HelpScreenManager>:
-    HelpScreen:
-    HowToScreeen:
-    AboutScreen:
-
-
 <MarkingsScreen>:
     name: "Маркировки"
     md_bg_color: app.theme_cls.surfaceColor
@@ -164,7 +123,7 @@
 
 
 <HandbookScreen>:
-    name: "handbook_screen"
+    name: "Справочник"
     md_bg_color: app.theme_cls.bg_dark
 
     MDRecycleView:
@@ -240,7 +199,7 @@
 
 
 <HelpScreen>:
-    name: "help_screen"
+    name: "Помощь"
 #    md_bg_color: app.theme_cls.bg_dark
 
     MDRecycleView:

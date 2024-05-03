@@ -10,63 +10,49 @@ from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 import misc
 import screens
 
-backs = {"resistors_markings_select_screen": "markings_screen",
+backs = {"resistors_markings_select_screen": "Маркировки",
          "th_resistors_marking_screen": "resistors_markings_select_screen",
          "smd_resistors_marking_screen": "resistors_markings_select_screen",
-         "capacitors_marking_select_screen": "markings_screen",
+         "capacitors_marking_select_screen": "Маркировки",
          "th_capacitors_marking_screen": "capacitors_marking_select_screen",
          "smd_capacitors_marking_screen": "capacitors_marking_select_screen",
-         "converter_calculation_screen": "calculations_screen",
-         "led_resistor_calculation_screen": "calculations_screen",
-         "inductor_calculation_select_screen": "calculations_screen",
+         "converter_calculation_screen": "Расчёты",
+         "led_resistor_calculation_screen": "Расчёты",
+         "inductor_calculation_select_screen": "Расчёты",
          "inductor_calculate_induction_screen": "inductor_calculation_select_screen",
          "inductor_calculate_size_screen": "inductor_calculation_select_screen",
-         "parallel_resistor_calculation_screen": "calculations_screen",
-         "serial_capacitor_calculate_screen": "calculations_screen",
-         "voltage_divider_calculate_select_screen": "calculations_screen",
+         "parallel_resistor_calculation_screen": "Расчёты",
+         "serial_capacitor_calculate_screen": "Расчёты",
+         "voltage_divider_calculate_select_screen": "Расчёты",
          "voltage_divider_calculate_voltage_screen": "voltage_divider_calculate_select_screen",
          "voltage_divider_calculate_resistance_screen": "voltage_divider_calculate_select_screen",
-         "lm_regulator_calculate_select_screen": "calculations_screen",
+         "lm_regulator_calculate_select_screen": "Расчёты",
          "lm_regulator_voltage_screen": "lm_regulator_calculate_select_screen",
          "lm_regulator_current_screen": "lm_regulator_calculate_select_screen",
-         "theory_screen": "handbook_screen",
-         "schematics_screen": "handbook_screen",
-         "pinout_screen": "handbook_screen",
-         "connections_screen": "handbook_screen",
-         "chips_screen": "handbook_screen",
-         "lifehacks_screen": "handbook_screen",
-         "how_to_screen": "help_screen",
-         "about_screen": "help_screen",
+         "theory_screen": "Справочник",
+         "schematics_screen": "Справочник",
+         "pinout_screen": "Справочник",
+         "connections_screen": "Справочник",
+         "chips_screen": "Справочник",
+         "lifehacks_screen": "Справочник",
+         "how_to_screen": "Помощь",
+         "about_screen": "Помощь",
          }
-
-
-import threading
-
-def load_kv_file(file_path):
-    Builder.load_file(file_path)
 
 
 class RadioMan(MDApp):
     def build(self):
         Window.bind(on_keyboard=self.android_back_click)
         Window.softinput_mode = 'below_target'
-        self.theme_cls.primary_palette = "Magenta"
+        self.theme_cls.primary_palette = "Darkviolet"
         self.theme_cls.inversePrimaryColor
 
-        # Создаем список корутин для загрузки каждого файла KV асинхронно
         kv_files = []
         for path, subdirs, files in os.walk('kv'):
             for name in files:
                 kv_files.append(os.path.join(path, name))
-        threads = []
         for file_path in kv_files:
-            thread = threading.Thread(target=load_kv_file, args=(file_path,))
-            threads.append(thread)
-            thread.start()
-
-        # Ожидаем завершения всех потоков
-        for thread in threads:
-            thread.join()
+            Builder.load_file(file_path)
 
         return Builder.load_file("kv/main.kv")
 
@@ -80,15 +66,10 @@ class RadioMan(MDApp):
         self.root.ids.screen_manager.current = item_text
 
     def back_to_screen(self):
-        try:
-            markings_tab_sm = self.root.children[1].children[0].children[0]
-            markings_tab_sm.transition = SlideTransition(direction='right')
-        except IndexError:
-            pass
-        else:
-            if markings_tab_sm.current in backs:
-                markings_tab_sm.current = backs[markings_tab_sm.current]
-                markings_tab_sm.transition = SlideTransition(direction='left')
+        self.root.ids.screen_manager.transition = SlideTransition(direction='right')
+        if self.root.ids.screen_manager.current in backs:
+            self.root.ids.screen_manager.current = backs[self.root.ids.screen_manager.current]
+        self.root.ids.screen_manager.transition = SlideTransition(direction='left')
 
     def android_back_click(self, window, key, *args):
         if key == 27:
