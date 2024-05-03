@@ -1,6 +1,6 @@
 <MarkingsScreen>:
     name: "Маркировки"
-    md_bg_color: app.theme_cls.surfaceColor
+    md_bg_color: app.theme_cls.backgroundColor
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -11,8 +11,8 @@
             MDIconCard:
                 on_release: root.parent.current = "resistors_markings_select_screen"
 
-                MD50spIconButton:
-                    icon: "media/resistor.png"
+                ImageButton:
+                    source: "media/resistor.png"
                     on_release: root.parent.current = "resistors_markings_select_screen"
 
                 MDShortenLabel:
@@ -21,8 +21,8 @@
             MDIconCard:
                 on_release: root.parent.current = "capacitors_marking_select_screen"
 
-                MD50spIconButton:
-                    icon: "media/capacitor.png"
+                ImageButton:
+                    source: "media/capacitor.png"
                     on_release: root.parent.current = "capacitors_marking_select_screen"
 
                 MDShortenLabel:

@@ -2,32 +2,136 @@
     name: "Помощь"
 #    md_bg_color: app.theme_cls.bg_dark
 
-    MDRecycleView:
-        size_hint_y: (root.height - sp(60)) / root.height
-        pos_hint: {"top": (root.height - help_top_bar.height) / root.height}
+    MDBoxLayout:
+        orientation: "vertical"
 
-        MDPaddedList:
+        MDLabel:
+            text: "primaryColor"
+            md_bg_color: app.theme_cls.primaryColor
 
-            MDIconCard:
-                on_release: root.parent.current = "how_to_screen"
+        MDLabel:
+            text: "secondaryColor"
+            md_bg_color: app.theme_cls.secondaryColor
 
-                MD50spIconButton:
-                    icon: "media/th_resistor.png"
-                    on_release: root.parent.current = "how_to_screen"
+        MDLabel:
+            text: "tertiaryColor"
+            md_bg_color: app.theme_cls.tertiaryColor
 
-                MDShortenLabel:
-                    text: "Как пользоваться"
+        MDLabel:
+            text: "surfaceColor"
+            md_bg_color: app.theme_cls.surfaceColor
 
-            MDIconCard:
-                on_release: root.parent.current = "about_screen"
+        MDLabel:
+            text: "surfaceDimColor"
+            md_bg_color: app.theme_cls.surfaceDimColor
 
-                MD50spIconButton:
-                    icon: "media/smd_resistor.png"
-                    on_release: root.parent.current = "about_screen"
+        MDLabel:
+            text: "surfaceBrightColor"
+            md_bg_color: app.theme_cls.surfaceBrightColor
 
-                MDShortenLabel:
-                    text: "О программе"
+        MDLabel:
+            text: "surfaceContainerLowestColor"
+            md_bg_color: app.theme_cls.surfaceContainerLowestColor
 
-    MDNoBackTopBar:
-        id: help_top_bar
-        title: "Помощь"
+        MDLabel:
+            text: "surfaceContainerLowColor"
+            md_bg_color: app.theme_cls.surfaceContainerLowColor
+
+        MDLabel:
+            text: "surfaceContainerColor"
+            md_bg_color: app.theme_cls.surfaceContainerColor
+
+        MDLabel:
+            text: "surfaceContainerHighColor"
+            md_bg_color: app.theme_cls.surfaceContainerHighColor
+
+        MDLabel:
+            text: "surfaceContainerHighestColor"
+            md_bg_color: app.theme_cls.surfaceContainerHighestColor
+
+        MDLabel:
+            text: "surfaceVariantColor"
+            md_bg_color: app.theme_cls.surfaceVariantColor
+
+        MDLabel:
+            text: "surfaceTintColor"
+            md_bg_color: app.theme_cls.surfaceTintColor
+
+        MDLabel:
+            text: "inverseSurfaceColor"
+            md_bg_color: app.theme_cls.inverseSurfaceColor
+
+        MDLabel:
+            text: "inverseOnSurfaceColor"
+            md_bg_color: app.theme_cls.inverseOnSurfaceColor
+
+        MDLabel:
+            text: "backgroundColor"
+            md_bg_color: app.theme_cls.backgroundColor
+
+        MDLabel:
+            text: "errorColor"
+            md_bg_color: app.theme_cls.errorColor
+
+        MDLabel:
+            text: "errorContainerColor"
+            md_bg_color: app.theme_cls.errorContainerColor
+
+        MDLabel:
+            text: "outlineColor"
+            md_bg_color: app.theme_cls.outlineColor
+
+        MDLabel:
+            text: "outlineVariantColor"
+            md_bg_color: app.theme_cls.outlineVariantColor
+
+        MDLabel:
+            text: "shadowColor"
+            md_bg_color: app.theme_cls.shadowColor
+
+        MDLabel:
+            text: "scrimColor"
+            md_bg_color: app.theme_cls.scrimColor
+
+        MDLabel:
+            text: "disabledTextColor"
+            md_bg_color: app.theme_cls.disabledTextColor
+
+        MDLabel:
+            text: "transparentColor"
+            md_bg_color: app.theme_cls.transparentColor
+
+        MDLabel:
+            text: "rippleColor"
+            md_bg_color: app.theme_cls.rippleColor
+
+
+#    MDRecycleView:
+#        size_hint_y: (root.height - sp(60)) / root.height
+#        pos_hint: {"top": (root.height - help_top_bar.height) / root.height}
+#
+#        MDPaddedList:
+#
+#            MDIconCard:
+#                on_release: root.parent.current = "how_to_screen"
+#
+#                MD50spIconButton:
+#                    icon: "media/th_resistor.png"
+#                    on_release: root.parent.current = "how_to_screen"
+#
+#                MDShortenLabel:
+#                    text: "Как пользоваться"
+#
+#            MDIconCard:
+#                on_release: root.parent.current = "about_screen"
+#
+#                MD50spIconButton:
+#                    icon: "media/smd_resistor.png"
+#                    on_release: root.parent.current = "about_screen"
+#
+#                MDShortenLabel:
+#                    text: "О программе"
+#
+#    MDNoBackTopBar:
+#        id: help_top_bar
+#        title: "Помощь"
