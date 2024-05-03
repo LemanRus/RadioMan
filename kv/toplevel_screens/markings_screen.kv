@@ -1,0 +1,37 @@
+<MarkingsScreen>:
+    name: "Маркировки"
+    md_bg_color: app.theme_cls.surfaceColor
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - markings_top_bar.height) / root.height}
+
+        MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "resistors_markings_select_screen"
+
+                MD50spIconButton:
+                    icon: "media/resistor.png"
+                    on_release: root.parent.current = "resistors_markings_select_screen"
+
+                MDShortenLabel:
+                    text: "Резисторы"
+
+            MDIconCard:
+                on_release: root.parent.current = "capacitors_marking_select_screen"
+
+                MD50spIconButton:
+                    icon: "media/capacitor.png"
+                    on_release: root.parent.current = "capacitors_marking_select_screen"
+
+                MDShortenLabel:
+                    text: "Конденсаторы"
+
+    MDNoBackTopBar:
+#        md_bg_color: app.theme_cls.inversePrimaryColor
+        id: markings_top_bar
+        MDTopAppBarTitle:
+            md_bg_color: app.theme_cls.secondaryColor
+            text: "Маркировки"
+            pos_hint: {"center_x": .5}

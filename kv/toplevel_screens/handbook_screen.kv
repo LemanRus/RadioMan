@@ -1,0 +1,74 @@
+<HandbookScreen>:
+    name: "Справочник"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - handbook_top_bar.height) / root.height}
+
+        MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "theory_screen"
+
+                MD50spIconButton:
+                    icon: "media/theory.png"
+                    on_release: root.parent.current = "theory_screen"
+
+                MDShortenLabel:
+                    text: "Теория"
+
+            MDIconCard:
+                on_release: root.parent.current = "schematics_screen"
+
+                MD50spIconButton:
+                    icon: "media/transistor_scheme.png"
+                    on_release: root.parent.current = "schematics_screen"
+
+                MDShortenLabel:
+                    text: "Обозначения на схемах"
+
+            MDIconCard:
+                on_release: root.parent.current = "pinout_screen"
+
+                MD50spIconButton:
+                    icon: "media/pinout.png"
+                    on_release: root.parent.current = "pinout_screen"
+
+                MDShortenLabel:
+                    text: "Распиновки"
+
+            MDIconCard:
+                on_release: root.parent.current = "connections_screen"
+
+                MD50spIconButton:
+                    icon: "media/connection.png"
+                    on_release: root.parent.current = "connections_screen"
+
+                MDShortenLabel:
+                    text: "Типы соединений"
+
+            MDIconCard:
+                on_release: root.parent.current = "chips_screen"
+
+                MD50spIconButton:
+                    icon: "media/chip.png"
+                    on_release: root.parent.current = "chips_screen"
+
+                MDShortenLabel:
+                    text: "Микросхемы и компоненты"
+
+            MDIconCard:
+                on_release: root.parent.current = "lifehacks_screen"
+
+                MD50spIconButton:
+                    icon: "media/lifehack.png"
+                    on_release: root.parent.current = "lifehacks_screen"
+
+                MDShortenLabel:
+                    text: "Лайфхаки"
+
+
+    MDNoBackTopBar:
+        id: handbook_top_bar
+        title: "Справочник"

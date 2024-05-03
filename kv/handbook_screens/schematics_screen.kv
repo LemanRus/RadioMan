@@ -1,0 +1,16 @@
+<SchematicsScreen>:
+    name: "schematics_screen"
+    md_bg_color: app.theme_cls.bg_dark
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - schematics_top_bar.height) / root.height}
+
+        MDPaddedList:
+
+            MDDumbLabel:
+
+
+    MDBackTopBar:
+        id: schematics_top_bar
+        title: "Обозначения на схемах"

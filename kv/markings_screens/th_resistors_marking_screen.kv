@@ -1,0 +1,62 @@
+<THResistorsMarkingScreen>:
+    name: "th_resistors_marking_screen"
+
+    MDRecycleView:
+        on_parent: root.build_menu()
+        pos_hint: {"top": (root.height - th_resistor_top_bar.height) / root.height}
+        size_hint_y: (root.height - th_resistor_top_bar.height) / root.height
+
+        MDGridScreen:
+
+            MDCard:
+                size_hint_y: None
+                height: self.minimum_height
+
+                MDLabel:
+                    text: "Выберите количество полос:"
+
+                MDButton:
+                    id: bands_select_menu
+                    text: "3"
+                    width: root.width / 4
+                    on_release: root.menu.open()
+
+            MDRelativeLayout:
+                id: resistor_view
+                size_hint_y: None
+                height: root.height / 4
+
+                BoxLayout:
+#                    size_hint_y: None
+#                    height: resistor_view.height
+                    pos_hint: {"center_y": 0.5}
+
+                    Image:
+                        source: "media/th_resistor_bg.png"
+                        pos_hint: {"center_y": 0.5}
+                        fit_mode: "fill"
+
+                BoxLayout:
+                    id: bands
+#                    size_hint_y: None
+#                    height: resistor_view.height
+                    pos_hint: {"center_y": 0.5}
+                    padding: [root.width / 5, self.height / 4.47]
+                    spacing: sp(10)
+                    on_parent: root.build_bands(3)
+
+            MDCard:
+                size_hint: (1, None)
+                height: self.minimum_height
+                padding: sp(15)
+
+                MDLabel:
+                    id: result
+                    text: "Результат:"
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    size_hint_y: None
+                    size: self.texture_size
+
+    MDBackTopBar:
+        id: th_resistor_top_bar
+        title: "Резисторы свозного монтажа"

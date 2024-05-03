@@ -1,0 +1,83 @@
+<CalculationsScreen>:
+    name: "Расчёты"
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - calculations_top_bar.height) / root.height}
+
+        MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "converter_calculation_screen"
+
+                MD50spIconButton:
+                    icon: "media/converter.png"
+                    on_release: root.parent.current = "converter_calculation_screen"
+
+                MDShortenLabel:
+                    text: "Конвертер величин"
+
+            MDIconCard:
+                on_release: root.parent.current = "led_resistor_calculation_screen"
+
+                MD50spIconButton:
+                    icon: "media/resistor_led.png"
+                    on_release: root.parent.current = "led_resistor_calculation_screen"
+
+                MDShortenLabel:
+                    text: "Расчёт резисторов для светодиодов"
+
+            MDIconCard:
+                on_release: root.parent.current = "inductor_calculation_select_screen"
+
+                MD50spIconButton:
+                    icon: "media/inductor.png"
+                    on_release: root.parent.current = "inductor_calculation_select_screen"
+
+                MDShortenLabel:
+                    text: "Расчёт катушки индуктивности"
+
+            MDIconCard:
+                on_release: root.parent.current = "parallel_resistor_calculation_screen"
+
+                MD50spIconButton:
+                    icon: "media/resistors_par.png"
+                    on_release: root.parent.current = "parallel_resistor_calculation_screen"
+
+                MDShortenLabel:
+                    text: "Параллельное соединение резисторов"
+
+            MDIconCard:
+                on_release: root.parent.current = "serial_capacitor_calculate_screen"
+
+                MD50spIconButton:
+                    icon: "media/capacitors_ser.png"
+                    on_release: root.parent.current = "serial_capacitor_calculate_screen"
+
+                MDShortenLabel:
+                    text: "Последовательное соединение конденсаторов"
+
+            MDIconCard:
+                on_release: root.parent.current = "voltage_divider_calculate_select_screen"
+
+                MD50spIconButton:
+                    icon: "media/divider.png"
+                    on_release: root.parent.current = "voltage_divider_calculate_select_screen"
+
+                MDShortenLabel:
+                    text: "Делитель напряжения"
+
+            MDIconCard:
+                on_release: root.parent.current = "lm_regulator_calculate_select_screen"
+
+                MD50spIconButton:
+                    icon: "media/transistor.png"
+                    on_release: root.parent.current = "lm_regulator_calculate_select_screen"
+
+                MDShortenLabel:
+                    text: "LM317/LM350/LM338 калькулятор"
+
+
+    MDNoBackTopBar:
+        id: calculations_top_bar
+        title: "Расчёты"

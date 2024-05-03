@@ -1,0 +1,32 @@
+<ResistorsMarkingsSelectScreen>:
+    name: "resistors_markings_select_screen"
+
+    MDRecycleView:
+        pos_hint: {"top": (root.height - resistors_markings_top_bar.height) / root.height}
+        size_hint_y: (root.height - resistors_markings_top_bar.height) / root.height
+
+        MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "th_resistors_marking_screen"
+
+                MD50spIconButton:
+                    icon: "media/th_resistor.png"
+                    on_release: root.parent.current = "th_resistors_marking_screen"
+
+                MDShortenLabel:
+                    text: "Резисторы сквозного монтажа"
+
+            MDIconCard:
+                on_release: root.parent.current = "smd_resistors_marking_screen"
+
+                MD50spIconButton:
+                    icon: "media/smd_resistor.png"
+                    on_release: root.parent.current = "smd_resistors_marking_screen"
+
+                MDShortenLabel:
+                    text: "SMD резисторы"
+
+    MDBackTopBar:
+        id: resistors_markings_top_bar
+        title: "Маркировки резисторов"

@@ -1,0 +1,33 @@
+<HelpScreen>:
+    name: "Помощь"
+#    md_bg_color: app.theme_cls.bg_dark
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - help_top_bar.height) / root.height}
+
+        MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "how_to_screen"
+
+                MD50spIconButton:
+                    icon: "media/th_resistor.png"
+                    on_release: root.parent.current = "how_to_screen"
+
+                MDShortenLabel:
+                    text: "Как пользоваться"
+
+            MDIconCard:
+                on_release: root.parent.current = "about_screen"
+
+                MD50spIconButton:
+                    icon: "media/smd_resistor.png"
+                    on_release: root.parent.current = "about_screen"
+
+                MDShortenLabel:
+                    text: "О программе"
+
+    MDNoBackTopBar:
+        id: help_top_bar
+        title: "Помощь"
