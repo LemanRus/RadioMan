@@ -70,7 +70,6 @@ class RadioMan(MDApp):
                 kv_files.append(os.path.join(path, name))
         for file_path in kv_files:
             Builder.load_file(file_path)
-
         return Builder.load_file("kv/main.kv")
 
     def on_switch_tabs(
