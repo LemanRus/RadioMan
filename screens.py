@@ -10,7 +10,7 @@ from kivy.metrics import dp, sp
 from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty, NumericProperty
 from kivy.uix.button import Button
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.button import MDIconButton, MDButton
+from kivymd.uix.button import MDIconButton, MDButton, MDButtonText
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.menu import MDDropdownMenu
@@ -473,13 +473,8 @@ class ConverterCalculationScreen(MDScreen):
             width=dp(101),
         )
 
-    def set_but_width(self, *args):
-        self.ids.convert_from.width = self.width / 4
-        self.ids.convert_to.width = self.width / 4
-
     def set_item_from(self, text_item):
         self.ids.convert_from.text = text_item
-        Clock.schedule_once(self.set_but_width)
         self.menu_from.dismiss()
         self.convert(self.ids.convert_from_input.text, self.ids.convert_from.text, self.ids.convert_to.text)
 
@@ -536,7 +531,6 @@ class ConverterCalculationScreen(MDScreen):
 
     def set_item_to(self, text_item):
         self.ids.convert_to.text = text_item
-        Clock.schedule_once(self.set_but_width)
         self.menu_to.dismiss()
         self.convert(self.ids.convert_from_input.text, self.ids.convert_from.text, self.ids.convert_to.text)
 

@@ -21,17 +21,23 @@
 
                 MDCentered06TextField:
                     id: convert_from_input
-                    on_text_validate: on_release: root.convert(convert_from_input.text, convert_from.text, convert_to.text)
+                    on_text_validate: root.convert(convert_from_input.text, convert_from.text, convert_to.text)
 
                 MDButton:
-                    id: convert_from
-                    text: "мил"
+                    id: convert_from_button
                     pos_hint: {"center_y": 0.5}
+                    size_hint: None, None
                     width: root.width / 4
+                    theme_width: "Custom"
                     on_release: root.menu_from.open()
 
+                    MDButtonText:
+                        id: convert_from
+                        text: "мил"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
+
             MDPaddedCard:
-                height: self.minimum_height * 1.75
+                height: self.minimum_height * 1.5
 
                 MDLabel:
                     text: "Во что переводим:"
@@ -45,11 +51,17 @@
                     pos_hint: {"center_y": 0.5}
 
                 MDButton:
-                    id: convert_to
-                    text: "дюйм"
+                    id: convert_to_button
                     width: root.width / 4
                     pos_hint: {"center_y": 0.5}
+                    theme_width: "Custom"
+                    size_hint: None, None
                     on_release: root.menu_to.open()
+
+                    MDButtonText:
+                        id: convert_to
+                        text: "дюйм"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 #
 #            MDRelativeLayout:
 #                size_hint_y: None
