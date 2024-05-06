@@ -1,6 +1,11 @@
 <TheoryScreen>:
     name: "theory_screen"
-    md_bg_color: app.theme_cls.bg_dark
+
+    MDBackTopBar:
+        id: theory_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Теория"
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -9,8 +14,3 @@
         MDPaddedList:
 
             MDDumbLabel:
-
-
-    MDBackTopBar:
-        id: theory_top_bar
-        title: "Теория"

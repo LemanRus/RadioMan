@@ -1,6 +1,12 @@
 <SMDCapacitorsMarkingScreen>:
     name: "smd_capacitors_marking_screen"
 
+    MDBackTopBar:
+        id: smd_capacitor_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "SMD конденсаторы"
+
     MDScrollView:
         pos_hint: {"top": (root.height - smd_capacitor_top_bar.height) / root.height}
         size_hint_y: (root.height - smd_capacitor_top_bar.height) / root.height
@@ -51,7 +57,3 @@
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None
                     on_release: root.calculate_smd_capacitor(smd_capacitor_marking_input.text)
-
-    MDBackTopBar:
-        id: smd_capacitor_top_bar
-        title: "SMD конденсаторы"

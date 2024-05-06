@@ -1,6 +1,12 @@
 <InductorCalculationSelectScreen>:
     name: "inductor_calculation_select_screen"
 
+    MDBackTopBar:
+        id: inductor_select_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Расчёт катушки индуктивности"
+
     MDScrollView:
         pos_hint: {"top": (root.height - inductor_select_top_bar.height) / root.height}
         size_hint_y: (root.height - inductor_select_top_bar.height) / root.height
@@ -26,7 +32,3 @@
 
                 MDShortenLabel:
                     text: "Расчёт числа витков и размера"
-
-    MDBackTopBar:
-        id: inductor_select_top_bar
-        title: "Расчёт катушки индуктивности"

@@ -1,6 +1,12 @@
 <LEDResistorCalculationScreen>:
     name: "led_resistor_calculation_screen"
 
+    MDBackTopBar:
+        id: led_resistor_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Расчёт резисторов для светодиодов"
+
     MDScrollView:
         on_parent: root.build_menu()
         pos_hint: {"top": (root.height - led_resistor_top_bar.height) / root.height}
@@ -111,7 +117,3 @@
 
                     MDTextLabel:
                         id: led_cur
-
-    MDBackTopBar:
-        id: led_resistor_top_bar
-        title: "Расчёт резисторов для светодиодов"

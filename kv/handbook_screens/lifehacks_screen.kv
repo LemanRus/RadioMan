@@ -1,6 +1,11 @@
 <LifehacksScreen>:
     name: "lifehacks_screen"
-    md_bg_color: app.theme_cls.bg_dark
+
+    MDBackTopBar:
+        id: lifehacks_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Лайфхаки"
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -10,7 +15,3 @@
 
             MDDumbLabel:
 
-
-    MDBackTopBar:
-        id: lifehacks_top_bar
-        title: "Лайфхаки"

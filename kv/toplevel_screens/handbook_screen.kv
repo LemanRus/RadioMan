@@ -1,6 +1,11 @@
 <HandbookScreen>:
     name: "Справочник"
-    md_bg_color: app.theme_cls.bg_dark
+
+    MDNoBackTopBar:
+        id: handbook_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Справочник"
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -67,8 +72,3 @@
 
                 MDShortenLabel:
                     text: "Лайфхаки"
-
-
-    MDNoBackTopBar:
-        id: handbook_top_bar
-        title: "Справочник"

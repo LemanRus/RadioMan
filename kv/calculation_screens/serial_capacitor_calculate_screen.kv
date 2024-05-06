@@ -2,6 +2,12 @@
     name: "serial_capacitor_calculate_screen"
     on_pre_enter: self.reset()
 
+    MDBackTopBar:
+        id: serial_capacitor_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Последовательное соединение конденсаторов"
+
     MDScrollView:
         pos_hint: {"top": (root.height - serial_capacitor_top_bar.height) / root.height}
         size_hint_y: (root.height - serial_capacitor_top_bar.height) / root.height
@@ -43,7 +49,3 @@
 
                     MDTextLabel:
                         id: ser_cap_output
-
-    MDBackTopBar:
-        id: serial_capacitor_top_bar
-        title: "Последовательное соединение конденсаторов"

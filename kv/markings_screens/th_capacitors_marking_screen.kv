@@ -1,6 +1,12 @@
 <THCapacitorsMarkingScreen>:
     name: "th_capacitors_marking_screen"
 
+    MDBackTopBar:
+        id: th_capacitor_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Конденсаторы свозного монтажа"
+
     MDScrollView:
         pos_hint: {"top": (root.height - th_capacitor_top_bar.height) / root.height}
         size_hint_y: (root.height - th_capacitor_top_bar.height) / root.height
@@ -50,7 +56,3 @@
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None
                     on_release: root.calculate_capacitor(capacitor_marking_input.text)
-
-    MDBackTopBar:
-        id: th_capacitor_top_bar
-        title: "Конденсаторы свозного монтажа"

@@ -1,6 +1,11 @@
 <AboutScreen>:
     name: "about_screen"
-#    md_bg_color: app.theme_cls.bg_dark
+
+    MDBackTopBar:
+        id: about_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "О программе"
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -33,10 +38,3 @@
                     Но при желании вы можете [u][ref=pay]поддержать автора[/ref][/u].
                     """
                 on_ref_press: root.pay()
-
-    MDTopAppBar:
-        id: about_top_bar
-        title: "О программе"
-        pos_hint: {"top": 1}
-        left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-        elevation: 1

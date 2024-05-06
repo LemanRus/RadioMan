@@ -1,6 +1,12 @@
 <InductorCalculateInductionScreen>:
     name: "inductor_calculate_induction_screen"
 
+    MDBackTopBar:
+        id: inductor_induction_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Расчёт индуктивности"
+
     MDScrollView:
         pos_hint: {"top": (root.height - inductor_induction_top_bar.height) / root.height}
         size_hint_y: (root.height - inductor_induction_top_bar.height) / root.height
@@ -56,7 +62,3 @@
 
                     MDTextLabel:
                         id: induction
-
-    MDBackTopBar:
-        id: inductor_induction_top_bar
-        title: "Расчёт индуктивности"

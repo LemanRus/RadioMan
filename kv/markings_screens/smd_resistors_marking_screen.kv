@@ -1,5 +1,12 @@
 <SMDResistorsMarkingScreen>:
     name: "smd_resistors_marking_screen"
+
+    MDBackTopBar:
+        id: smd_resistors_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "SMD резисторы"
+
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - smd_resistors_top_bar.height) / root.height}
@@ -50,7 +57,3 @@
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None
                     on_release: root.calculate_resistor(resistor_marking_input.text)
-
-    MDBackTopBar:
-        id: smd_resistors_top_bar
-        title: "SMD резисторы"

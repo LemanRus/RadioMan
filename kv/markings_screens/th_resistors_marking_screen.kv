@@ -1,6 +1,12 @@
 <THResistorsMarkingScreen>:
     name: "th_resistors_marking_screen"
 
+    MDBackTopBar:
+        id: th_resistor_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Резисторы свозного монтажа"
+
     MDRecycleView:
         on_parent: root.build_menu()
         pos_hint: {"top": (root.height - th_resistor_top_bar.height) / root.height}
@@ -56,7 +62,3 @@
                     pos_hint: {"center_x": 0.5, "center_y": 0.5}
                     size_hint_y: None
                     size: self.texture_size
-
-    MDBackTopBar:
-        id: th_resistor_top_bar
-        title: "Резисторы свозного монтажа"

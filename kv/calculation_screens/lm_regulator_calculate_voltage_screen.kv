@@ -1,6 +1,12 @@
 <LMRegulatorCalculateVoltageScreen>:
     name: "lm_regulator_voltage_screen"
 
+    MDBackTopBar:
+        id: lm_regulator_voltage_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "LM317/LM350/LM338 - стабилизатор напряжения"
+
     MDScrollView:
         pos_hint: {"top": (root.height - lm_regulator_voltage_top_bar.height) / root.height}
         size_hint_y: (root.height - lm_regulator_voltage_top_bar.height) / root.height
@@ -97,7 +103,3 @@
 
                     MDTextLabel:
                         id: lm317_power_output
-
-    MDBackTopBar:
-        id: lm_regulator_voltage_top_bar
-        title: "LM317/LM350/LM338 - стабилизатор напряжения"

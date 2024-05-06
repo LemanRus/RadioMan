@@ -1,6 +1,11 @@
 <ChipsScreen>:
     name: "chips_screen"
-    md_bg_color: app.theme_cls.bg_dark
+
+    MDBackTopBar:
+        id: chips_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Микросхемы и компоненты"
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -10,7 +15,3 @@
 
             MDDumbLabel:
 
-
-    MDBackTopBar:
-        id: chips_top_bar
-        title: "Микросхемы и компоненты"

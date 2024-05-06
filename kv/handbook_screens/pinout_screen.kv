@@ -1,6 +1,11 @@
 <PinoutScreen>:
     name: "pinout_screen"
-    md_bg_color: app.theme_cls.bg_dark
+
+    MDBackTopBar:
+        id: pinout_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Распиновки"
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
@@ -9,8 +14,3 @@
         MDPaddedList:
 
             MDDumbLabel:
-
-
-    MDBackTopBar:
-        id: pinout_top_bar
-        title: "Распиновки"

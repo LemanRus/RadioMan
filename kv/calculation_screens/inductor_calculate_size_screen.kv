@@ -1,6 +1,12 @@
 <InductorCalculateSizeScreen>:
     name: "inductor_calculate_size_screen"
 
+    MDBackTopBar:
+        id: inductor_size_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Расчёт числа витков и размера"
+
     MDScrollView:
         pos_hint: {"top": (root.height - inductor_size_top_bar.height) / root.height}
         size_hint_y: (root.height - inductor_size_top_bar.height) / root.height
@@ -80,7 +86,3 @@
 
                     MDTextLabel:
                         id: inductor_length_int
-
-    MDBackTopBar:
-        id: inductor_size_top_bar
-        title: "Расчёт числа витков и размера"

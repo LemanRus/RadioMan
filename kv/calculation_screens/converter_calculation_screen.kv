@@ -1,6 +1,12 @@
 <ConverterCalculationScreen>:
     name: "converter_calculation_screen"
 
+    MDBackTopBar:
+        id: converter_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Конвертер величин"
+
     MDScrollView:
         on_parent: root.build_menu()
         pos_hint: {"top": (root.height - converter_top_bar.height) / root.height}
@@ -53,7 +59,3 @@
 #                    id: calc_convert
 #                    text: "Рассчитать"
 #                    on_release: root.convert(convert_from_input.text, convert_from.text, convert_to.text)
-
-    MDBackTopBar:
-        id: converter_top_bar
-        title: "Конвертер величин"

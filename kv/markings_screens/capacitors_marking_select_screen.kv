@@ -1,6 +1,11 @@
 <CapacitorsMarkingSelectScreen>:
     name: "capacitors_marking_select_screen"
-#    md_bg_color: app.theme_cls.bg_dark
+
+    MDBackTopBar:
+        id: capacitors_markings_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Маркировка конденсаторов"
 
     MDRecycleView:
         pos_hint: {"top": (root.height - capacitors_markings_top_bar.height) / root.height}
@@ -27,7 +32,3 @@
 
                 MDShortenLabel:
                     text: "SMD конденсаторы"
-
-    MDBackTopBar:
-        id: capacitors_markings_top_bar
-        title: "Маркировка конденсаторов"

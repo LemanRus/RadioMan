@@ -1,6 +1,12 @@
 <VoltageDividerCalculateSelectScreen>:
     name: "voltage_divider_calculate_select_screen"
 
+    MDBackTopBar:
+        id: voltage_divider_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Делитель напряжения"
+
     MDScrollView:
         pos_hint: {"top": (root.height - voltage_divider_top_bar.height) / root.height}
         size_hint_y: (root.height - voltage_divider_top_bar.height) / root.height
@@ -26,7 +32,3 @@
 
                 MDShortenLabel:
                     text: "Расчёт сопротивления"
-
-    MDBackTopBar:
-        id: voltage_divider_top_bar
-        title: "Делитель напряжения"

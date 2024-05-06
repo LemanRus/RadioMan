@@ -1,6 +1,12 @@
 <LMRegulatorCalculateCurrentScreen>:
     name: "lm_regulator_current_screen"
 
+    MDBackTopBar:
+        id: lm_regulator_current_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "LM317/LM350/LM338 - стабилизатор тока"
+
     MDScrollView:
         pos_hint: {"top": (root.height - lm_regulator_current_top_bar.height) / root.height}
         size_hint_y: (root.height - lm_regulator_current_top_bar.height) / root.height
@@ -95,7 +101,3 @@
 
                     MDTextLabel:
                         id: lm317_vin_output_cur
-
-    MDBackTopBar:
-        id: lm_regulator_current_top_bar
-        title: "LM317/LM350/LM338 - стабилизатор тока"

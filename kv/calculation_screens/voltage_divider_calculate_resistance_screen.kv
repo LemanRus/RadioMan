@@ -1,6 +1,12 @@
 <VoltageDividerCalculateResistanceScreen>:
     name: "voltage_divider_calculate_resistance_screen"
 
+    MDBackTopBar:
+        id: voltage_divider_resistance_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Делитель напряжения"
+
     MDScrollView:
         pos_hint: {"top": (root.height - voltage_divider_resistance_top_bar.height) / root.height}
         size_hint_y: (root.height - voltage_divider_resistance_top_bar.height) / root.height
@@ -76,7 +82,3 @@
 
                     MDTextLabel:
                         id: vout_e24
-
-    MDBackTopBar:
-        id: voltage_divider_resistance_top_bar
-        title: "Делитель напряжения"
