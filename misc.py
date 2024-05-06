@@ -10,7 +10,7 @@ from kivymd.uix.list import MDList
 from kivymd.uix.recycleview import MDRecycleView
 from kivymd.uix.scrollview import MDScrollView
 from kivymd.uix.textfield import MDTextField
-from kivymd.uix.appbar import MDTopAppBar
+from kivymd.uix.appbar import MDTopAppBar, MDTopAppBarTitle
 
 
 class ImageButton(ButtonBehavior, Image):
@@ -72,4 +72,8 @@ class MDAdaptiveBoxLayout(MDBoxLayout):
 
 
 class MDRaisedCenteredButton(MDButton):
+    pass
+
+
+class MDCenteredTopAppBarTitle(MDTopAppBarTitle):
     pass

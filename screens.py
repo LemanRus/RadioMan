@@ -207,34 +207,34 @@ class THResistorsMarkingScreen(MDScreen):
         thermal = ""
         tolerance = ""
 
-        if "band5" in self.ids.bands.ids.keys():
-            thermal = self.thermal[self.ids.bands.ids.band5.text]
-        if "band4" in self.ids.bands.ids.keys():
-            tolerance = self.tolerance[self.ids.bands.ids.band4.text]
-        if len(self.ids.bands.ids.keys()) in (3, 4):
-            multiplier = self.multiplier[self.ids.bands.ids.band2.text]
-            resistance = (self.nominal[self.ids.bands.ids.band0.text] * 10 +
-                          self.nominal[self.ids.bands.ids.band1.text]) * multiplier
-
-            if "band3" in self.ids.bands.ids.keys():
-                tolerance = self.tolerance[self.ids.bands.ids.band3.text]
-            else:
-                tolerance = "±20%"
-        else:
-            multiplier = self.multiplier[self.ids.bands.ids.band3.text]
-            resistance = (self.nominal[self.ids.bands.ids.band0.text] * 100 +
-                          self.nominal[self.ids.bands.ids.band1.text] * 10 +
-                          self.nominal[self.ids.bands.ids.band2.text]) * multiplier
-
-        if resistance < 1000:
-            self.ids.result.text = "Результат: {:g} Ом {}{}".format(resistance, tolerance,
-                                                                    (", ТКС: " + thermal) if thermal else "")
-        elif resistance < 1000000:
-            self.ids.result.text = "Результат: {:g} кОм {}{}".format(resistance / 1000, tolerance,
-                                                                     (", ТКС: " + thermal) if thermal else "")
-        else:
-            self.ids.result.text = "Результат: {:g} МОм {}{}".format(resistance / 1000000, tolerance,
-                                                                     (", ТКС: " + thermal) if thermal else "")
+        # if "band5" in self.ids.bands.ids.keys():
+        #     thermal = self.thermal[self.ids.bands.ids.band5.text]
+        # if "band4" in self.ids.bands.ids.keys():
+        #     tolerance = self.tolerance[self.ids.bands.ids.band4.text]
+        # if len(self.ids.bands.ids.keys()) in (3, 4):
+        #     multiplier = self.multiplier[self.ids.bands.ids.band2.text]
+        #     resistance = (self.nominal[self.ids.bands.ids.band0.text] * 10 +
+        #                   self.nominal[self.ids.bands.ids.band1.text]) * multiplier
+        #
+        #     if "band3" in self.ids.bands.ids.keys():
+        #         tolerance = self.tolerance[self.ids.bands.ids.band3.text]
+        #     else:
+        #         tolerance = "±20%"
+        # else:
+        #     multiplier = self.multiplier[self.ids.bands.ids.band3.text]
+        #     resistance = (self.nominal[self.ids.bands.ids.band0.text] * 100 +
+        #                   self.nominal[self.ids.bands.ids.band1.text] * 10 +
+        #                   self.nominal[self.ids.bands.ids.band2.text]) * multiplier
+        #
+        # if resistance < 1000:
+        #     self.ids.result.text = "Результат: {:g} Ом {}{}".format(resistance, tolerance,
+        #                                                             (", ТКС: " + thermal) if thermal else "")
+        # elif resistance < 1000000:
+        #     self.ids.result.text = "Результат: {:g} кОм {}{}".format(resistance / 1000, tolerance,
+        #                                                              (", ТКС: " + thermal) if thermal else "")
+        # else:
+        #     self.ids.result.text = "Результат: {:g} МОм {}{}".format(resistance / 1000000, tolerance,
+        #                                                              (", ТКС: " + thermal) if thermal else "")
 
 
 class SMDResistorsMarkingScreen(MDScreen):

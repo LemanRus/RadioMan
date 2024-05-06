@@ -30,13 +30,28 @@
 
 <MDBackTopBar>:
     pos_hint: {"top": 1}
-    left_action_items: [["arrow-left", lambda x: app.back_to_screen()]]
-    elevation: 1
+    elevation_level: 1
+    theme_bg_color: "Custom"
+    md_bg_color: app.theme_cls.primaryColor
+    MDTopAppBarLeadingButtonContainer:
+        MDActionTopAppBarButton:
+            icon: "arrow-left"
+            theme_icon_color: "Custom"
+            icon_color: "white"
+            on_release: app.back_to_screen()
 
 
 <MDNoBackTopBar>:
+    theme_bg_color: "Custom"
+    md_bg_color: app.theme_cls.primaryColor
     pos_hint: {"top": 1}
-    elevation: 1
+    elevation_level: 1
+
+
+<MDCenteredTopAppBarTitle>:
+    theme_text_color: "Custom"
+    text_color: "white"
+    pos_hint: {"center_x": .5}
 
 
 <ImageButton>:

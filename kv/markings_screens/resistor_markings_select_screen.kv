@@ -1,6 +1,12 @@
 <ResistorsMarkingsSelectScreen>:
     name: "resistors_markings_select_screen"
 
+    MDBackTopBar:
+        id: resistors_markings_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Маркировки резисторов"
+
     MDRecycleView:
         pos_hint: {"top": (root.height - resistors_markings_top_bar.height) / root.height}
         size_hint_y: (root.height - resistors_markings_top_bar.height) / root.height
@@ -26,7 +32,3 @@
 
                 MDShortenLabel:
                     text: "SMD резисторы"
-
-    MDBackTopBar:
-        id: resistors_markings_top_bar
-        title: "Маркировки резисторов"
