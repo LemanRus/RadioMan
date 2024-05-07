@@ -48,10 +48,13 @@
 
                 MDRaisedCenteredButton:
                     id: calc_led_resistor
-                    text: "Рассчитать"
                     on_release:
                         root.inductor_calculate_turns(induction_input.text, \
                         inductor_diameter_input.text, inductor_wire_diameter_input.text)
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDVerticalCard:
 

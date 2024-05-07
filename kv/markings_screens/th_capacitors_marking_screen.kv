@@ -35,7 +35,7 @@
                     text_color_normal: 1, 1, 1, 0.9
                     text_color_focus: 1, 1, 1, 1
                     size_hint: 0.6, None
-                    font_size: "72sp"
+                    font_size: "64sp"
                     pos_hint: {"center_y": 0.6, "center_x": 0.5}
                     on_text_validate: root.calculate_capacitor(self.text)
 
@@ -52,7 +52,10 @@
                     size: self.texture_size
 
                 MDButton:
-                    text: "Рассчитать"
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None
                     on_release: root.calculate_capacitor(capacitor_marking_input.text)
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}

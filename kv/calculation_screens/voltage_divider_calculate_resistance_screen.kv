@@ -46,8 +46,11 @@
 
                 MDRaisedCenteredButton:
                     id: calc_divider_resistance
-                    text: "Рассчитать"
                     on_release: root.divider_calculate_r(v_in_r.text, v_out_r.text, r1_input.text)
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDVerticalCard:
 

@@ -23,22 +23,31 @@
 
                 MDButton:
                     id: add_serial_capacitor_btn
-                    text: "Добавить конденсатор"
                     size_hint: None, None
                     pos_hint: {"left": 0}
                     on_release: root.add_capacitor()
 
+                    MDButtonText:
+                        text: "Добавить конденсатор"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
+
                 MDRaisedCenteredButton:
                     id: reset_serial_capacitor_btn
-                    text: "Очистить"
                     on_release: root.reset()
+
+                    MDButtonText:
+                        text: "Очистить"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
                 MDButton:
                     id: calc_serial_capacitor_btn
-                    text: "Рассчитать"
                     size_hint: None, None
                     pos_hint: {"right": 1}
                     on_release: root.ser_cap_calculate()
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDVerticalCard:
 

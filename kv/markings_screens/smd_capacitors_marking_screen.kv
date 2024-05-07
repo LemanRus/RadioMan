@@ -53,7 +53,10 @@
                     size: self.texture_size
 
                 MDButton:
-                    text: "Рассчитать"
                     pos_hint: {"center_y": 0.5}
                     size_hint_y: None
                     on_release: root.calculate_smd_capacitor(smd_capacitor_marking_input.text)
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}

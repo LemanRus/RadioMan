@@ -23,22 +23,31 @@
 
                 MDButton:
                     id: add_parallel_resistor_btn
-                    text: "Добавить резистор"
                     size_hint: None, None
                     pos_hint: {"left": 0}
                     on_release: root.add_resistor()
 
+                    MDButtonText:
+                        text: "Добавить резистор"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
+
                 MDRaisedCenteredButton:
                     id: reset_parallel_resistor_btn
-                    text: "Очистить"
                     on_release: root.reset()
+
+                    MDButtonText:
+                        text: "Очистить"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
                 MDButton:
                     id: calc_parallel_resistor_btn
-                    text: "Рассчитать"
                     size_hint: None, None
                     pos_hint: {"right": 1}
                     on_release: root.par_res_calculate()
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDVerticalCard:
 

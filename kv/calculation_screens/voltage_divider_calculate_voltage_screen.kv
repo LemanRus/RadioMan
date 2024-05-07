@@ -46,8 +46,11 @@
 
                 MDRaisedCenteredButton:
                     id: calc_divider_voltage
-                    text: "Рассчитать"
                     on_release: root.divider_calculate_vout(v_in.text, r1.text, r2.text)
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDVerticalCard:
 

@@ -39,10 +39,13 @@
 
                 MDRaisedCenteredButton:
                     id: lm_calc_current
-                    text: "Рассчитать"
                     on_release:
                         root.calculate_lm317_current(lm317_iout_input_cur.text, \
                         lm317_vout_input_cur.text)
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDVerticalCard:
 

@@ -57,10 +57,13 @@
 
                 MDRaisedCenteredButton:
                     id: lm_calc_voltage
-                    text: "Рассчитать"
                     on_release:
                         root.calculate_lm317_voltage(lm317_vout_input.text, \
                         lm317_r1_input.text, lm317_iout_input.text, lm317_vin_input.text)
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDVerticalCard:
 

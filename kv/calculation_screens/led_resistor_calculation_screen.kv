@@ -77,12 +77,15 @@
 
                 MDRaisedCenteredButton:
                     id: calc_led_resistor
-                    text: "Рассчитать"
                     on_release:
                         root.led_calculate(led_resistor_source_voltage_input.text, \
                         led_resistor_led_voltage_input.text, \
                         led_resistor_led_current_input.text, \
                         led_resistor_led_qty_input.text)
+
+                    MDButtonText:
+                        text: "Рассчитать"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDVerticalCard:
 
