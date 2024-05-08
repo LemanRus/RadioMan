@@ -6,11 +6,13 @@ import webbrowser
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
+from kivy.graphics import SmoothRoundedRectangle
 from kivy.metrics import dp, sp
-from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty, NumericProperty
+from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty, NumericProperty, \
+    VariableListProperty
 from kivy.uix.button import Button
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.button import MDIconButton, MDButton, MDButtonText
+from kivymd.uix.button import MDIconButton, MDButton, MDButtonText, BaseButton
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.menu import MDDropdownMenu
@@ -52,8 +54,7 @@ class ResistorBandDropdownMennu(MDDropdownMenu):
         self.set_menu_pos()
         self.on_open()
 
-
-class ResistorBand(MDIconButton):
+class ResistorBand(MDButton):
     colors = {
         "Золотой": [1, 0.84, 0, 1], "Серебристый": [0.8, 0.8, 0.8, 1], "Чёрный": [0, 0, 0, 1],
         "Коричневый": [0.4, 0.22, 0, 1], "Красный": [1, 0, 0, 1], "Оранжевый": [0.98, 0.45, 0.02, 1],
@@ -87,7 +88,6 @@ class ResistorBand(MDIconButton):
                dict(itertools.islice(colors.items(), 8, 10)) | dict(itertools.islice(colors.items(), 11, 12))
         }
     }
-
     def __init__(self, *args, **kwargs):
         self.app = App.get_running_app()
         self.band_no = kwargs.pop("band_no")
@@ -102,15 +102,16 @@ class ResistorBand(MDIconButton):
         self.menu.width = self.menu.minimum_width
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
         self.md_bg_color = list(self.my_color.values())[0]
-        self.theme_icon_color = self.theme_text_color = "Custom"
+        self.theme_width = self.theme_font_size = "Custom"
+        self.size_hint = (1, 1)
+        self.radius = [1, ]
+        self.theme_bg_color = self.theme_icon_color = self.theme_text_color = "Custom"
         self.icon = "chevron-down"
-        self.text = list(self.my_color.keys())[0]
-        if self.text in ["Чёрный", "Коричневый"]:
+        self.color_name = list(self.my_color.keys())[0]
+        if self.color_name in ["Чёрный", "Коричневый"]:
             self.icon_color = self.text_color = "white"
         self.bind(on_release=self.menu_open)
         self.menu.bind(on_dismiss=lambda _: self.__setattr__("icon", "chevron-down"))
-        self.rounded_button = False
-        self._radius = dp(7)
 
     def get_band(self, band_no, band_qty):
         band = []
@@ -132,7 +133,7 @@ class ResistorBand(MDIconButton):
         self.menu.open()
 
     def set_item(self, param_item):
-        self.text = param_item[0]
+        self.color_name = param_item[0]
         self.md_bg_color = param_item[1]
         self.icon = "chevron-down"
         if param_item[0] in ["Чёрный", "Коричневый"]:
@@ -207,34 +208,34 @@ class THResistorsMarkingScreen(MDScreen):
         thermal = ""
         tolerance = ""
 
-        # if "band5" in self.ids.bands.ids.keys():
-        #     thermal = self.thermal[self.ids.bands.ids.band5.text]
-        # if "band4" in self.ids.bands.ids.keys():
-        #     tolerance = self.tolerance[self.ids.bands.ids.band4.text]
-        # if len(self.ids.bands.ids.keys()) in (3, 4):
-        #     multiplier = self.multiplier[self.ids.bands.ids.band2.text]
-        #     resistance = (self.nominal[self.ids.bands.ids.band0.text] * 10 +
-        #                   self.nominal[self.ids.bands.ids.band1.text]) * multiplier
-        #
-        #     if "band3" in self.ids.bands.ids.keys():
-        #         tolerance = self.tolerance[self.ids.bands.ids.band3.text]
-        #     else:
-        #         tolerance = "±20%"
-        # else:
-        #     multiplier = self.multiplier[self.ids.bands.ids.band3.text]
-        #     resistance = (self.nominal[self.ids.bands.ids.band0.text] * 100 +
-        #                   self.nominal[self.ids.bands.ids.band1.text] * 10 +
-        #                   self.nominal[self.ids.bands.ids.band2.text]) * multiplier
-        #
-        # if resistance < 1000:
-        #     self.ids.result.text = "Результат: {:g} Ом {}{}".format(resistance, tolerance,
-        #                                                             (", ТКС: " + thermal) if thermal else "")
-        # elif resistance < 1000000:
-        #     self.ids.result.text = "Результат: {:g} кОм {}{}".format(resistance / 1000, tolerance,
-        #                                                              (", ТКС: " + thermal) if thermal else "")
-        # else:
-        #     self.ids.result.text = "Результат: {:g} МОм {}{}".format(resistance / 1000000, tolerance,
-        #                                                              (", ТКС: " + thermal) if thermal else "")
+        if "band5" in self.ids.bands.ids.keys():
+            thermal = self.thermal[self.ids.bands.ids.band5.color_name]
+        if "band4" in self.ids.bands.ids.keys():
+            tolerance = self.tolerance[self.ids.bands.ids.band4.color_name]
+        if len(self.ids.bands.ids.keys()) in (3, 4):
+            multiplier = self.multiplier[self.ids.bands.ids.band2.color_name]
+            resistance = (self.nominal[self.ids.bands.ids.band0.color_name] * 10 +
+                          self.nominal[self.ids.bands.ids.band1.color_name]) * multiplier
+
+            if "band3" in self.ids.bands.ids.keys():
+                tolerance = self.tolerance[self.ids.bands.ids.band3.color_name]
+            else:
+                tolerance = "±20%"
+        else:
+            multiplier = self.multiplier[self.ids.bands.ids.band3.color_name]
+            resistance = (self.nominal[self.ids.bands.ids.band0.color_name] * 100 +
+                          self.nominal[self.ids.bands.ids.band1.color_name] * 10 +
+                          self.nominal[self.ids.bands.ids.band2.color_name]) * multiplier
+
+        if resistance < 1000:
+            self.ids.result.text = "Результат: {:g} Ом {}{}".format(resistance, tolerance,
+                                                                    (", ТКС: " + thermal) if thermal else "")
+        elif resistance < 1000000:
+            self.ids.result.text = "Результат: {:g} кОм {}{}".format(resistance / 1000, tolerance,
+                                                                     (", ТКС: " + thermal) if thermal else "")
+        else:
+            self.ids.result.text = "Результат: {:g} МОм {}{}".format(resistance / 1000000, tolerance,
+                                                                     (", ТКС: " + thermal) if thermal else "")
 
 
 class SMDResistorsMarkingScreen(MDScreen):
