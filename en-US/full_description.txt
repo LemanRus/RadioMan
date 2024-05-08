@@ -1,2 +1,0 @@
-This application is designed to help anyone who wants to create their own electronic design.
-It includes a guide to component markings, various calculators and other useful information for every radio amateur.
