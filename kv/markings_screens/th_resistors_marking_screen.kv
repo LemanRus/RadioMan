@@ -22,10 +22,15 @@
                     text: "Выберите количество полос:"
 
                 MDButton:
-                    id: bands_select_menu
-                    text: "3"
+                    id: bands_select_menu_button
+                    theme_width: "Custom"
                     width: root.width / 4
                     on_release: root.menu.open()
+
+                    MDButtonText:
+                        id: bands_select_menu
+                        text: "3"
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5,}
 
             MDRelativeLayout:
                 id: resistor_view
