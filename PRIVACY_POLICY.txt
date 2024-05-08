@@ -1,0 +1,26 @@
+[RUSSIAN]
+
+1. Сбор личной информации: Наше приложение не собирает никакую личную информацию о пользователях.
+2. Использование личной информации: Поскольку мы не собираем личную информацию, мы также не используем её.
+3. Раскрытие личной информации третьим сторонам: Мы не раскрываем личную информацию третьим сторонам, поскольку не собираем её.
+4. Безопасность личной информации: Несмотря на отсутствие сбора личной информации, мы всё равно принимаем меры для обеспечения безопасности данных наших пользователей.
+5. Управление личной информацией: Поскольку мы не собираем личную информацию, пользователи не имеют возможности управлять ею через наше приложение.
+6. Отказ от сбора информации: Поскольку наше приложение не собирает никакую личную информацию, нет необходимости предоставлять пользовательские возможности для отказа от сбора информации.
+7. Хранение данных: Поскольку не собирается никакая личная информация, вопрос хранения данных не возникает.
+8. Особые требования регионального законодательства: Наши условия конфиденциальности соответствуют общим принципам защиты данных и не предусматривают дополнительных требований, связанных с региональным законодательством.
+
+Связь: Если у вас возникли вопросы или предложения по поводу нашей политики конфиденциальности, свяжитесь с нами по адресу: electronics@hand-made-tlt.ru.
+
+
+[ENGLISH]
+
+1. Collection of Personal Information: Our application does not collect any personal information about users.
+2. Use of Personal Information: Since we do not collect personal information, we also do not use it.
+3. Disclosure of Personal Information to Third Parties: We do not disclose personal information to third parties as we do not collect it.
+4. Security of Personal Information: Despite the absence of collecting personal information, we still take measures to ensure the security of our users' data.
+5. Management of Personal Information: Since we do not collect personal information, users do not have the ability to manage it through our application.
+6. Opting Out of Information Collection: Since our application does not collect any personal information, there is no need to provide user options for opting out of information collection.
+7. Data Storage: Since no personal information is collected, the question of data storage does not arise.
+8. Special Requirements of Regional Legislation: Our privacy policy adheres to general data protection principles and does not entail additional requirements related to regional legislation.
+
+Contact: If you have any questions or suggestions regarding our privacy policy, please contact us at electronics@hand-made-tlt.ru.
