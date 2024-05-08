@@ -12,7 +12,7 @@ from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProper
     VariableListProperty
 from kivy.uix.button import Button
 from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.button import MDIconButton, MDButton, MDButtonText, BaseButton
+from kivymd.uix.button import MDIconButton, MDButton, MDButtonText, BaseButton, MDButtonIcon
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.menu import MDDropdownMenu
@@ -54,6 +54,7 @@ class ResistorBandDropdownMennu(MDDropdownMenu):
         self.set_menu_pos()
         self.on_open()
 
+
 class ResistorBand(MDButton):
     colors = {
         "Золотой": [1, 0.84, 0, 1], "Серебристый": [0.8, 0.8, 0.8, 1], "Чёрный": [0, 0, 0, 1],
@@ -88,6 +89,7 @@ class ResistorBand(MDButton):
                dict(itertools.islice(colors.items(), 8, 10)) | dict(itertools.islice(colors.items(), 11, 12))
         }
     }
+
     def __init__(self, *args, **kwargs):
         self.app = App.get_running_app()
         self.band_no = kwargs.pop("band_no")
@@ -99,17 +101,19 @@ class ResistorBand(MDButton):
             position="center",
             border_margin=dp(12),
         )
+        self.theme_bg_color = self.theme_text_color = self.theme_width = self.theme_height = "Custom"
         self.menu.width = self.menu.minimum_width
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
         self.md_bg_color = list(self.my_color.values())[0]
         self.theme_width = self.theme_font_size = "Custom"
         self.size_hint = (1, 1)
+        self.pos_hint = {"center_y": 0.5}
         self.radius = [1, ]
-        self.theme_bg_color = self.theme_icon_color = self.theme_text_color = "Custom"
-        self.icon = "chevron-down"
         self.color_name = list(self.my_color.keys())[0]
         if self.color_name in ["Чёрный", "Коричневый"]:
-            self.icon_color = self.text_color = "white"
+            self.children[0].icon_color = self.text_color = "white"
+        else:
+            self.children[0].icon_color = self.text_color = "black"
         self.bind(on_release=self.menu_open)
         self.menu.bind(on_dismiss=lambda _: self.__setattr__("icon", "chevron-down"))
 
@@ -129,17 +133,17 @@ class ResistorBand(MDButton):
         return band
 
     def menu_open(self, *args):
-        self.icon = "chevron-up"
+        self.children[0].icon = "chevron-up"
         self.menu.open()
 
     def set_item(self, param_item):
         self.color_name = param_item[0]
         self.md_bg_color = param_item[1]
-        self.icon = "chevron-down"
+        self.children[0].icon = "chevron-down"
         if param_item[0] in ["Чёрный", "Коричневый"]:
-            self.icon_color = self.text_color = "white"
+            self.children[0].icon_color = self.text_color = "white"
         else:
-            self.icon_color = self.text_color = "black"
+            self.children[0].icon_color = self.text_color = "black"
         self.parent.parent.parent.parent.parent.calculate_resistor()
         self.menu.dismiss()
 
@@ -195,10 +199,13 @@ class THResistorsMarkingScreen(MDScreen):
         self.ids.result.text = "Результат:"
         for i in range(0, self.bands_qty):
             band = ResistorBand(
-                pos_hint={"center_y": 0.5},
-                size_hint=(1, 1),
+                MDButtonIcon(
+                    icon='chevron-down',
+                    pos_hint={"center_x": 0.5, "center_y": 0.5},
+                    theme_icon_color="Custom"
+                ),
                 band_no=i,
-                band_qty=self.bands_qty
+                band_qty=self.bands_qty,
             )
             self.ids.bands.add_widget(band)
             self.ids.bands.ids["band" + str(i)] = weakref.ref(band)
