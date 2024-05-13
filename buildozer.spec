@@ -29,7 +29,7 @@ source.exclude_dirs = tests, bin, venv, venv-test, screenshots
 #source.exclude_patterns = license,bin,venv,venv-test
 
 # (str) Application versioning (method 1)
-version = 0.7
+version = 0.8
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
