@@ -1,6 +1,8 @@
+from kivy.properties import NumericProperty
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
+from kivy.uix.textinput import TextInput
 from kivymd.uix.behaviors import CircularRippleBehavior
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDIconButton, MDButton
@@ -17,6 +19,14 @@ class ImageButton(ButtonBehavior, Image):
     def __init__(self, **kwargs):
         self.ripple_scale = 0.85
         super().__init__(**kwargs)
+
+
+class MaxLengthInput(TextInput):
+    max_length = NumericProperty(0)
+
+    def insert_text(self, substring, from_undo=False):
+        if len(self.text) < self.max_length:
+            return super().insert_text(substring, from_undo=from_undo)
 
 
 class MDGridScreen(GridLayout):

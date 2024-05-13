@@ -29,15 +29,16 @@
 
                 MDTextField:
                     id: smd_capacitor_marking_input
+
+                    hint_text: "A475"
                     halign: "center"
-                    line_color_normal: 1, 1, 1, 0.3
-                    line_color_focus: 1, 1, 1, 0.4
-                    text_color_normal: 1, 1, 1, 0.9
-                    text_color_focus: 1, 1, 1, 1
+                    background_color: 0, 0, 0, 0
+                    foreground_color: 1, 1, 1, 1
+                    max_length: 4
                     size_hint: 0.6, None
                     font_size: "72sp"
-                    max_text_length: 4
                     pos_hint: {"center_y": 0.5, "center_x": 0.5}
+                    multiline: False
                     on_text_validate: root.calculate_smd_capacitor(self.text)
 
             MDCard:
