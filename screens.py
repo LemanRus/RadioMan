@@ -942,6 +942,10 @@ class ChipsScreen(MDScreen):
     pass
 
 
+class KR580Screen(MDScreen):
+    pass
+
+
 class LifehacksScreen(MDScreen):
     pass
 

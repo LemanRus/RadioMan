@@ -25,13 +25,14 @@ MDBoxLayout:
         LMRegulatorCalculateSelectScreen:
         LMRegulatorCalculateVoltageScreen:
         LMRegulatorCalculateCurrentScreen:
-    #    HandbookScreen:
-    #    TheoryScreen:
-    #    SchematicsScreen:
-    #    PinoutScreen:
-    #    ConnectionsScreen:
-    #    ChipsScreen:
-    #    LifehacksScreen:
+        HandbookScreen:
+        TheoryScreen:
+        SchematicsScreen:
+        PinoutScreen:
+        ConnectionsScreen:
+        ChipsScreen:
+        KR580Screen:
+        LifehacksScreen:
         HelpScreen:
         HowToScreeen:
         AboutScreen:
@@ -71,10 +72,20 @@ MDBoxLayout:
                 icon_color_normal: app.theme_cls.tertiaryColor
                 icon: "calculator"
 
-    #    MDNavigationItem:
-    #        name: "handbook_screen_item"
-    #        icon: "book-open-page-variant"
-    #        text: "Справочник"
+        MDNavigationItem:
+            name: "handbook_screen_item"
+
+            MDNavigationItemLabel:
+                theme_text_color: "Custom"
+                text_color_active: app.theme_cls.primaryColor
+                text_color_normal: app.theme_cls.tertiaryColor
+                text: "Справочник"
+
+            MDNavigationItemIcon:
+                theme_icon_color: "Custom"
+                icon_color_active: app.theme_cls.primaryColor
+                icon_color_normal: app.theme_cls.tertiaryColor
+                icon: "book-open-page-variant"
 
         MDNavigationItem:
             name: "help_screen_item"

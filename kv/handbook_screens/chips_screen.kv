@@ -13,5 +13,85 @@
 
         MDPaddedList:
 
-            MDDumbLabel:
+            MDIconCard:
+                on_release: root.parent.current = "kr580_screen"
+
+                ImageButton:
+                    source: "media/th_capacitor.png"
+                    on_release: root.parent.current = "kr580_screen"
+
+                MDShortenLabel:
+                    text: "Комплект КР580"
+
+#            MDIconCard:
+#                on_release: root.parent.current = "smd_capacitors_marking_screen"
+#
+#                ImageButton:
+#                    source: "media/smd_capacitor.png"
+#                    on_release: root.parent.current = "smd_capacitors_marking_screen"
+#
+#                MDShortenLabel:
+#                    text: "SMD конденсаторы"
+
+<KR580Screen>:
+    name: "kr580_screen"
+
+    MDBackTopBar:
+        id: kr580_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Комплект КР580"
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - kr580_top_bar.height) / root.height}
+
+        MDGridLayout:
+            adaptive_size: True
+            cols:4
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test1"
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test2"
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test3"
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test4"
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test5"
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test6"
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test7"
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test8"
+
+            MDLabel:
+                size_hint: None, None
+                width: 400
+                text: "Test9"
 
