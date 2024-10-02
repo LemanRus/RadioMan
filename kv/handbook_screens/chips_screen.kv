@@ -14,84 +14,2069 @@
         MDPaddedList:
 
             MDIconCard:
-                on_release: root.parent.current = "kr580_screen"
+                on_release: root.parent.current = "chips_analogs_select_screen"
 
                 ImageButton:
                     source: "media/th_capacitor.png"
-                    on_release: root.parent.current = "kr580_screen"
+                    on_release: root.parent.current = "chips_analogs_select_screen"
 
                 MDShortenLabel:
-                    text: "Комплект КР580"
+                    text: "Аналоги отечественных микросхем"
 
-#            MDIconCard:
-#                on_release: root.parent.current = "smd_capacitors_marking_screen"
-#
-#                ImageButton:
-#                    source: "media/smd_capacitor.png"
-#                    on_release: root.parent.current = "smd_capacitors_marking_screen"
-#
-#                MDShortenLabel:
-#                    text: "SMD конденсаторы"
-
-<KR580Screen>:
-    name: "kr580_screen"
+<ChipsAnalogsSelectScreen>:
+    name: "chips_analogs_select_screen"
 
     MDBackTopBar:
-        id: kr580_top_bar
+        id: chips_analogs_select_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Аналоги отечественных микросхем"
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - chips_analogs_select_top_bar.height) / root.height}
+
+        MDPaddedList:
+
+            MDIconCard:
+                on_release: root.parent.current = "chips_analogs_133_screen"
+
+                ImageButton:
+                    source: "media/th_capacitor.png"
+                    on_release: root.parent.current = "chips_analogs_133_screen"
+
+                MDShortenLabel:
+                    text: "Серия 133"
+
+            MDIconCard:
+                on_release: root.parent.current = "chips_analogs_140_screen"
+
+                ImageButton:
+                    source: "media/th_capacitor.png"
+                    on_release: root.parent.current = "chips_analogs_140_screen"
+
+                MDShortenLabel:
+                    text: "Серия 140"
+
+            MDIconCard:
+                on_release: root.parent.current = "chips_analogs_580_screen"
+
+                ImageButton:
+                    source: "media/th_capacitor.png"
+                    on_release: root.parent.current = "chips_analogs_580_screen"
+
+                MDShortenLabel:
+                    text: "Серия 580"
+
+<ChipsAnalogs133Screen>:
+    name: "chips_analogs_133_screen"
+
+    MDBackTopBar:
+        id: chips_analogs_133_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Серия 133"
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - chips_analogs_133_top_bar.height) / root.height}
+
+        MDList:
+            spacing: "0dp"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+#
+#        MDGridLayout:
+#            adaptive_height: True
+#            padding: 10, 0
+#            cols:2
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+
+<ChipsAnalogs140Screen>:
+    name: "chips_analogs_140_screen"
+
+    MDBackTopBar:
+        id: chips_analogs_140_top_bar
+
+        MDCenteredTopAppBarTitle:
+            text: "Серия 140"
+
+    MDRecycleView:
+        size_hint_y: (root.height - sp(60)) / root.height
+        pos_hint: {"top": (root.height - chips_analogs_140_top_bar.height) / root.height}
+
+        MDList:
+            spacing: "0dp"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+#
+#        MDGridLayout:
+#            adaptive_height: True
+#            padding: 10, 0
+#            cols:2
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+
+<ChipsAnalogs580Screen>:
+    name: "chips_analogs_580_screen"
+
+    MDBackTopBar:
+        id: chips_analogs_580_top_bar
 
         MDCenteredTopAppBarTitle:
             text: "Комплект КР580"
 
     MDRecycleView:
         size_hint_y: (root.height - sp(60)) / root.height
-        pos_hint: {"top": (root.height - kr580_top_bar.height) / root.height}
+        pos_hint: {"top": (root.height - chips_analogs_580_top_bar.height) / root.height}
 
-        MDGridLayout:
-            adaptive_size: True
-            cols:4
+        MDList:
+            spacing: "0dp"
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test1"
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test2"
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test3"
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test4"
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test5"
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test6"
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test7"
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test8"
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
 
-            MDLabel:
-                size_hint: None, None
-                width: 400
-                text: "Test9"
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
 
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+
+            MDListItem:
+                divider: True
+                divider_color: 0,0,0,1
+
+                MDListItemHeadlineText:
+                    text: "Item1"
+                MDLabel:
+                    text: "TestItem"
+#
+#        MDGridLayout:
+#            adaptive_height: True
+#            padding: 10, 0
+#            cols:2
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test1"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"
+#
+#            MDLabel:
+#                size: self.texture_size
+#                text: "Test2"

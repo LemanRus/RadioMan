@@ -942,7 +942,19 @@ class ChipsScreen(MDScreen):
     pass
 
 
-class KR580Screen(MDScreen):
+class ChipsAnalogsSelectScreen(MDScreen):
+    pass
+
+
+class ChipsAnalogs133Screen(MDScreen):
+    pass
+
+
+class ChipsAnalogs140Screen(MDScreen):
+    pass
+
+
+class ChipsAnalogs580Screen(MDScreen):
     pass
 
 
