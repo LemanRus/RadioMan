@@ -14,6 +14,8 @@ from kivy.uix.button import Button
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDIconButton, MDButton, MDButtonText, BaseButton, MDButtonIcon
 from kivymd.uix.card import MDCard
+from kivymd.uix.divider import MDDivider
+from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.label import MDLabel
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.screen import MDScreen
@@ -21,6 +23,7 @@ from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.textfield import MDTextField
 
 from e24_nominals import E24Nominals as e24
+from misc import MDGridScreen
 from output_value_methods import format_output_resistor, format_output_capacitor
 
 
@@ -954,8 +957,60 @@ class ChipsAnalogs140Screen(MDScreen):
     pass
 
 
+class ChipsAnalogs140(MDGridLayout):
+    series140 = {"140УД5А,Б": "CA3015", "КР140УД5А,Б": "CA3015", "140УД6А,Б": "MG1556G", "КР140УД6": "MC1556C",
+                 "140УД7": "(A741", "КР140УД7": "(A741C", "КФ140УД7": "SFC2741", "Н140УД7": "SE535",
+                 "140УД8А,Б": "(A740", "КР140УД8А-Г": "(A740C", "140УД11": "LM318", "КР140УД11": "LM318",
+                 "140УД12": "(A776", "КР140УД12": "(A776C", "140УД13": "(A727M", "140УД14": "LM108",
+                 "КР140УД14А": "LM308", "КР140УД14Б": "LM308", "140УД17А": "OP-07", "140УД17Б": "OP-07A",
+                 "КР140УД17А": "OP-07E", "КР140УД17Б": "OP-07C", "Н140УД17А": "OP-07", "Н140УД17Б": "OP-07A",
+                 "КР140УД18": "LF355", "140УД20А": "(A747", "140УД20Б": "(A747", "КР140УД20А": "(A747C",
+                 "КР140УД20Б": "(A747C", "КМ140УД20": "(A747C", "Н140УД20А": "(A747", "Н140УД20Б": "(A747",
+                 "140УД21": "HA2900", "КР140УД22": "LF356", "КР140УД22А": "LF356", "140УД23": "LF157",
+                 "140УД24": "ICL7650", "140УД25А": "OP-27A", "140УД25Б": "OP-27B", "140УД25В": "OP-27C",
+                 "КР140УД25А": "OP-27A", "КР140УД25Б": "OP-27B", "КР140УД25В": "OP-27C", "КР140УД25Г": "OP-27B",
+                 "140УД26А": "OP-37A", "140УД26Б": "OP-37B", "140УД26В": "OP-37C", "КР140УД26А": "OP-37A",
+                 "КР140УД26Б": "OP-37B", "КР140УД26В": "OP-37C", "КР140УД26Г": "OP-37B", "140УД501А": "CA3015",
+                 "140УД501Б": "CA3015", "140УД601А": "MC1556G", "140УД601Б": "MC1556G", "КР140УД608": "MC1456CP1",
+                 "140УД701": "(A741", "КР140УД708": "(A741C", "КР140УД1101": "LM318", "140УД1201": "(A776",
+                 "КР140УД1208": "(A776C", "140УД1301": "(A727M", "140УД1401": "LM108", "КР140УД1408А": "LM308",
+                 "КР140УД1408Б": "LM308", "140УД1701А": "OP-07", "140УД1701Б": "OP-07A"}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.adaptive_height = True
+        self.padding = 10
+        self.cols = 2
+        for k, v in self.series140.items():
+            self.add_widget(MDLabel(text=k, size_hint=(1, None), adaptive_height=True))
+            self.add_widget(MDLabel(text=v, size_hint=(1, None), adaptive_height=True))
+            self.add_widget(MDDivider())
+            self.add_widget(MDDivider())
+
+
+
 class ChipsAnalogs580Screen(MDScreen):
     pass
+
+
+class ChipsAnalogs580(MDGridLayout):
+    series580 = {"КР580ВА86": "8286", "КР580ВА87": "8287", "580ВВ51": "8251", "КР580ВВ51А": "8251A", "580ВВ55": "8255",
+                 "КР580ВВ55А": "8255A", "580ВВ79": "8279", "КР580ВВ79": "8279", "КР580ВГ18": "8218",
+                 "КР580ВГ75": "8275", "КР580ВГ92": "8292", "580ВИ53": "8253", "КР580ВИ53": "8253", "КР580ВК28": "8228",
+                 "КР580ВК38": "8238", "КР580ВК91А": "8291", "580ВМ80": "8280", "КР580ВМ80А": "8280",
+                 "КР580ВР43": "8243", "КР580ВТ42": "8242", "580ВТ57": "8257", "КР580ВТ57": "8257", "КР580ГФ24": "8224",
+                 "КР580ИР82": "8282", "КР580ИР83": "8283"}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.adaptive_height = True
+        self.padding = 10
+        self.cols = 2
+        for k, v in self.series580.items():
+            self.add_widget(MDLabel(text=k, size_hint=(1, None), adaptive_height=True))
+            self.add_widget(MDLabel(text=v, size_hint=(1, None), adaptive_height=True))
+            self.add_widget(MDDivider())
+            self.add_widget(MDDivider())
 
 
 class LifehacksScreen(MDScreen):
