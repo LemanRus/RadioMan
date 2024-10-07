@@ -1005,10 +1005,12 @@ class ChipsAnalogs580(MDGridLayout):
         super().__init__(*args, **kwargs)
         self.adaptive_height = True
         self.padding = 10
-        self.cols = 2
+        self.cols = 3
         for k, v in self.series580.items():
             self.add_widget(MDLabel(text=k, size_hint=(1, None), adaptive_height=True))
+            self.add_widget(MDDivider(orientation="vertical"))
             self.add_widget(MDLabel(text=v, size_hint=(1, None), adaptive_height=True))
+            self.add_widget(MDDivider())
             self.add_widget(MDDivider())
             self.add_widget(MDDivider())
 
