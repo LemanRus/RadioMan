@@ -1013,7 +1013,7 @@ class ChipsAnalogs580(MDGridLayout):
         self.cols = 3
         for k, v in self.series580.items():
             self.add_widget(MDLabel(text=k, size_hint=(1, None), adaptive_height=True))
-            self.add_widget(MDDivider(orientation="vertical"))
+            self.add_widget(MDDivider(orientation="vertical", size_hint=(None, 1)))
             self.add_widget(MDLabel(text=v, size_hint=(1, None), adaptive_height=True))
             self.add_widget(MDDivider())
             self.add_widget(MDDivider())
