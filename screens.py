@@ -1008,16 +1008,35 @@ class ChipsAnalogs580(MDGridLayout):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.adaptive_height = True
+        self.adaptive_size = True
         self.padding = 10
         self.cols = 3
+        self.spacing = [dp(4), dp(4)]
+        
+        self.labels = []
+
         for k, v in self.series580.items():
-            self.add_widget(MDLabel(text=k, size_hint=(1, None), adaptive_height=True))
-            self.add_widget(MDDivider(orientation="vertical", size_hint=(None, 1)))
-            self.add_widget(MDLabel(text=v, size_hint=(1, None), adaptive_height=True))
+            label_k = MDLabel(text=k, adaptive_height=True, halign="right", size_hint_x=None)
+            label_v = MDLabel(text=v, adaptive_height=True, size_hint_x=None)
+            self.labels.append((label_k, label_v))
+            
+            self.add_widget(label_k)
+            h=MDDivider(orientation="vertical")
+            print(h.width)
+            self.add_widget(h)
+            self.add_widget(label_v)
             self.add_widget(MDDivider())
             self.add_widget(MDDivider())
             self.add_widget(MDDivider())
+
+        Window.bind(on_resize=self.update_width)
+
+    def update_width(self, *args):
+        print(Window.width)
+        new_width = Window.width * 0.5 - 15
+        for label_k, label_v in self.labels:
+            label_k.width = new_width
+            label_v.width = new_width
 
 
 class LifehacksScreen(MDScreen):
