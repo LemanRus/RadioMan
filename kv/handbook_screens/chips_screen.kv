@@ -508,9 +508,10 @@
         MDCenteredTopAppBarTitle:
             text: "Серия 140"
 
-    MDScrollView:
+    ScrollView:
         size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - chips_analogs_140_top_bar.height) / root.height}
+        do_scroll_x: False
 
         ChipsAnalogs140:
 
@@ -523,8 +524,9 @@
         MDCenteredTopAppBarTitle:
             text: "Комплект КР580"
 
-    MDScrollView:
+    ScrollView:
         size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - chips_analogs_580_top_bar.height) / root.height}
+        do_scroll_x: False
 
         ChipsAnalogs580:
