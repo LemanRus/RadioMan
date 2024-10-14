@@ -2,10 +2,10 @@ buildozer==1.5.0
 Kivy==2.3.0
 kivymd@https://github.com/kivymd/KivyMD/archive/master.zip
 materialyoucolor==2.0.9
-pillow==10.3.0
-Cython==3.0.10
-asynckivy==0.6.2
-asyncgui==0.6.1
+pillow==10.4.0
+Cython==3.0.11
+asynckivy==0.6.4
+asyncgui==0.6.3
 
 
 
