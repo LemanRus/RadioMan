@@ -4,15 +4,9 @@ import weakref
 import webbrowser
 
 from kivy.app import App
-from kivy.clock import Clock
 from kivy.core.window import Window
-from kivy.graphics import SmoothRoundedRectangle
 from kivy.metrics import dp, sp
-from kivy.properties import BoundedNumericProperty, ObjectProperty, StringProperty, NumericProperty, \
-    VariableListProperty
-from kivy.uix.button import Button
-from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.button import MDIconButton, MDButton, MDButtonText, BaseButton, MDButtonIcon
+from kivymd.uix.button import MDButton, MDButtonIcon
 from kivymd.uix.card import MDCard
 from kivymd.uix.divider import MDDivider
 from kivymd.uix.gridlayout import MDGridLayout
@@ -23,8 +17,8 @@ from kivymd.uix.screenmanager import MDScreenManager
 from kivymd.uix.textfield import MDTextField
 
 from e24_nominals import E24Nominals as e24
-from misc import MDGridScreen
-from output_value_methods import format_output_resistor, format_output_capacitor
+from output_value_methods import format_output_resistor, \
+    format_output_capacitor
 
 
 class MarkingsScreenManager(MDScreenManager):
@@ -60,36 +54,75 @@ class ResistorBandDropdownMennu(MDDropdownMenu):
 
 class ResistorBand(MDButton):
     colors = {
-        "Золотой": [1, 0.84, 0, 1], "Серебристый": [0.8, 0.8, 0.8, 1], "Чёрный": [0, 0, 0, 1],
-        "Коричневый": [0.4, 0.22, 0, 1], "Красный": [1, 0, 0, 1], "Оранжевый": [0.98, 0.45, 0.02, 1],
-        "Жёлтый": [1, 1, 0, 1], "Зелёный": [0.05, 0.64, 0.05, 1], "Синий": [0.05, 0.54, 0.95, 1],
-        "Фиолетовый": [0.54, 0.14, 0.59, 1], "Серый": [0.5, 0.5, 0.5, 1], "Белый": [1, 1, 1, 1]
+        "Золотой": [1, 0.84, 0, 1], "Серебристый": [0.8, 0.8, 0.8, 1],
+        "Чёрный": [0, 0, 0, 1], "Коричневый": [0.4, 0.22, 0, 1],
+        "Красный": [1, 0, 0, 1], "Оранжевый": [0.98, 0.45, 0.02, 1],
+        "Жёлтый": [1, 1, 0, 1], "Зелёный": [0.05, 0.64, 0.05, 1],
+        "Синий": [0.05, 0.54, 0.95, 1], "Фиолетовый": [0.54, 0.14, 0.59, 1],
+        "Серый": [0.5, 0.5, 0.5, 1], "Белый": [1, 1, 1, 1]
     }
     bands_accordance = {
         3: {
-            0: dict(itertools.islice(colors.items(), 3, None)),
-            1: dict(itertools.islice(colors.items(), 2, None)),
-            2: dict(itertools.islice(colors.items(), 0, len(colors.keys()))),
+            0: dict(
+                itertools.islice(colors.items(), 3, None)
+                ),
+            1: dict(
+                itertools.islice(colors.items(), 2, None)
+                ),
+            2: dict(
+                itertools.islice(colors.items(), 0, len(colors.keys()))
+                ),
         },
         4: {
-            0: dict(itertools.islice(colors.items(), 3, None)),
-            1: dict(itertools.islice(colors.items(), 2, None)),
-            2: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
-            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
+            0: dict(
+                itertools.islice(colors.items(), 3, None)
+                ),
+            1: dict(
+                itertools.islice(colors.items(), 2, None)
+                ),
+            2: dict(
+                itertools.islice(colors.items(), 0, len(colors.keys()) - 1)
+                ),
+            3: dict(
+                itertools.islice(colors.items(), 0, len(colors.keys()) - 1)
+                ),
         }, 5: {
-            0: dict(itertools.islice(colors.items(), 3, None)),
-            1: dict(itertools.islice(colors.items(), 2, None)),
-            2: dict(itertools.islice(colors.items(), 2, None)),
-            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
-            4: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
+            0: dict(
+                itertools.islice(colors.items(), 3, None)
+                ),
+            1: dict(
+                itertools.islice(colors.items(), 2, None)
+                ),
+            2: dict(
+                itertools.islice(colors.items(), 2, None)
+                ),
+            3: dict(
+                itertools.islice(colors.items(), 0, len(colors.keys()) - 1)
+                ),
+            4: dict(
+                itertools.islice(colors.items(), 0, len(colors.keys()) - 1)
+                ),
         }, 6: {
-            0: dict(itertools.islice(colors.items(), 3, None)),
-            1: dict(itertools.islice(colors.items(), 2, None)),
-            2: dict(itertools.islice(colors.items(), 2, None)),
-            3: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
-            4: dict(itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
-            5: dict(itertools.islice(colors.items(), 0, 2)) | dict(itertools.islice(colors.items(), 3, 7)) |
-               dict(itertools.islice(colors.items(), 8, 10)) | dict(itertools.islice(colors.items(), 11, 12))
+            0: dict(
+                itertools.islice(colors.items(), 3, None)
+                ),
+            1: dict(
+                itertools.islice(colors.items(), 2, None)),
+            2: dict(
+                itertools.islice(colors.items(), 2, None)),
+            3: dict(
+                itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
+            4: dict(
+                itertools.islice(colors.items(), 0, len(colors.keys()) - 1)),
+            5: dict(
+                itertools.islice(colors.items(), 0, 2)
+                ) | dict(
+                    itertools.islice(colors.items(), 3, 7)
+                    ) | dict(
+                        itertools.islice(colors.items(), 8, 10)
+                        ) | dict(
+                            itertools.islice(colors.items(), 11, 12)
+                            )
         }
     }
 
@@ -104,7 +137,8 @@ class ResistorBand(MDButton):
             position="center",
             border_margin=dp(12),
         )
-        self.theme_bg_color = self.theme_text_color = self.theme_width = self.theme_height = "Custom"
+        self.theme_bg_color = self.theme_text_color = \
+            self.theme_width = self.theme_height = "Custom"
         self.menu.width = self.menu.minimum_width
         self.my_color = self.bands_accordance[self.band_qty][self.band_no]
         self.md_bg_color = list(self.my_color.values())[0]
@@ -118,7 +152,9 @@ class ResistorBand(MDButton):
         else:
             self.children[0].icon_color = self.text_color = "black"
         self.bind(on_release=self.menu_open)
-        self.menu.bind(on_dismiss=lambda _: self.__setattr__("icon", "chevron-down"))
+        self.menu.bind(on_dismiss=lambda _: self.__setattr__(
+            "icon", "chevron-down"
+            ))
 
     def get_band(self, band_no, band_qty):
         band = []
@@ -152,20 +188,24 @@ class ResistorBand(MDButton):
 
 
 class THResistorsMarkingScreen(MDScreen):
-    nominal = {"Чёрный": 0, "Коричневый": 1, "Красный": 2, "Оранжевый": 3, "Жёлтый": 4, "Зелёный": 5,
-               "Синий": 6, "Фиолетовый": 7, "Серый": 8, "Белый": 9}
+    nominal = {"Чёрный": 0, "Коричневый": 1, "Красный": 2, "Оранжевый": 3,
+               "Жёлтый": 4, "Зелёный": 5, "Синий": 6, "Фиолетовый": 7,
+               "Серый": 8, "Белый": 9}
 
-    multiplier = {"Золотой": 0.1, "Серебристый": 0.01, "Чёрный": 1, "Коричневый": 10, "Красный": 100, "Оранжевый": 1000,
-                  "Жёлтый": 10000,
-                  "Зелёный": 100000, "Синий": 1000000, "Фиолетовый": 10000000, "Серый": 100000000}
+    multiplier = {"Золотой": 0.1, "Серебристый": 0.01, "Чёрный": 1,
+                  "Коричневый": 10, "Красный": 100, "Оранжевый": 1000,
+                  "Жёлтый": 10000, "Зелёный": 100000, "Синий": 1000000,
+                  "Фиолетовый": 10000000, "Серый": 100000000}
 
-    tolerance = {"Золотой": "±5%", "Серебристый": "±10%", "Чёрный": "±0,005%", "Коричневый": "±1%", "Красный": "±2%",
-                 "Оранжевый": "±0,01%",
-                 "Жёлтый": "±0,02%", "Зелёный": "±0,5%", "Синий": "±0,25%", "Фиолетовый": "±0,1%", "Серый": "±0,05%"}
+    tolerance = {"Золотой": "±5%", "Серебристый": "±10%", "Чёрный": "±0,005%",
+                 "Коричневый": "±1%", "Красный": "±2%", "Оранжевый": "±0,01%",
+                 "Жёлтый": "±0,02%", "Зелёный": "±0,5%", "Синий": "±0,25%",
+                 "Фиолетовый": "±0,1%", "Серый": "±0,05%"}
 
-    thermal = {"Золотой": "±500 ppm/°С", "Серебристый": "±1000 ppm/°С", "Коричневый": "±100 ppm/°С",
-               "Красный": "±50 ppm/°С",
-               "Оранжевый": "±15 ppm/°С", "Жёлтый": "±25 ppm/°С", "Синий": "±10 ppm/°С", "Фиолетовый": "±5 ppm/°С",
+    thermal = {"Золотой": "±500 ppm/°С", "Серебристый": "±1000 ppm/°С",
+               "Коричневый": "±100 ppm/°С", "Красный": "±50 ppm/°С",
+               "Оранжевый": "±15 ppm/°С", "Жёлтый": "±25 ppm/°С",
+               "Синий": "±10 ppm/°С", "Фиолетовый": "±5 ppm/°С",
                "Белый": "±1 ppm/°С"}
 
     def build_menu(self, *args, **kwargs):
@@ -224,8 +264,10 @@ class THResistorsMarkingScreen(MDScreen):
             tolerance = self.tolerance[self.ids.bands.ids.band4.color_name]
         if len(self.ids.bands.ids.keys()) in (3, 4):
             multiplier = self.multiplier[self.ids.bands.ids.band2.color_name]
-            resistance = (self.nominal[self.ids.bands.ids.band0.color_name] * 10 +
-                          self.nominal[self.ids.bands.ids.band1.color_name]) * multiplier
+            resistance = (
+                self.nominal[self.ids.bands.ids.band0.color_name] * 10 +
+                self.nominal[self.ids.bands.ids.band1.color_name]
+                ) * multiplier
 
             if "band3" in self.ids.bands.ids.keys():
                 tolerance = self.tolerance[self.ids.bands.ids.band3.color_name]
@@ -233,36 +275,48 @@ class THResistorsMarkingScreen(MDScreen):
                 tolerance = "±20%"
         else:
             multiplier = self.multiplier[self.ids.bands.ids.band3.color_name]
-            resistance = (self.nominal[self.ids.bands.ids.band0.color_name] * 100 +
-                          self.nominal[self.ids.bands.ids.band1.color_name] * 10 +
-                          self.nominal[self.ids.bands.ids.band2.color_name]) * multiplier
+            resistance = (
+                self.nominal[self.ids.bands.ids.band0.color_name] * 100 +
+                self.nominal[self.ids.bands.ids.band1.color_name] * 10 +
+                self.nominal[self.ids.bands.ids.band2.color_name]
+                ) * multiplier
 
         if resistance < 1000:
-            self.ids.result.text = "Результат: {:g} Ом {}{}".format(resistance, tolerance,
-                                                                    (", ТКС: " + thermal) if thermal else "")
+            self.ids.result.text = "Результат: {:g} Ом {}{}".format(
+                resistance, tolerance, (", ТКС: " + thermal) if thermal else ""
+                )
         elif resistance < 1000000:
-            self.ids.result.text = "Результат: {:g} кОм {}{}".format(resistance / 1000, tolerance,
-                                                                     (", ТКС: " + thermal) if thermal else "")
+            self.ids.result.text = "Результат: {:g} кОм {}{}".format(
+                resistance / 1000, tolerance, (", ТКС: " + thermal)
+                if thermal else ""
+                )
         else:
-            self.ids.result.text = "Результат: {:g} МОм {}{}".format(resistance / 1000000, tolerance,
-                                                                     (", ТКС: " + thermal) if thermal else "")
+            self.ids.result.text = "Результат: {:g} МОм {}{}".format(
+                resistance / 1000000, tolerance, (", ТКС: " + thermal)
+                if thermal else "")
 
 
 class SMDResistorsMarkingScreen(MDScreen):
-    eia96 = {"01": 100, "02": 102, "03": 105, "04": 107, "05": 110, "06": 113, "07": 115, "08": 118, "09": 121,
-             "10": 124, "11": 127, "12": 130, "13": 133, "14": 137, "15": 140, "16": 143, "17": 147, "18": 150,
-             "19": 154, "20": 158, "21": 162, "22": 165, "23": 169, "24": 174, "25": 178, "26": 182, "27": 187,
-             "28": 191, "29": 196, "30": 200, "31": 205, "32": 210, "33": 215, "34": 221, "35": 226, "36": 232,
-             "37": 237, "38": 243, "39": 249, "40": 255, "41": 261, "42": 267, "43": 274, "44": 280, "45": 287,
-             "46": 294, "47": 301, "48": 309, "49": 316, "50": 324, "51": 332, "52": 340, "53": 348, "54": 357,
-             "55": 365, "56": 374, "57": 383, "58": 392, "59": 402, "60": 412, "61": 422, "62": 432, "63": 442,
-             "64": 453, "65": 464, "66": 475, "67": 487, "68": 499, "69": 511, "70": 523, "71": 536, "72": 549,
-             "73": 562, "74": 576, "75": 590, "76": 604, "77": 619, "78": 634, "79": 649, "80": 665, "81": 681,
-             "82": 698, "83": 715, "84": 732, "85": 750, "86": 768, "87": 787, "88": 806, "89": 825, "90": 845,
+    eia96 = {"01": 100, "02": 102, "03": 105, "04": 107, "05": 110, "06": 113,
+             "07": 115, "08": 118, "09": 121, "10": 124, "11": 127, "12": 130,
+             "13": 133, "14": 137, "15": 140, "16": 143, "17": 147, "18": 150,
+             "19": 154, "20": 158, "21": 162, "22": 165, "23": 169, "24": 174,
+             "25": 178, "26": 182, "27": 187, "28": 191, "29": 196, "30": 200,
+             "31": 205, "32": 210, "33": 215, "34": 221, "35": 226, "36": 232,
+             "37": 237, "38": 243, "39": 249, "40": 255, "41": 261, "42": 267,
+             "43": 274, "44": 280, "45": 287, "46": 294, "47": 301, "48": 309,
+             "49": 316, "50": 324, "51": 332, "52": 340, "53": 348, "54": 357,
+             "55": 365, "56": 374, "57": 383, "58": 392, "59": 402, "60": 412,
+             "61": 422, "62": 432, "63": 442, "64": 453, "65": 464, "66": 475,
+             "67": 487, "68": 499, "69": 511, "70": 523, "71": 536, "72": 549,
+             "73": 562, "74": 576, "75": 590, "76": 604, "77": 619, "78": 634,
+             "79": 649, "80": 665, "81": 681, "82": 698, "83": 715, "84": 732,
+             "85": 750, "86": 768, "87": 787, "88": 806, "89": 825, "90": 845,
              "91": 866, "92": 887, "93": 909, "94": 931, "95": 953, "96": 976}
 
-    eia96_multiplier = {"z": 0.001, "y": 0.01, "r": 0.01, "x": 0.1, "s": 0.1, "a": 1, "b": 10, "h": 10, "c": 100,
-                        "d": 1000, "e": 10000, "f": 100000}
+    eia96_multiplier = {"z": 0.001, "y": 0.01, "r": 0.01, "x": 0.1, "s": 0.1,
+                        "a": 1, "b": 10, "h": 10, "c": 100, "d": 1000,
+                        "e": 10000, "f": 100000}
 
     def calculate_resistor(self, marking):
         try:
@@ -275,13 +329,16 @@ class SMDResistorsMarkingScreen(MDScreen):
             elif "r" in marking:
                 if len(marking) in (3, 4):
                     markings = marking.split("r")
-                    resistance = float("{}.{}".format(markings[0], markings[1]))
+                    resistance = float("{}.{}".format(
+                        markings[0], markings[1]
+                        ))
                     if len(marking) == 4:
                         precision = True
                 else:
                     self.ids.smd_result.text = "Неверный ввод"
             elif len(marking) == 3:
-                if marking[2].isalpha() and marking[2].lower() in self.eia96_multiplier.keys():
+                if marking[2].isalpha() and marking[2].lower() \
+                        in self.eia96_multiplier.keys():
                     multiplier = self.eia96_multiplier[marking[2]]
                     resistance = self.eia96[marking[:2]] * multiplier
                     precision = True
@@ -300,11 +357,17 @@ class SMDResistorsMarkingScreen(MDScreen):
                     if resistance == 0:
                         self.ids.smd_result.text += "0 Ом (перемычка)"
                     elif resistance < 1000:
-                        self.ids.smd_result.text += "{:g} Ом".format(resistance)
+                        self.ids.smd_result.text += "{:g} Ом".format(
+                            resistance
+                            )
                     elif resistance < 1000000:
-                        self.ids.smd_result.text += "{:g} кОм".format(resistance / 1000)
+                        self.ids.smd_result.text += "{:g} кОм".format(
+                            resistance / 1000
+                            )
                     else:
-                        self.ids.smd_result.text += "{:g} МОм".format(resistance / 1000000)
+                        self.ids.smd_result.text += "{:g} МОм".format(
+                            resistance / 1000000
+                            )
                     if precision and resistance != 0:
                         self.ids.smd_result.text += " ±1%"
                     elif resistance != 0:
@@ -320,7 +383,8 @@ class CapacitorsMarkingSelectScreen(MDScreen):
 
 
 class THCapacitorsMarkingScreen(MDScreen):
-    decimal_point = {"μ": 1000000, "u": 1000000, "p": 1, "n": 1000, "мк": 1000000, "н": 1000, "п": 1}
+    decimal_point = {"μ": 1000000, "u": 1000000, "p": 1, "n": 1000,
+                     "мк": 1000000, "н": 1000, "п": 1}
 
     def calculate_capacitor(self, value):
         capacity = ""
@@ -330,11 +394,21 @@ class THCapacitorsMarkingScreen(MDScreen):
             else:
                 capacity = int(value[-2::-1][::-1]) * 10 ** int(value[-1])
         elif "r" in value.lower():
-            capacity = float("{}.{}".format(value.lower().split("r")[0], value.lower().split("r")[1]))
+            capacity = float(
+                "{}.{}".format(
+                    value.lower().split("r")[0], value.lower().split("r")[1]
+                        )
+                    )
         elif any(ext in value for ext in self.decimal_point.keys()):
-            intersection = "".join([inter for inter in self.decimal_point.keys() if (inter in value)])
-            capacity = float("{}.{}".format(value.split(intersection)[0], value.split(intersection)[1])) * \
-                       self.decimal_point[intersection]
+            intersection = "".join(
+                [inter for inter in self.decimal_point.keys()
+                 if (inter in value)]
+                 )
+            capacity = float(
+                "{}.{}".format(
+                    value.split(intersection)[0], value.split(intersection)[1]
+                    )
+                        ) * self.decimal_point[intersection]
         else:
             self.ids.th_capacitor_result.text = "Неверный ввод"
 
@@ -345,23 +419,36 @@ class THCapacitorsMarkingScreen(MDScreen):
                 if capacity == 0:
                     self.ids.th_capacitor_result.text += "0 мкФ (перемычка)"
                 elif capacity < 1000:
-                    self.ids.th_capacitor_result.text += "{:g} пФ".format(capacity)
+                    self.ids.th_capacitor_result.text += "{:g} пФ".format(
+                        capacity
+                        )
                 elif capacity < 1000000:
-                    self.ids.th_capacitor_result.text += "{:g} нФ".format(capacity / 1000)
+                    self.ids.th_capacitor_result.text += "{:g} нФ".format(
+                        capacity / 1000
+                        )
                 elif capacity < 1000000000:
-                    self.ids.th_capacitor_result.text += "{:g} мкФ".format(capacity / 1000000)
+                    self.ids.th_capacitor_result.text += "{:g} мкФ".format(
+                        capacity / 1000000
+                        )
                 else:
-                    self.ids.th_capacitor_result.text += "{:g} мФ".format(capacity / 1000000000)
+                    self.ids.th_capacitor_result.text += "{:g} мФ".format(
+                        capacity / 1000000000
+                        )
             except ValueError:
                 return "Неверный ввод!"
 
 
 class SMDCapacitorsMarkingScreen(MDScreen):
-    voltage = {"e": 2.5, "G": 4, "J": 7, "A": 10, "C": 16, "D": 20, "E": 25, "V": 35, "H": 50}
-    smd_capacity = {"A": 1., "B": 1.1, "C": 1.2, "D": 1.3, "E": 1.5, "F": 1.6, "G": 1.8, "H": 2.0, "J": 2.2, "K": 2.4,
-                    "L": 2.7, "M": 3.0, "N": 3.3, "P": 3.6, "Q": 3.9, "R": 4.3, "S": 4.7, "T": 5.1, "U": 5.6, "V": 6.2,
-                    "W": 6.8, "X": 7.5, "Y": 8.2, "Z": 9.1, "a": 2.5, "b": 3.5, "d": 4.0, "e": 4.5, "f": 5.0, "m": 6.0,
-                    "n": 7.0, "t": 8.0}
+    voltage = {"e": 2.5, "G": 4, "J": 7, "A": 10, "C": 16, "D": 20, "E": 25,
+               "V": 35, "H": 50}
+
+    smd_capacity = {"A": 1., "B": 1.1, "C": 1.2, "D": 1.3, "E": 1.5, "F": 1.6,
+                    "G": 1.8, "H": 2.0, "J": 2.2, "K": 2.4, "L": 2.7,
+                    "M": 3.0, "N": 3.3, "P": 3.6, "Q": 3.9, "R": 4.3,
+                    "S": 4.7, "T": 5.1, "U": 5.6, "V": 6.2, "W": 6.8,
+                    "X": 7.5, "Y": 8.2, "Z": 9.1, "a": 2.5, "b": 3.5,
+                    "d": 4.0, "e": 4.5, "f": 5.0, "m": 6.0, "n": 7.0,
+                    "t": 8.0}
 
     def calculate_smd_capacitor(self, value):
         capacity = ""
@@ -386,7 +473,8 @@ class SMDCapacitorsMarkingScreen(MDScreen):
                 voltage = self.voltage[values[0]]
             else:
                 self.ids.smd_capacitor_result.text = "Неверный ввод"
-            capacity = int(''.join((str(i) for i in values[1:3]))) * 10 ** int(values[3])
+            capacity = int(''.join((str(i) for i in values[1:3]))) * \
+                10 ** int(values[3])
         else:
             self.ids.smd_capacitor_result.text = "Неверный ввод"
 
@@ -397,13 +485,21 @@ class SMDCapacitorsMarkingScreen(MDScreen):
                 if capacity == 0:
                     self.ids.smd_capacitor_result.text += "0 мкФ (перемычка)"
                 elif capacity < 1000:
-                    self.ids.smd_capacitor_result.text += "{:g} пФ".format(capacity)
+                    self.ids.smd_capacitor_result.text += "{:g} пФ".format(
+                        capacity
+                        )
                 elif capacity < 1000000:
-                    self.ids.smd_capacitor_result.text += "{:g} нФ".format(capacity / 1000)
+                    self.ids.smd_capacitor_result.text += "{:g} нФ".format(
+                        capacity / 1000
+                        )
                 elif capacity < 1000000000:
-                    self.ids.smd_capacitor_result.text += "{:g} мкФ".format(capacity / 1000000)
+                    self.ids.smd_capacitor_result.text += "{:g} мкФ".format(
+                        capacity / 1000000
+                        )
                 else:
-                    self.ids.smd_capacitor_result.text += "{:g} мФ".format(capacity / 1000000000)
+                    self.ids.smd_capacitor_result.text += "{:g} мФ".format(
+                        capacity / 1000000000
+                        )
             except ValueError:
                 return "Неверный ввод!"
             self.ids.smd_capacitor_result.text += ", " + str(voltage) + " В"
@@ -418,65 +514,72 @@ class CalculationsScreen(MDScreen):
 
 
 class ConverterCalculationScreen(MDScreen):
-    from_to = {"милдюйм": 0.001, "дюйммил": 1000, "дюймсм": 2.54, "смдюйм": 0.3937007874, "сммил": 393.7007874016,
-               "милсм": 0.00254, "сммм": 10, "ммсм": 0.1, "дюйммм": 25.4, "ммдюйм": 0.0393700787, "милмм": 0.0254,
-               "мил²дюйм²": 0.000001, "дюйм²мил²": 1000000, "дюйм²см²": 6.4516, "см²дюйм²": 0.15500031,
-               "см²мил²": 155000.31000062, "мил²см²": 0.0000064516, "см²мм²": 100, "мм²см²": 0.01, "дюйм²мм²": 645.16,
-               "мм²дюйм²": 0.0015500031, "мил²мм²": 0.00064516, "круг. милмил²": 0.7853981634,
-               "мил²круг. мил": 1.2732395447, "круг. милсм²": 0.000005067, "см²круг. мил": 197352.5241389985,
-               "круг. милмм²": 0.00050670748, "мм²круг. мил": 1973.52524138998, "дюйм²круг. мил": 1273239.5447351627,
-               "круг. милдюйм²": 0.0000007854, "Ваттэрг/с": 10000000, "эрг/сВатт": 0.0000001, "нФпФ": 1000,
-               "пФнФ": 0.001, "нФмкФ": 0.001, "мкФнФ": 1000, "пФмкФ": 0.000001, "мкФпФ": 1000000
-               }
+    from_to = {
+        "милдюйм": 0.001, "дюйммил": 1000, "дюймсм": 2.54,
+        "смдюйм": 0.3937007874, "сммил": 393.7007874016, "милсм": 0.00254,
+        "сммм": 10, "ммсм": 0.1, "дюйммм": 25.4, "ммдюйм": 0.0393700787,
+        "милмм": 0.0254, "мил²дюйм²": 0.000001, "дюйм²мил²": 1000000,
+        "дюйм²см²": 6.4516, "см²дюйм²": 0.15500031,
+        "см²мил²": 155000.31000062, "мил²см²": 0.0000064516, "см²мм²": 100,
+        "мм²см²": 0.01, "дюйм²мм²": 645.16, "мм²дюйм²": 0.0015500031,
+        "мил²мм²": 0.00064516, "круг. милмил²": 0.7853981634,
+        "мил²круг. мил": 1.2732395447, "круг. милсм²": 0.000005067,
+        "см²круг. мил": 197352.5241389985, "круг. милмм²": 0.00050670748,
+        "мм²круг. мил": 1973.52524138998,
+        "дюйм²круг. мил": 1273239.5447351627, "круг. милдюйм²": 0.0000007854,
+        "Ваттэрг/с": 10000000, "эрг/сВатт": 0.0000001, "нФпФ": 1000,
+        "пФнФ": 0.001, "нФмкФ": 0.001, "мкФнФ": 1000, "пФмкФ": 0.000001,
+        "мкФпФ": 1000000,
+        }
 
     def build_menu(self):
         self.build_menu_from()
         self.build_menu_to()
 
     def build_menu_from(self, *args, **kwargs):
-        self.menu_items = [{"text": "мил",
-                            "on_release": lambda x="мил": self.set_item_from(x),
-                            },
-                           {"text": "дюйм",
-                            "on_release": lambda x="дюйм": self.set_item_from(x),
-                            },
-                           {"text": "см",
-                            "on_release": lambda x="см": self.set_item_from(x),
-                            },
-                           {"text": "мм",
-                            "on_release": lambda x="мм": self.set_item_from(x),
-                            },
-                           {"text": "мил²",
-                            "on_release": lambda x="мил²": self.set_item_from(x),
-                            },
-                           {"text": "дюйм²",
-                            "on_release": lambda x="дюйм²": self.set_item_from(x),
-                            },
-                           {"text": "см²",
-                            "on_release": lambda x="см²": self.set_item_from(x),
-                            },
-                           {"text": "мм²",
-                            "on_release": lambda x="мм²": self.set_item_from(x),
-                            },
-                           {"text": "круг. мил",
-                            "on_release": lambda x="круг. мил": self.set_item_from(x),
-                            },
-                           {"text": "пФ",
-                            "on_release": lambda x="пФ": self.set_item_from(x),
-                            },
-                           {"text": "нФ",
-                            "on_release": lambda x="нФ": self.set_item_from(x),
-                            },
-                           {"text": "мкФ",
-                            "on_release": lambda x="мкФ": self.set_item_from(x),
-                            },
-                           {"text": "Ватт",
-                            "on_release": lambda x="Ватт": self.set_item_from(x),
-                            },
-                           {"text": "эрг/с",
-                            "on_release": lambda x="эрг/с": self.set_item_from(x),
-                            },
-                           ]
+        self.menu_items = [{
+                "text": "мил",
+                "on_release": lambda x="мил": self.set_item_from(x),
+            }, {
+                "text": "дюйм",
+                "on_release": lambda x="дюйм": self.set_item_from(x),
+            }, {
+                "text": "см",
+                "on_release": lambda x="см": self.set_item_from(x),
+            }, {
+                "text": "мм",
+                "on_release": lambda x="мм": self.set_item_from(x),
+            }, {
+                "text": "мил²",
+                "on_release": lambda x="мил²": self.set_item_from(x),
+            }, {
+                "text": "дюйм²",
+                "on_release": lambda x="дюйм²": self.set_item_from(x),
+            }, {
+                "text": "см²",
+                "on_release": lambda x="см²": self.set_item_from(x),
+            }, {
+                "text": "мм²",
+                "on_release": lambda x="мм²": self.set_item_from(x),
+            }, {
+                "text": "круг. мил",
+                "on_release": lambda x="круг. мил": self.set_item_from(x),
+            }, {
+                "text": "пФ",
+                "on_release": lambda x="пФ": self.set_item_from(x),
+            }, {
+                "text": "нФ",
+                "on_release": lambda x="нФ": self.set_item_from(x),
+            }, {
+                "text": "мкФ",
+                "on_release": lambda x="мкФ": self.set_item_from(x),
+            }, {
+                "text": "Ватт",
+                "on_release": lambda x="Ватт": self.set_item_from(x),
+            }, {
+                "text": "эрг/с",
+                "on_release": lambda x="эрг/с": self.set_item_from(x),
+            }, ]
 
         self.menu_from = MDDropdownMenu(
             caller=self.ids.convert_from,
@@ -487,52 +590,56 @@ class ConverterCalculationScreen(MDScreen):
     def set_item_from(self, text_item):
         self.ids.convert_from.text = text_item
         self.menu_from.dismiss()
-        self.convert(self.ids.convert_from_input.text, self.ids.convert_from.text, self.ids.convert_to.text)
+        self.convert(
+            self.ids.convert_from_input.text,
+            self.ids.convert_from.text,
+            self.ids.convert_to.text
+            )
 
     def build_menu_to(self, *args, **kwargs):
-        self.menu_items = [{"text": "мил",
-                            "on_release": lambda x="мил": self.set_item_to(x),
-                            },
-                           {"text": "дюйм",
-                            "on_release": lambda x="дюйм": self.set_item_to(x),
-                            },
-                           {"text": "см",
-                            "on_release": lambda x="см": self.set_item_to(x),
-                            },
-                           {"text": "мм",
-                            "on_release": lambda x="мм": self.set_item_to(x),
-                            },
-                           {"text": "мил²",
-                            "on_release": lambda x="мил²": self.set_item_to(x),
-                            },
-                           {"text": "дюйм²",
-                            "on_release": lambda x="дюйм²": self.set_item_to(x),
-                            },
-                           {"text": "см²",
-                            "on_release": lambda x="см²": self.set_item_to(x),
-                            },
-                           {"text": "мм²",
-                            "on_release": lambda x="мм²": self.set_item_to(x),
-                            },
-                           {"text": "круг. мил",
-                            "on_release": lambda x="круг. мил": self.set_item_to(x),
-                            },
-                           {"text": "пФ",
-                            "on_release": lambda x="пФ": self.set_item_to(x),
-                            },
-                           {"text": "нФ",
-                            "on_release": lambda x="нФ": self.set_item_to(x),
-                            },
-                           {"text": "мкФ",
-                            "on_release": lambda x="мкФ": self.set_item_to(x),
-                            },
-                           {"text": "Ватт",
-                            "on_release": lambda x="Ватт": self.set_item_to(x),
-                            },
-                           {"text": "эрг/с",
-                            "on_release": lambda x="эрг/с": self.set_item_to(x),
-                            },
-                           ]
+        self.menu_items = [{
+                "text": "мил",
+                "on_release": lambda x="мил": self.set_item_to(x),
+            }, {
+                "text": "дюйм",
+                "on_release": lambda x="дюйм": self.set_item_to(x),
+            }, {
+                "text": "см",
+                "on_release": lambda x="см": self.set_item_to(x),
+            }, {
+                "text": "мм",
+                "on_release": lambda x="мм": self.set_item_to(x),
+            }, {
+                "text": "мил²",
+                "on_release": lambda x="мил²": self.set_item_to(x),
+            }, {
+                "text": "дюйм²",
+                "on_release": lambda x="дюйм²": self.set_item_to(x),
+            }, {
+                "text": "см²",
+                "on_release": lambda x="см²": self.set_item_to(x),
+            }, {
+                "text": "мм²",
+                "on_release": lambda x="мм²": self.set_item_to(x),
+            }, {
+                "text": "круг. мил",
+                "on_release": lambda x="круг. мил": self.set_item_to(x),
+            }, {
+                "text": "пФ",
+                "on_release": lambda x="пФ": self.set_item_to(x),
+            }, {
+                "text": "нФ",
+                "on_release": lambda x="нФ": self.set_item_to(x),
+            }, {
+                "text": "мкФ",
+                "on_release": lambda x="мкФ": self.set_item_to(x),
+            }, {
+                "text": "Ватт",
+                "on_release": lambda x="Ватт": self.set_item_to(x),
+            }, {
+                "text": "эрг/с",
+                "on_release": lambda x="эрг/с": self.set_item_to(x),
+            }, ]
 
         self.menu_to = MDDropdownMenu(
             caller=self.ids.convert_from,
@@ -543,7 +650,11 @@ class ConverterCalculationScreen(MDScreen):
     def set_item_to(self, text_item):
         self.ids.convert_to.text = text_item
         self.menu_to.dismiss()
-        self.convert(self.ids.convert_from_input.text, self.ids.convert_from.text, self.ids.convert_to.text)
+        self.convert(
+            self.ids.convert_from_input.text,
+            self.ids.convert_from.text,
+            self.ids.convert_to.text
+            )
 
     def convert(self, convert_from_val, convert_from_unit, convert_to_unit):
         try:
@@ -561,42 +672,6 @@ class ConverterCalculationScreen(MDScreen):
 
 
 class LEDResistorCalculationScreen(MDScreen):
-    diodes = {'3 мм зелёный': (2.3, 20), '3 мм красный': (1.9, 20), '3 мм жёлтый': (2.1, 20), '3 мм синий': (2.9, 20),
-              '5 мм зелёный': (2.3, 20), '5 мм красный': (1.9, 20), '5 мм жёлтый': (2.1, 20), '5 мм синий': (3.6, 75),
-              '5 мм белый': (3.6, 75), '10 мм синий': (3.2, 20), '10 мм белый': (3.2, 20), 'Cree MX-3': (3.7, 350)}
-
-    def build_menu(self, *args, **kwargs):
-        # [{"center_text": "3",
-        #   "viewclass": "CenterList",
-        #   "on_release": lambda x="3": self.set_item(x),
-        #   "height": dp(56), },
-        #  {"center_text": "4",
-        #   "viewclass": "CenterList",
-        #   "on_release": lambda x="4": self.set_item(x),
-        #   "height": dp(56), },
-        #  {"center_text": "5",
-        #   "viewclass": "CenterList",
-        #   "on_release": lambda x="5": self.set_item(x),
-        #   "height": dp(56), },
-        #  {"center_text": "6",
-        #   "viewclass": "CenterList",
-        #   "on_release": lambda x="6": self.set_item(x),
-        #   "height": dp(56), }, ]
-
-        self.menu_items = []
-        for i in range(len(self.diodes.keys())):
-            self.menu_items.append({"text": list(self.diodes.keys())[i],
-                                    "on_release": lambda x=list(self.diodes.keys())[i]: self.set_item(x),
-                                    "height": dp(56), "text_color": "black", "md_bg_color": "red"})
-        self.menu = MDDropdownMenu(
-            caller=self,
-            items=self.menu_items,
-        )
-
-    def set_item(self, text_item):
-        self.ids.resistor_marking_menu_name.text = text_item
-        self.menu.dismiss()
-
     def led_calculate(self, vol, led_vol, led_cur, led_quant):
         try:
             led_resistance = (float(vol) - (float(led_vol) * float(led_quant))) / (float(led_cur) / 1000)
