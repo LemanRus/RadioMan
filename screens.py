@@ -949,13 +949,50 @@ class ChipsAnalogsSelectScreen(MDScreen):
 	pass
 
 
+def make_analog_table(instance, *args):
+	instance.adaptive_size = True
+	instance.padding = 10
+	instance.cols = 3
+	instance.spacing = [dp(4)]
+
+	instance.labels = []
+
+	for k, v in instance.series.items():
+		label_k = MDLabel(text=k, adaptive_height=True, halign="right", size_hint_x=None,
+							width=dp(Window.width) * 0.5 - dp(15))
+		label_v = MDLabel(text=v, adaptive_height=True, size_hint_x=None, width=Window.width * 0.5 - 15)
+		instance.labels.append((label_k, label_v))
+
+		instance.add_widget(label_k)
+		instance.add_widget(MDDivider(orientation="vertical"))
+		instance.add_widget(label_v)
+		instance.add_widget(MDDivider())
+		instance.add_widget(MDDivider())
+		instance.add_widget(MDDivider())
+
+	Window.bind(on_resize=instance.update_width)
+
+def update_analog_table_width(instance, *args):
+	new_width = dp(Window.width) * 0.5 - dp(15)
+	for label_k, label_v in instance.labels:
+		label_k.width = new_width
+		label_v.width = new_width
+
+
 class ChipsAnalogs133Screen(MDScreen):
 	pass
 
 
 class ChipsAnalogs133(MDGridLayout):
-	series133 = {
-				}
+	series = {
+			 }
+	
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		make_analog_table(self)
+
+	def update_width(self, *args):
+		update_analog_table_width(self)
 
 
 class ChipsAnalogs140Screen(MDScreen):
@@ -963,7 +1000,7 @@ class ChipsAnalogs140Screen(MDScreen):
 
 
 class ChipsAnalogs140(MDGridLayout):
-	series140 = {"140УД5А,Б": "CA3015", "КР140УД5А,Б": "CA3015", "140УД6А,Б": "MG1556G", "КР140УД6": "MC1556C",
+	series = {"140УД5А,Б": "CA3015", "КР140УД5А,Б": "CA3015", "140УД6А,Б": "MG1556G", "КР140УД6": "MC1556C",
 				 "140УД7": "μA741", "КР140УД7": "μA741C", "КФ140УД7": "SFC2741", "Н140УД7": "SE535",
 				 "140УД8А,Б": "μA740", "КР140УД8А-Г": "μA740C", "140УД11": "LM318", "КР140УД11": "LM318",
 				 "140УД12": "μA776", "КР140УД12": "μA776C", "140УД13": "μA727M", "140УД14": "LM108",
@@ -983,33 +1020,10 @@ class ChipsAnalogs140(MDGridLayout):
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-		self.adaptive_size = True
-		self.padding = 10
-		self.cols = 3
-		self.spacing = [dp(4)]
-
-		self.labels = []
-
-		for k, v in self.series140.items():
-			label_k = MDLabel(text=k, adaptive_height=True, halign="right", size_hint_x=None,
-							  width=dp(Window.width) * 0.5 - dp(15))
-			label_v = MDLabel(text=v, adaptive_height=True, size_hint_x=None, width=Window.width * 0.5 - 15)
-			self.labels.append((label_k, label_v))
-
-			self.add_widget(label_k)
-			self.add_widget(MDDivider(orientation="vertical"))
-			self.add_widget(label_v)
-			self.add_widget(MDDivider())
-			self.add_widget(MDDivider())
-			self.add_widget(MDDivider())
-
-		Window.bind(on_resize=self.update_width)
+		make_analog_table(self)
 
 	def update_width(self, *args):
-		new_width = dp(Window.width) * 0.5 - dp(15)
-		for label_k, label_v in self.labels:
-			label_k.width = new_width
-			label_v.width = new_width
+		update_analog_table_width(self)
 
 
 class ChipsAnalogs580Screen(MDScreen):
@@ -1017,7 +1031,7 @@ class ChipsAnalogs580Screen(MDScreen):
 
 
 class ChipsAnalogs580(MDGridLayout):
-	series580 = {"КР580ВА86": "8286", "КР580ВА87": "8287", "580ВВ51": "8251", "КР580ВВ51А": "8251A", "580ВВ55": "8255",
+	series = {"КР580ВА86": "8286", "КР580ВА87": "8287", "580ВВ51": "8251", "КР580ВВ51А": "8251A", "580ВВ55": "8255",
 				 "КР580ВВ55А": "8255A", "580ВВ79": "8279", "КР580ВВ79": "8279", "КР580ВГ18": "8218",
 				 "КР580ВГ75": "8275", "КР580ВГ92": "8292", "580ВИ53": "8253", "КР580ВИ53": "8253", "КР580ВК28": "8228",
 				 "КР580ВК38": "8238", "КР580ВК91А": "8291", "580ВМ80": "8280", "КР580ВМ80А": "8280",
@@ -1026,33 +1040,10 @@ class ChipsAnalogs580(MDGridLayout):
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
-		self.adaptive_size = True
-		self.padding = 10
-		self.cols = 3
-		self.spacing = [dp(4)]
-
-		self.labels = []
-
-		for k, v in self.series580.items():
-			label_k = MDLabel(text=k, adaptive_height=True, halign="right", size_hint_x=None,
-							  width=dp(Window.width) * 0.5 - dp(15))
-			label_v = MDLabel(text=v, adaptive_height=True, size_hint_x=None, width=Window.width * 0.5 - 15)
-			self.labels.append((label_k, label_v))
-
-			self.add_widget(label_k)
-			self.add_widget(MDDivider(orientation="vertical"))
-			self.add_widget(label_v)
-			self.add_widget(MDDivider())
-			self.add_widget(MDDivider())
-			self.add_widget(MDDivider())
-
-		Window.bind(on_resize=self.update_width)
+		make_analog_table(self)
 
 	def update_width(self, *args):
-		new_width = dp(Window.width) * 0.5 - dp(15)
-		for label_k, label_v in self.labels:
-			label_k.width = new_width
-			label_v.width = new_width
+		update_analog_table_width(self)
 
 
 class LifehacksScreen(MDScreen):

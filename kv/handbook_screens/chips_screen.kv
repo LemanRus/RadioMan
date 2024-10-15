@@ -77,15 +77,12 @@
         MDCenteredTopAppBarTitle:
             text: "Серия 133"
 
-    MDScrollView:
+    ScrollView:
         size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - chips_analogs_133_top_bar.height) / root.height}
+        do_scroll_x: False
 
-        MDGridLayout:
-            adaptive_height: True
-            padding: 10
-            cols: 2
-
+        ChipsAnalogs133:
             MDLabel:
                 size: self.texture_size
                 text: "133АГ1"
