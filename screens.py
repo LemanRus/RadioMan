@@ -674,20 +674,33 @@ class ConverterCalculationScreen(MDScreen):
 class LEDResistorCalculationScreen(MDScreen):
     def led_calculate(self, vol, led_vol, led_cur, led_quant):
         try:
-            led_resistance = (float(vol) - (float(led_vol) * float(led_quant))) / (float(led_cur) / 1000)
+            led_resistance = (
+                float(vol) - (float(led_vol) * float(led_quant))
+                ) / (float(led_cur) / 1000)
             if led_resistance < 0:
-                self.ids.led_result.text = "Слишком малое напряжение источника питания!"
+                self.ids.led_result.text = "Слишком малое напряжение \
+                                            источника питания!"
                 self.ids.led_res_power.text = ''
                 self.ids.led_cur.text = ''
                 self.ids.led_e24.text = ''
             else:
-                self.ids.led_result.text = format_output_resistor(led_resistance)
-                e24_result = e24.calculate_standard_resistor(led_resistance, True)
-                self.ids.led_e24.text = format_output_resistor(e24_result)
+                self.ids.led_result.text = format_output_resistor(
+                    led_resistance
+                    )
+                e24_result = e24.calculate_standard_resistor(
+                    led_resistance, True
+                    )
+                self.ids.led_e24.text = format_output_resistor(
+                    e24_result
+                    )
 
-                self.ids.led_res_power.text = "{:g} мВт".format((float(vol) - float(led_vol)) *
-                                                                float(led_cur) * float(led_quant))
-                self.ids.led_cur.text = "{:g} мА".format(float(led_cur) * float(led_quant))
+                self.ids.led_res_power.text = "{:g} мВт".format(
+                        (float(vol) - float(led_vol)) *
+                        float(led_cur) * float(led_quant)
+                        )
+                self.ids.led_cur.text = "{:g} мА".format(
+                    float(led_cur) * float(led_quant)
+                    )
         except ValueError:
             self.ids.led_e24.text = "Неверный ввод!"
             self.ids.led_result.text = "Неверный ввод!"
@@ -709,10 +722,15 @@ class InductorCalculateInductionScreen(MDScreen):
 
             formfactor = length / diameter
 
-            induction = 0.0002 * math.pi * diameter * turns ** 2 * (math.log(1 + math.pi / (2 * formfactor)) +
-                                                                    1 / (2.3004 + 3.437 * formfactor + 1.7636 *
-                                                                         formfactor ** 2 - 0.47 / (0.755 + 1 /
-                                                                                                   formfactor) ** 1.44))
+            induction = 0.0002 * math.pi * diameter * turns ** 2 * (
+                math.log(
+                    1 + math.pi / (2 * formfactor)
+                    ) + 1 / (
+                        2.3004 + 3.437 * formfactor + 1.7636 *
+                        formfactor ** 2 -
+                        0.47 / (0.755 + 1 / formfactor) ** 1.44
+                        )
+                )
             self.ids.induction.text = "{:g} мкГн".format(induction)
         except Exception:
             self.ids.induction.text = "Неверный ввод!"
@@ -722,19 +740,31 @@ class InductorCalculateSizeScreen(MDScreen):
     def inductor_calculate_turns(self, henrys, diameter, oneturn):
         try:
             henrys = float(henrys)
-            diameter = float(diameter) / 10  # в формуле сантиметры, во вводе миллиметры
+            diameter = float(diameter) / 10
             oneturn = float(oneturn) / 10
-            inductor_length = (50 * oneturn ** 2 * henrys + math.sqrt(5) * math.sqrt(500 * oneturn ** 4 * henrys ** 2 +
-                                                                                     9 * oneturn ** 2 * diameter ** 3 * henrys)) / diameter ** 2
+            inductor_length = (
+                50 * oneturn ** 2 * henrys + math.sqrt(5) * math.sqrt(
+                    500 * oneturn ** 4 * henrys ** 2 + 9 * oneturn ** 2
+                    * diameter ** 3 * henrys
+                    )
+                ) / diameter ** 2
 
             inductor_turns = inductor_length / oneturn
             inductor_turns_int = round(inductor_turns, 0)
             inductor_length_int = inductor_turns_int * oneturn * 10
 
-            self.ids.inductor_length.text = "{:g} мм".format(inductor_length * 10)
-            self.ids.inductor_length_int.text = "{:g} мм".format(inductor_length_int)
-            self.ids.inductor_turns.text = "{:g} витка(ов)".format(inductor_turns)
-            self.ids.inductor_turns_int.text = "{:g} витка(ов)".format(inductor_turns_int)
+            self.ids.inductor_length.text = "{:g} мм".format(
+                inductor_length * 10
+                )
+            self.ids.inductor_length_int.text = "{:g} мм".format(
+                inductor_length_int
+                )
+            self.ids.inductor_turns.text = "{:g} витка(ов)".format(
+                inductor_turns
+                )
+            self.ids.inductor_turns_int.text = "{:g} витка(ов)".format(
+                inductor_turns_int
+                )
         except Exception:
             self.ids.inductor_length.text = "Неверный ввод!"
             self.ids.inductor_length_int.text = "Неверный ввод!"
@@ -765,7 +795,9 @@ class ParallelResistorCalculationScreen(MDScreen):
                                      size_hint_y=None, )
         input_card.add_widget(label)
         input_card.add_widget(resistor_input)
-        self.ids.par_res_box.ids["resistor_input" + str(self.counter)] = weakref.ref(resistor_input)
+        self.ids.par_res_box.ids[
+            "resistor_input" + str(self.counter)
+            ] = weakref.ref(resistor_input)
 
     def par_res_calculate(self):
         res_list = []
@@ -803,7 +835,9 @@ class SerialCapacitorCalculateScreen(MDScreen):
                                       size_hint_y=None, )
         input_card.add_widget(label)
         input_card.add_widget(capacitor_input)
-        self.ids.ser_cap_box.ids["capacitor_input" + str(self.counter)] = weakref.ref(capacitor_input)
+        self.ids.ser_cap_box.ids[
+            "capacitor_input" + str(self.counter)
+            ] = weakref.ref(capacitor_input)
 
     def ser_cap_calculate(self):
         cap_list = []
@@ -861,7 +895,9 @@ class VoltageDividerCalculateResistanceScreen(MDScreen):
                 elif r2 < 1000000:
                     self.ids.r2_calculated.text = "{:g} кОм".format(r2 / 1000)
                 else:
-                    self.ids.r2_calculated.text = "{:g} МОм".format(r2 / 1000000)
+                    self.ids.r2_calculated.text = "{:g} МОм".format(
+                        r2 / 1000000
+                        )
 
                 self.ids.divider_rate_r.text = "{:g}".format(rate)
 
@@ -873,7 +909,9 @@ class VoltageDividerCalculateResistanceScreen(MDScreen):
                 elif e6_result < 1000000:
                     self.ids.r2_e24.text = "{:g} кОм".format(e6_result / 1000)
                 else:
-                    self.ids.r2_e24.text = "{:g} МОм".format(e6_result / 1000000)
+                    self.ids.r2_e24.text = "{:g} МОм".format(
+                        e6_result / 1000000
+                        )
 
                 vout_corrected = e6_result * vin / (r1 + e6_result)
                 self.ids.vout_e24.text = "{:g} В".format(vout_corrected)
@@ -894,8 +932,12 @@ class LMRegulatorCalculateVoltageScreen(MDScreen):
             iout = float(iout)
             vin = float(vin)
             if iout > 5:
-                self.ids.lm317_r2_output.text = "Ток нагрузки должен быть меньше 5А!"
-                self.ids.lm317_r2_corrected_output.text = "Ток нагрузки должен быть меньше 5А!"
+                self.ids.lm317_r2_output.text = """
+                Ток нагрузки должен быть меньше 5А!
+                """
+                self.ids.lm317_r2_corrected_output.text = """
+                Ток нагрузки должен быть меньше 5А!
+                """
                 self.ids.lm317_r2_output.text = ""
                 self.ids.lm317_vout_output.text = ""
                 self.ids.lm317_recommend_output.text = ""
@@ -920,7 +962,9 @@ class LMRegulatorCalculateVoltageScreen(MDScreen):
 
                 self.ids.lm317_r2_corrected_output.text = result_corrected
                 self.ids.lm317_r2_output.text = result
-                self.ids.lm317_vout_output.text = "{:g} В".format(vout_corrected)
+                self.ids.lm317_vout_output.text = "{:g} В".format(
+                    vout_corrected
+                    )
                 self.ids.lm317_recommend_output.text = recommend
                 self.ids.lm317_power_output.text = "{:g} Вт".format(power)
 
@@ -959,19 +1003,27 @@ class LMRegulatorCalculateCurrentScreen(MDScreen):
                 if vout:
                     vout = float(vout)
                     if not (3 <= vout <= 38):
-                        self.ids.lm317_vin_output_cur.text = "Падение напряжения должно быть больше 2В и меньше 38В!"
+                        self.ids.lm317_vin_output_cur.text = """
+                        Падение напряжения должно быть больше 2В и меньше 38В!
+                        """
                         self.ids.lm317_vin_output_cur.font_size = "10sp"
                     else:
                         vin_corrected = vout + 3.7
-                        self.ids.lm317_vin_output_cur.text = "{:g} В".format(vin_corrected)
+                        self.ids.lm317_vin_output_cur.text = "{:g} В".format(
+                            vin_corrected
+                            )
                 else:
                     self.ids.lm317_vin_output_cur.text = ""
 
                 self.ids.lm317_r1_output_cur.text = result
                 self.ids.lm317_r1_corrected_output_cur.text = result_corrected
-                self.ids.lm317_r1_power_output_cur.text = "{:g} Вт".format(power_r1)
-                self.ids.lm317_r1_power_corrected_output_cur.text = "{:g} Вт".format(power_corrected)
-                self.ids.lm317_iout_corrected_output_cur.text = "{:g} А".format(iout_corrected)
+                self.ids.lm317_r1_power_output_cur.text = "{:g} Вт".format(
+                    power_r1
+                    )
+                self.ids.lm317_r1_power_corrected_output_cur.text = \
+                    "{:g} Вт".format(power_corrected)
+                self.ids.lm317_iout_corrected_output_cur.text = \
+                    "{:g} А".format(iout_corrected)
                 self.ids.lm317_recommend_output_cur.text = recommend
             else:
                 self.ids.lm317_r1_output_cur.text = "Ток должен быть менее 5А!"
@@ -986,7 +1038,8 @@ class LMRegulatorCalculateCurrentScreen(MDScreen):
             self.ids.lm317_r1_output_cur.text = "Неверный ввод!"
             self.ids.lm317_r1_corrected_output_cur.text = "Неверный ввод!"
             self.ids.lm317_r1_power_output_cur.text = "Неверный ввод!"
-            self.ids.lm317_r1_power_corrected_output_cur.text = "Неверный ввод!"
+            self.ids.lm317_r1_power_corrected_output_cur.text = \
+                "Неверный ввод!"
             self.ids.lm317_iout_corrected_output_cur.text = "Неверный ввод!"
             self.ids.lm317_recommend_output_cur.text = "Неверный ввод!"
             self.ids.lm317_vin_output_cur.text = "Неверный ввод!"
@@ -1033,9 +1086,11 @@ def make_analog_table(instance, *args):
     instance.labels = []
 
     for k, v in instance.series.items():
-        label_k = MDLabel(text=k, adaptive_height=True, halign="right", size_hint_x=None,
-                            width=dp(Window.width) * 0.5 - dp(15))
-        label_v = MDLabel(text=v, adaptive_height=True, size_hint_x=None, width=Window.width * 0.5 - 15)
+        label_k = MDLabel(text=k, adaptive_height=True, halign="right",
+                          size_hint_x=None,
+                          width=dp(Window.width) * 0.5 - dp(15))
+        label_v = MDLabel(text=v, adaptive_height=True, size_hint_x=None,
+                          width=Window.width * 0.5 - 15)
         instance.labels.append((label_k, label_v))
 
         instance.add_widget(label_k)
@@ -1061,18 +1116,18 @@ class ChipsAnalogs133Screen(MDScreen):
 
 class ChipsAnalogs133(MDGridLayout):
     series = {"133АГ1": "SN54121", "133ИД1": "SN54141", "133ИЕ4": "SN5492A",
-           "133ИЕ8": "SN5497", "133ИМ1": "SN5480", "133ИМ2": "SN5482", 
-           "133ИМ3": "SN5483A", "133ИП2": "SN54180", "133ИР1": "SN5495", 
-           "133ИР13": "SN54198", "Н133ИР13": "SN54198", "133ИР17": "Am2504",
-           "133КП1": "SN54150", "133КП5": "SN54152", "133ЛА6": "SN5440",
-           "133ЛА7": "SN5422", "М133ЛА7": "SN5422", "133ЛА10": "SN5412",
-           "133ЛЕ3": "SN5425", "133ЛЕ5": "SN5428", "133ЛЕ6": "SN54128",
-           "133ЛИ5": "SN55451B", "133ЛН3": "SN5406", "133ЛН5": "SN5416",
-           "133ЛП7": "SN55450", "133ЛП9": "SN5407", "Н133ЛП9": "SN5407",
-           "133ТВ1": "SN5472", "Н133ТВ1": "SN5472", "133ТЛ1": "SN5413",
-           "М133ТМ2": "SN5474", "133ТМ5": "SN5477",
-            }
-    
+              "133ИЕ8": "SN5497", "133ИМ1": "SN5480", "133ИМ2": "SN5482",
+              "133ИМ3": "SN5483A", "133ИП2": "SN54180", "133ИР1": "SN5495",
+              "133ИР13": "SN54198", "Н133ИР13": "SN54198", "133ИР17": "Am2504",
+              "133КП1": "SN54150", "133КП5": "SN54152", "133ЛА6": "SN5440",
+              "133ЛА7": "SN5422", "М133ЛА7": "SN5422", "133ЛА10": "SN5412",
+              "133ЛЕ3": "SN5425", "133ЛЕ5": "SN5428", "133ЛЕ6": "SN54128",
+              "133ЛИ5": "SN55451B", "133ЛН3": "SN5406", "133ЛН5": "SN5416",
+              "133ЛП7": "SN55450", "133ЛП9": "SN5407", "Н133ЛП9": "SN5407",
+              "133ТВ1": "SN5472", "Н133ТВ1": "SN5472", "133ТЛ1": "SN5413",
+              "М133ТМ2": "SN5474", "133ТМ5": "SN5477",
+              }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         make_analog_table(self)
@@ -1086,23 +1141,37 @@ class ChipsAnalogs140Screen(MDScreen):
 
 
 class ChipsAnalogs140(MDGridLayout):
-    series = {"140УД5А,Б": "CA3015", "КР140УД5А,Б": "CA3015", "140УД6А,Б": "MG1556G", "КР140УД6": "MC1556C",
-                 "140УД7": "μA741", "КР140УД7": "μA741C", "КФ140УД7": "SFC2741", "Н140УД7": "SE535",
-                 "140УД8А,Б": "μA740", "КР140УД8А-Г": "μA740C", "140УД11": "LM318", "КР140УД11": "LM318",
-                 "140УД12": "μA776", "КР140УД12": "μA776C", "140УД13": "μA727M", "140УД14": "LM108",
-                 "КР140УД14А": "LM308", "КР140УД14Б": "LM308", "140УД17А": "OP-07", "140УД17Б": "OP-07A",
-                 "КР140УД17А": "OP-07E", "КР140УД17Б": "OP-07C", "Н140УД17А": "OP-07", "Н140УД17Б": "OP-07A",
-                 "КР140УД18": "LF355", "140УД20А": "μA747", "140УД20Б": "μA747", "КР140УД20А": "μA747C",
-                 "КР140УД20Б": "μA747C", "КМ140УД20": "μA747C", "Н140УД20А": "μA747", "Н140УД20Б": "μA747",
-                 "140УД21": "HA2900", "КР140УД22": "LF356", "КР140УД22А": "LF356", "140УД23": "LF157",
-                 "140УД24": "ICL7650", "140УД25А": "OP-27A", "140УД25Б": "OP-27B", "140УД25В": "OP-27C",
-                 "КР140УД25А": "OP-27A", "КР140УД25Б": "OP-27B", "КР140УД25В": "OP-27C", "КР140УД25Г": "OP-27B",
-                 "140УД26А": "OP-37A", "140УД26Б": "OP-37B", "140УД26В": "OP-37C", "КР140УД26А": "OP-37A",
-                 "КР140УД26Б": "OP-37B", "КР140УД26В": "OP-37C", "КР140УД26Г": "OP-37B", "140УД501А": "CA3015",
-                 "140УД501Б": "CA3015", "140УД601А": "MC1556G", "140УД601Б": "MC1556G", "КР140УД608": "MC1456CP1",
-                 "140УД701": "μA741", "КР140УД708": "μA741C", "КР140УД1101": "LM318", "140УД1201": "μA776",
-                 "КР140УД1208": "μA776C", "140УД1301": "μA727M", "140УД1401": "LM108", "КР140УД1408А": "LM308",
-                 "КР140УД1408Б": "LM308", "140УД1701А": "OP-07", "140УД1701Б": "OP-07A"}
+    series = {"140УД5А,Б": "CA3015", "КР140УД5А,Б": "CA3015",
+              "140УД6А,Б": "MG1556G", "КР140УД6": "MC1556C",
+              "140УД7": "μA741", "КР140УД7": "μA741C", "КФ140УД7": "SFC2741",
+              "Н140УД7": "SE535", "140УД8А,Б": "μA740",
+              "КР140УД8А-Г": "μA740C", "140УД11": "LM318",
+              "КР140УД11": "LM318", "140УД12": "μA776", "КР140УД12": "μA776C",
+              "140УД13": "μA727M", "140УД14": "LM108", "КР140УД14А": "LM308",
+              "КР140УД14Б": "LM308", "140УД17А": "OP-07",
+              "140УД17Б": "OP-07A", "КР140УД17А": "OP-07E",
+              "КР140УД17Б": "OP-07C", "Н140УД17А": "OP-07",
+              "Н140УД17Б": "OP-07A", "КР140УД18": "LF355",
+              "140УД20А": "μA747", "140УД20Б": "μA747",
+              "КР140УД20А": "μA747C", "КР140УД20Б": "μA747C",
+              "КМ140УД20": "μA747C", "Н140УД20А": "μA747",
+              "Н140УД20Б": "μA747", "140УД21": "HA2900", "КР140УД22": "LF356",
+              "КР140УД22А": "LF356", "140УД23": "LF157", "140УД24": "ICL7650",
+              "140УД25А": "OP-27A", "140УД25Б": "OP-27B",
+              "140УД25В": "OP-27C", "КР140УД25А": "OP-27A",
+              "КР140УД25Б": "OP-27B", "КР140УД25В": "OP-27C",
+              "КР140УД25Г": "OP-27B", "140УД26А": "OP-37A",
+              "140УД26Б": "OP-37B", "140УД26В": "OP-37C",
+              "КР140УД26А": "OP-37A", "КР140УД26Б": "OP-37B",
+              "КР140УД26В": "OP-37C", "КР140УД26Г": "OP-37B",
+              "140УД501А": "CA3015", "140УД501Б": "CA3015",
+              "140УД601А": "MC1556G", "140УД601Б": "MC1556G",
+              "КР140УД608": "MC1456CP1", "140УД701": "μA741",
+              "КР140УД708": "μA741C", "КР140УД1101": "LM318",
+              "140УД1201": "μA776", "КР140УД1208": "μA776C",
+              "140УД1301": "μA727M", "140УД1401": "LM108",
+              "КР140УД1408А": "LM308", "КР140УД1408Б": "LM308",
+              "140УД1701А": "OP-07", "140УД1701Б": "OP-07A"}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -1117,12 +1186,15 @@ class ChipsAnalogs580Screen(MDScreen):
 
 
 class ChipsAnalogs580(MDGridLayout):
-    series = {"КР580ВА86": "8286", "КР580ВА87": "8287", "580ВВ51": "8251", "КР580ВВ51А": "8251A", "580ВВ55": "8255",
-                 "КР580ВВ55А": "8255A", "580ВВ79": "8279", "КР580ВВ79": "8279", "КР580ВГ18": "8218",
-                 "КР580ВГ75": "8275", "КР580ВГ92": "8292", "580ВИ53": "8253", "КР580ВИ53": "8253", "КР580ВК28": "8228",
-                 "КР580ВК38": "8238", "КР580ВК91А": "8291", "580ВМ80": "8280", "КР580ВМ80А": "8280",
-                 "КР580ВР43": "8243", "КР580ВТ42": "8242", "580ВТ57": "8257", "КР580ВТ57": "8257", "КР580ГФ24": "8224",
-                 "КР580ИР82": "8282", "КР580ИР83": "8283"}
+    series = {"КР580ВА86": "8286", "КР580ВА87": "8287", "580ВВ51": "8251",
+              "КР580ВВ51А": "8251A", "580ВВ55": "8255", "КР580ВВ55А": "8255A",
+              "580ВВ79": "8279", "КР580ВВ79": "8279", "КР580ВГ18": "8218",
+              "КР580ВГ75": "8275", "КР580ВГ92": "8292", "580ВИ53": "8253",
+              "КР580ВИ53": "8253", "КР580ВК28": "8228", "КР580ВК38": "8238",
+              "КР580ВК91А": "8291", "580ВМ80": "8280", "КР580ВМ80А": "8280",
+              "КР580ВР43": "8243", "КР580ВТ42": "8242", "580ВТ57": "8257",
+              "КР580ВТ57": "8257", "КР580ГФ24": "8224", "КР580ИР82": "8282",
+              "КР580ИР83": "8283"}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

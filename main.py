@@ -1,14 +1,10 @@
 import os
-import asyncio
 
-from kivy.uix.screenmanager import FadeTransition, SlideTransition
+from kivy.uix.screenmanager import SlideTransition
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
-
-import misc
-import screens
 
 backs = {
     "resistors_markings_select_screen": "Маркировки",
@@ -20,13 +16,16 @@ backs = {
     "converter_calculation_screen": "Расчёты",
     "led_resistor_calculation_screen": "Расчёты",
     "inductor_calculation_select_screen": "Расчёты",
-    "inductor_calculate_induction_screen": "inductor_calculation_select_screen",
+    "inductor_calculate_induction_screen":
+    "inductor_calculation_select_screen",
     "inductor_calculate_size_screen": "inductor_calculation_select_screen",
     "parallel_resistor_calculation_screen": "Расчёты",
     "serial_capacitor_calculate_screen": "Расчёты",
     "voltage_divider_calculate_select_screen": "Расчёты",
-    "voltage_divider_calculate_voltage_screen": "voltage_divider_calculate_select_screen",
-    "voltage_divider_calculate_resistance_screen": "voltage_divider_calculate_select_screen",
+    "voltage_divider_calculate_voltage_screen":
+    "voltage_divider_calculate_select_screen",
+    "voltage_divider_calculate_resistance_screen":
+    "voltage_divider_calculate_select_screen",
     "lm_regulator_calculate_select_screen": "Расчёты",
     "lm_regulator_voltage_screen": "lm_regulator_calculate_select_screen",
     "lm_regulator_current_screen": "lm_regulator_calculate_select_screen",
@@ -56,6 +55,7 @@ class RadioMan(MDApp):
             for name in files:
                 kv_files.append(os.path.join(path, name))
         for file_path in kv_files:
+            print(file_path)
             Builder.load_file(file_path)
         return Builder.load_file("kv/main.kv")
 
@@ -69,10 +69,16 @@ class RadioMan(MDApp):
         self.root.ids.screen_manager.current = item_text
 
     def back_to_screen(self):
-        self.root.ids.screen_manager.transition = SlideTransition(direction='right')
+        self.root.ids.screen_manager.transition = SlideTransition(
+            direction='right'
+            )
         if self.root.ids.screen_manager.current in backs:
-            self.root.ids.screen_manager.current = backs[self.root.ids.screen_manager.current]
-        self.root.ids.screen_manager.transition = SlideTransition(direction='left')
+            self.root.ids.screen_manager.current = backs[
+                self.root.ids.screen_manager.current
+                ]
+        self.root.ids.screen_manager.transition = SlideTransition(
+            direction='left'
+            )
 
     def android_back_click(self, window, key, *args):
         if key == 27:
