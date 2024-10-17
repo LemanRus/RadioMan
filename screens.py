@@ -1178,10 +1178,10 @@ class ChipsAnalogs(MDGridLayout):
                 label_k = MDLabel(text=k, adaptive_height=True,
                                   halign="right",
                                   size_hint_x=None,
-                                  width=Window.width * 0.5 - 15)
+                                  width=Window.width * 0.5 - 16)
                 label_v = MDLabel(text=v, adaptive_height=True,
                                   size_hint_x=None,
-                                  width=Window.width * 0.5 - 15)
+                                  width=Window.width * 0.5 - 16)
                 self.labels.append((label_k, label_v))
 
                 self.add_widget(label_k)
@@ -1195,7 +1195,7 @@ class ChipsAnalogs(MDGridLayout):
         Window.bind(on_resize=self.update_width)
 
     def update_width(self, *args):
-        new_width = Window.width * 0.5 - 15
+        new_width = Window.width * 0.5 - 16
         for label_k, label_v in self.labels:
             label_k.width = new_width
             label_v.width = new_width
