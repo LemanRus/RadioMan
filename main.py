@@ -35,9 +35,7 @@ backs = {
     "connections_screen": "Справочник",
     "chips_screen": "Справочник",
     "chips_analogs_select_screen": "chips_screen",
-    "chips_analogs_133_screen": "chips_analogs_select_screen",
-    "chips_analogs_140_screen": "chips_analogs_select_screen",
-    "chips_analogs_580_screen": "chips_analogs_select_screen",
+    "chips_analogs_screen": "chips_analogs_select_screen",
     "lifehacks_screen": "Справочник",
     "how_to_screen": "Помощь",
     "about_screen": "Помощь",
@@ -46,6 +44,7 @@ backs = {
 
 class RadioMan(MDApp):
     def build(self):
+        self.window = Window
         Window.bind(on_keyboard=self.android_back_click)
         Window.softinput_mode = 'below_target'
         self.theme_cls.primary_palette = "Lavender"
@@ -55,7 +54,6 @@ class RadioMan(MDApp):
             for name in files:
                 kv_files.append(os.path.join(path, name))
         for file_path in kv_files:
-            print(file_path)
             Builder.load_file(file_path)
         return Builder.load_file("kv/main.kv")
 

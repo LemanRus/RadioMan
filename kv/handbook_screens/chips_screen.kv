@@ -1,13 +1,15 @@
+#:import Clock kivy.clock.Clock
+
 <ChipsScreen>:
     name: "chips_screen"
 
     MDBackTopBar:
         id: chips_top_bar
 
-        MDCenteredTopAppBarTitle:
+        MDWhiteTopAppBarTitle:
             text: "Микросхемы и компоненты"
 
-    MDScrollView:
+    ScrollView:
         size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - chips_top_bar.height) / root.height}
 
@@ -29,90 +31,68 @@
     MDBackTopBar:
         id: chips_analogs_select_top_bar
 
-        MDCenteredTopAppBarTitle:
+        MDWhiteTopAppBarTitle:
             text: "Аналоги отечественных микросхем"
 
-    MDScrollView:
+    ScrollView:
         size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - chips_analogs_select_top_bar.height) / root.height}
 
         MDPaddedList:
 
             MDIconCard:
-                on_release: root.parent.current = "chips_analogs_133_screen"
+                on_release: 
+                    root.parent.current = "chips_analogs_screen"; \
+                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series133"); \
+                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 133"
 
                 ImageButton:
                     source: "media/th_capacitor.png"
-                    on_release: root.parent.current = "chips_analogs_133_screen"
+                    on_release: root.parent.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 133"
 
             MDIconCard:
-                on_release: root.parent.current = "chips_analogs_140_screen"
+                on_release: 
+                    root.parent.current = "chips_analogs_screen"; \
+                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series140"); \
+                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 140"
 
                 ImageButton:
                     source: "media/th_capacitor.png"
-                    on_release: root.parent.current = "chips_analogs_140_screen"
+                    on_release: root.parent.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 140"
 
             MDIconCard:
-                on_release: root.parent.current = "chips_analogs_580_screen"
+                on_release: 
+                    root.parent.current = "chips_analogs_screen"; \
+                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series580"); \
+                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 580"
 
                 ImageButton:
                     source: "media/th_capacitor.png"
-                    on_release: root.parent.current = "chips_analogs_580_screen"
+                    on_release: root.parent.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 580"
 
-<ChipsAnalogs133Screen>:
-    name: "chips_analogs_133_screen"
+<ChipsAnalogsScreen>:
+    name: "chips_analogs_screen"
 
     MDBackTopBar:
-        id: chips_analogs_133_top_bar
+        id: chips_analogs_top_bar
 
-        MDCenteredTopAppBarTitle:
-            text: "Серия 133"
+        MDWhiteTopAppBarTitle:
+            id: chips_analogs_top_bar_title
+            text: "Test"
 
     ScrollView:
         size_hint_y: (root.height - sp(60)) / root.height
-        pos_hint: {"top": (root.height - chips_analogs_133_top_bar.height) / root.height}
-        do_scroll_x: False
+        pos_hint: {"top": (root.height - chips_analogs_top_bar.height) / root.height}
+        do_scroll_x: True
 
-        ChipsAnalogs133:
-
-
-<ChipsAnalogs140Screen>:
-    name: "chips_analogs_140_screen"
-
-    MDBackTopBar:
-        id: chips_analogs_140_top_bar
-
-        MDCenteredTopAppBarTitle:
-            text: "Серия 140"
-
-    ScrollView:
-        size_hint_y: (root.height - sp(60)) / root.height
-        pos_hint: {"top": (root.height - chips_analogs_140_top_bar.height) / root.height}
-        do_scroll_x: False
-
-        ChipsAnalogs140:
-
-<ChipsAnalogs580Screen>:
-    name: "chips_analogs_580_screen"
-
-    MDBackTopBar:
-        id: chips_analogs_580_top_bar
-
-        MDCenteredTopAppBarTitle:
-            text: "Комплект КР580"
-
-    ScrollView:
-        size_hint_y: (root.height - sp(60)) / root.height
-        pos_hint: {"top": (root.height - chips_analogs_580_top_bar.height) / root.height}
-        do_scroll_x: False
-
-        ChipsAnalogs580:
+        ChipsAnalogs:
+            id: chips_analogs

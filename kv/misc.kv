@@ -5,7 +5,6 @@
     spacing: "10dp"
     padding: "15dp", "10dp"
 
-
 <MDIconCard>:
     style: "elevated"
     ripple_behavior: True
@@ -14,7 +13,6 @@
     spacing: "20sp"
     padding: "15sp"
     elevation: 1
-
 
 <MDShortenLabel>:
     shorten: True
@@ -38,19 +36,15 @@
             icon_color: "white"
             on_release: app.back_to_screen()
 
-
 <MDNoBackTopBar>:
     theme_bg_color: "Custom"
     md_bg_color: app.theme_cls.primaryColor
     pos_hint: {"top": 1}
     elevation_level: 1
 
-
-<MDCenteredTopAppBarTitle>:
+<MDWhiteTopAppBarTitle>:
     theme_text_color: "Custom"
     text_color: "white"
-    pos_hint: {"center_x": .5}
-
 
 <ImageButton>:
     size_hint: None, None
@@ -63,11 +57,9 @@
     size: self.texture_size
     markup: True
 
-
 <MDTextLabel>:
     size_hint_y: None
     height: self.font_size
-
 
 <MDPaddedCard>:
     size_hint_y: None
@@ -75,11 +67,9 @@
     padding: sp(15), 0
     spacing: sp(15)
 
-
 <MDCentered06TextField>:
     halign: "center"
     size_hint: 0.6, None
-
 
 <MDVerticalCard>:
     size_hint_y: None
@@ -88,10 +78,8 @@
     spacing: sp(25)
     orientation: "vertical"
 
-
 <MDAdaptiveBoxLayout>:
     adaptive_height: True
-
 
 <MDRaisedCenteredButton>:
     style: "elevated"

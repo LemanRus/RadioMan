@@ -4,10 +4,10 @@
     MDBackTopBar:
         id: converter_top_bar
 
-        MDCenteredTopAppBarTitle:
+        MDWhiteTopAppBarTitle:
             text: "Конвертер величин"
 
-    MDScrollView:
+    ScrollView:
         on_parent: root.build_menu()
         pos_hint: {"top": (root.height - converter_top_bar.height) / root.height}
         size_hint_y: (root.height - converter_top_bar.height) / root.height

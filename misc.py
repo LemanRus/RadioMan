@@ -3,15 +3,11 @@ from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
 from kivy.uix.textinput import TextInput
-from kivymd.uix.behaviors import CircularRippleBehavior
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDIconButton, MDButton
 from kivymd.uix.card import MDCard
-from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.label import MDLabel
 from kivymd.uix.list import MDList
-from kivymd.uix.recycleview import MDRecycleView
-from kivymd.uix.scrollview import MDScrollView
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.appbar import MDTopAppBar, MDTopAppBarTitle
 
@@ -86,5 +82,5 @@ class MDRaisedCenteredButton(MDButton):
     pass
 
 
-class MDCenteredTopAppBarTitle(MDTopAppBarTitle):
+class MDWhiteTopAppBarTitle(MDTopAppBarTitle):
     pass

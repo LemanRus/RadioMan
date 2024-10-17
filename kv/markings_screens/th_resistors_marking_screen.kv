@@ -4,10 +4,10 @@
     MDBackTopBar:
         id: th_resistor_top_bar
 
-        MDCenteredTopAppBarTitle:
+        MDWhiteTopAppBarTitle:
             text: "Резисторы свозного монтажа"
 
-    MDScrollView:
+    ScrollView:
         on_parent: root.build_menu()
         pos_hint: {"top": (root.height - th_resistor_top_bar.height) / root.height}
         size_hint_y: (root.height - th_resistor_top_bar.height) / root.height
