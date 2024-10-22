@@ -1548,9 +1548,10 @@ class ChipsAnalogs(MDGridLayout):
         self.spacing = [dp(4)]
         self.series = None
 
-    def build_table(self, series, *args):
+    def build_table(self, series, view, *args):
         self.labels = []
         if not self.series == series:
+            view.scroll_y = 1
             self.clear_widgets()
             for k, v in getattr(ChipsAnalogs, series).items():
                 label_k = MDLabel(text=k, adaptive_height=True,

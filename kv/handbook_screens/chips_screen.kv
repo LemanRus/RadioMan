@@ -16,11 +16,11 @@
         MDPaddedList:
 
             MDIconCard:
-                on_release: root.parent.current = "chips_analogs_select_screen"
+                on_release: root.manager.current = "chips_analogs_select_screen"
 
                 ImageButton:
                     source: "media/chips_analogs.png"
-                    on_release: root.parent.current = "chips_analogs_select_screen"
+                    on_release: root.manager.current = "chips_analogs_select_screen"
 
                 MDShortenLabel:
                     text: "Аналоги отечественных микросхем"
@@ -39,406 +39,437 @@
         pos_hint: {"top": (root.height - chips_analogs_select_top_bar.height) / root.height}
 
         MDPaddedList:
-
+        
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series133"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 133"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series133",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 133"
 
                 ImageButton:
                     source: "media/series133.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 133"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series140"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 140"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series140",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 140"
 
                 ImageButton:
-                    source: "media/th_capacitor.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    source: "media/series140.png"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 140"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series142"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 142"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series142",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 142"
 
                 ImageButton:
                     source: "media/series142.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 142"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series153"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 153"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series153",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 153"
 
                 ImageButton:
                     source: "media/series153.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 153"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series154"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 154"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series154",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 154"
 
                 ImageButton:
                     source: "media/series154.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 154"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series155"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 155"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series155",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 155"
 
                 ImageButton:
                     source: "media/series155.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 155"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series157"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 157"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series157",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 157"
 
                 ImageButton:
                     source: "media/series157.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 157"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series169"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 169"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series169",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 169"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 169"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series170"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 170"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series170",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 170"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 170"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series171"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 171"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series171",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 171"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 171"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series174"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 174"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series174",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 174"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 174"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series175"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 175"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series175",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 175"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 175"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series176"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 176"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series176",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 176"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 176"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series193"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 193"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series193",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 193"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 193"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series198"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 198"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series198",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 198"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 198"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series249"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 249"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series249",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 249"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 249"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series427"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 427"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series427",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 427"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 427"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series490"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 490"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series490",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 490"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 490"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series511"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 511"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series511",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 511"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 511"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series512"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 512"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series512",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 512"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 512"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series514"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 514"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series514",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 514"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 514"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series521"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 521"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series521",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 521"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 521"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series522"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 522"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series522",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 522"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 522"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series525"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 525"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series525",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 525"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 525"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series526"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 526"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series526",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 526"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 526"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series528"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 528"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series528",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 528"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 528"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series529"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 529"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series529",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 529"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 529"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series530"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 530"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series530",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 530"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 530"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series531"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 531"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series531",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 531"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 531"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series533"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 533"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series533",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 533"
 
                 ImageButton:
                     source: "media/series169.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 533"
 
             MDIconCard:
                 on_release: 
-                    root.parent.current = "chips_analogs_screen"; \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series580"); \
-                    root.parent.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 580"
+                    root.manager.current = "chips_analogs_screen"; \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs.build_table("series580",
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_scroll_view); \
+                    root.manager.get_screen("chips_analogs_screen").ids.chips_analogs_top_bar_title.text = "Серия 580"
 
                 ImageButton:
                     source: "media/series580.png"
-                    on_release: root.parent.current = "chips_analogs_screen"
+                    on_release: root.manager.current = "chips_analogs_screen"
 
                 MDShortenLabel:
                     text: "Серия 580"
@@ -454,6 +485,7 @@
             text: "Test"
 
     ScrollView:
+        id: chips_analogs_scroll_view
         size_hint_y: (root.height - sp(60)) / root.height
         pos_hint: {"top": (root.height - chips_analogs_top_bar.height) / root.height}
         do_scroll_x: False
