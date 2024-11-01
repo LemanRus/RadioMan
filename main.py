@@ -39,7 +39,7 @@ backs = {
     "lifehacks_screen": "Справочник",
     "how_to_screen": "Помощь",
     "about_screen": "Помощь",
-    }
+}
 
 
 class RadioMan(MDApp):
@@ -69,14 +69,14 @@ class RadioMan(MDApp):
     def back_to_screen(self):
         self.root.ids.screen_manager.transition = SlideTransition(
             direction='right'
-            )
+        )
         if self.root.ids.screen_manager.current in backs:
             self.root.ids.screen_manager.current = backs[
                 self.root.ids.screen_manager.current
-                ]
+            ]
         self.root.ids.screen_manager.transition = SlideTransition(
             direction='left'
-            )
+        )
 
     def android_back_click(self, window, key, *args):
         if key == 27:
