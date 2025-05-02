@@ -2663,7 +2663,7 @@ class AboutScreen(MDScreen):
         webbrowser.open("mailto:electronics@hand-made-tlt.ru")
 
     def pay(self):
-        webbrowser.open("https://yoomoney.ru/fundraise/2SFAdwO6BB0.230827")
+        webbrowser.open("https://yoomoney.ru/to/410011259431654")
 
     def git(self):
         webbrowser.open("https://github.com/LemanRus/RadioMan")
