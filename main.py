@@ -6,40 +6,45 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 
-backs = {
-    "resistors_markings_select_screen": "Маркировки",
-    "th_resistors_marking_screen": "resistors_markings_select_screen",
-    "smd_resistors_marking_screen": "resistors_markings_select_screen",
-    "capacitors_marking_select_screen": "Маркировки",
-    "th_capacitors_marking_screen": "capacitors_marking_select_screen",
-    "smd_capacitors_marking_screen": "capacitors_marking_select_screen",
-    "converter_calculation_screen": "Расчёты",
-    "led_resistor_calculation_screen": "Расчёты",
-    "inductor_calculation_select_screen": "Расчёты",
-    "inductor_calculate_induction_screen":
-    "inductor_calculation_select_screen",
-    "inductor_calculate_size_screen": "inductor_calculation_select_screen",
-    "parallel_resistor_calculation_screen": "Расчёты",
-    "serial_capacitor_calculate_screen": "Расчёты",
-    "voltage_divider_calculate_select_screen": "Расчёты",
-    "voltage_divider_calculate_voltage_screen":
-    "voltage_divider_calculate_select_screen",
-    "voltage_divider_calculate_resistance_screen":
-    "voltage_divider_calculate_select_screen",
-    "lm_regulator_calculate_select_screen": "Расчёты",
-    "lm_regulator_voltage_screen": "lm_regulator_calculate_select_screen",
-    "lm_regulator_current_screen": "lm_regulator_calculate_select_screen",
-    "theory_screen": "Справочник",
-    "schematics_screen": "Справочник",
-    "pinout_screen": "Справочник",
-    "connections_screen": "Справочник",
-    "chips_screen": "Справочник",
-    "chips_analogs_select_screen": "chips_screen",
-    "chips_analogs_screen": "chips_analogs_select_screen",
-    "lifehacks_screen": "Справочник",
-    "how_to_screen": "Помощь",
-    "about_screen": "Помощь",
+screens = {
+    "Маркировки": [
+        "resistors_markings_select_screen",
+        "th_resistors_marking_screen",
+        "smd_resistors_marking_screen",
+        "capacitors_marking_select_screen",
+        "th_capacitors_marking_screen",
+        "smd_capacitors_marking_screen",
+    ],
+    "Расчёты": [
+        "converter_calculation_screen",
+        "led_resistor_calculation_screen",
+        "inductor_calculation_select_screen",
+        "parallel_resistor_calculation_screen",
+        "serial_capacitor_calculate_screen",
+        "voltage_divider_calculate_select_screen",
+        "lm_regulator_calculate_select_screen",
+    ],
+    "Справочник": [
+        "theory_screen",
+        "schematics_screen",
+        "pinout_screen",
+        "connections_screen",
+        "chips_screen",
+        "chips_analogs_select_screen",
+        "chips_analogs_screen",
+        "lifehacks_screen",
+    ],
+    "Помощь": [
+        "how_to_screen",
+        "about_screen",
+    ]
 }
+
+backs = {}
+for parent, children in screens.items():
+    for child in children:
+        if parent in screens and child not in screens:
+            backs[child] = parent
 
 
 class RadioMan(MDApp):
@@ -67,16 +72,14 @@ class RadioMan(MDApp):
         self.root.ids.screen_manager.current = item_text
 
     def back_to_screen(self):
-        self.root.ids.screen_manager.transition = SlideTransition(
-            direction='right'
-        )
-        if self.root.ids.screen_manager.current in backs:
-            self.root.ids.screen_manager.current = backs[
-                self.root.ids.screen_manager.current
-            ]
-        self.root.ids.screen_manager.transition = SlideTransition(
-            direction='left'
-        )
+        self.root.ids.screen_manager.transition = SlideTransition(direction='right')
+        current_screen = self.root.ids.screen_manager.current
+        if current_screen in backs:
+            self.root.ids.screen_manager.current = backs[current_screen]
+        else:
+            # Например, закрыть приложение или вернуться к главному экрану
+            pass
+        self.root.ids.screen_manager.transition = SlideTransition(direction='left')
 
     def android_back_click(self, window, key, *args):
         if key == 27:
