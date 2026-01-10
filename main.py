@@ -6,7 +6,11 @@ from kivy.lang import Builder
 from kivy.core.window import Window
 from kivymd.uix.navigationbar import MDNavigationBar, MDNavigationItem
 
-screens = {
+# Импортируем все классы экранов из модулей
+import screens
+
+# Словарь для навигации (не путать с модулем screens)
+navigation_screens = {
     "Маркировки": [
         "resistors_markings_select_screen",
         "th_resistors_marking_screen",
@@ -41,10 +45,16 @@ screens = {
 }
 
 backs = {}
-for parent, children in screens.items():
+for parent, children in navigation_screens.items():
     for child in children:
-        if parent in screens and child not in screens:
+        if parent in navigation_screens and child not in navigation_screens:
             backs[child] = parent
+
+# Специальные случаи навигации - многоуровневая иерархия
+# chips_analogs_screen должен возвращаться на chips_analogs_select_screen, а не на главный экран
+backs["chips_analogs_screen"] = "chips_analogs_select_screen"
+# chips_analogs_select_screen возвращается на chips_screen
+backs["chips_analogs_select_screen"] = "chips_screen"
 
 
 class RadioMan(MDApp):
@@ -60,7 +70,12 @@ class RadioMan(MDApp):
                 kv_files.append(os.path.join(path, name))
         for file_path in kv_files:
             Builder.load_file(file_path)
-        return Builder.load_file("kv/main.kv")
+        root = Builder.load_file("kv/main.kv")
+        
+        # Устанавливаем transition по умолчанию при инициализации
+        root.ids.screen_manager.transition = SlideTransition(direction='left')
+        
+        return root
 
     def on_switch_tabs(
             self,
@@ -69,6 +84,8 @@ class RadioMan(MDApp):
             item_icon: str,
             item_text: str,
     ):
+        # Устанавливаем transition для перехода между вкладками
+        self.root.ids.screen_manager.transition = SlideTransition(direction='left')
         self.root.ids.screen_manager.current = item_text
 
     def back_to_screen(self):
