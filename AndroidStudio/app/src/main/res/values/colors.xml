@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lavender_primary">#6750A4</color>
+    <color name="lavender_on_primary">#FFFFFF</color>
+    <color name="lavender_primary_container">#EADDFF</color>
+    <color name="lavender_on_primary_container">#21005D</color>
+    <color name="lavender_secondary">#625B71</color>
+    <color name="lavender_tertiary">#7D5260</color>
+    <color name="lavender_background">#FFFBFE</color>
+    <color name="lavender_surface">#FFFBFE</color>
+    <color name="lavender_on_surface">#1C1B1F</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="resistor_gold">#FFD700</color>
+    <color name="resistor_silver">#CCCCCC</color>
+    <color name="resistor_black">#000000</color>
+    <color name="resistor_brown">#663800</color>
+    <color name="resistor_red">#FF0000</color>
+    <color name="resistor_orange">#FA7305</color>
+    <color name="resistor_yellow">#FFFF00</color>
+    <color name="resistor_green">#0DA30D</color>
+    <color name="resistor_blue">#0D8AF2</color>
+    <color name="resistor_violet">#8A2496</color>
+    <color name="resistor_gray">#808080</color>
+</resources>

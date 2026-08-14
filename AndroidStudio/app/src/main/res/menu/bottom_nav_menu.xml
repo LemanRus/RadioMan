@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/markingsFragment"
+        android:icon="@drawable/ic_nav_markings"
+        android:title="@string/tab_markings" />
+    <item
+        android:id="@+id/calculationsFragment"
+        android:icon="@drawable/ic_nav_calculations"
+        android:title="@string/tab_calculations" />
+    <item
+        android:id="@+id/handbookFragment"
+        android:icon="@drawable/ic_nav_handbook"
+        android:title="@string/tab_handbook" />
+    <item
+        android:id="@+id/helpFragment"
+        android:icon="@drawable/ic_nav_help"
+        android:title="@string/tab_help" />
+</menu>

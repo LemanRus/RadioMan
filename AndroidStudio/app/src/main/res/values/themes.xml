@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.RadioMan" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/lavender_primary</item>
+        <item name="colorOnPrimary">@color/lavender_on_primary</item>
+        <item name="colorPrimaryContainer">@color/lavender_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/lavender_on_primary_container</item>
+        <item name="colorSecondary">@color/lavender_secondary</item>
+        <item name="colorTertiary">@color/lavender_tertiary</item>
+        <item name="android:colorBackground">@color/lavender_background</item>
+        <item name="colorSurface">@color/lavender_surface</item>
+        <item name="colorOnSurface">@color/lavender_on_surface</item>
+        <item name="android:statusBarColor">@color/lavender_primary</item>
+        <item name="android:navigationBarColor">@color/lavender_surface</item>
+    </style>
+
+    <style name="Widget.RadioMan.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/lavender_primary</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="navigationIconTint">@color/white</item>
+    </style>
+</resources>

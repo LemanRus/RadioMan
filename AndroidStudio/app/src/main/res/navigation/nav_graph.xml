@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/markingsFragment">
+
+    <fragment android:id="@+id/markingsFragment" android:name="com.lemanrus.radioman.ui.markings.MarkingsFragment" android:label="@string/tab_markings" />
+    <fragment android:id="@+id/resistorsMarkingSelectFragment" android:name="com.lemanrus.radioman.ui.markings.ResistorsMarkingSelectFragment" android:label="@string/resistors" />
+    <fragment android:id="@+id/thResistorsMarkingFragment" android:name="com.lemanrus.radioman.ui.markings.ThResistorsMarkingFragment" android:label="@string/th_resistors" />
+    <fragment android:id="@+id/smdResistorsMarkingFragment" android:name="com.lemanrus.radioman.ui.markings.SmdResistorsMarkingFragment" android:label="@string/smd_resistors" />
+    <fragment android:id="@+id/capacitorsMarkingSelectFragment" android:name="com.lemanrus.radioman.ui.markings.CapacitorsMarkingSelectFragment" android:label="@string/capacitors" />
+    <fragment android:id="@+id/thCapacitorsMarkingFragment" android:name="com.lemanrus.radioman.ui.markings.ThCapacitorsMarkingFragment" android:label="@string/th_capacitors" />
+    <fragment android:id="@+id/smdCapacitorsMarkingFragment" android:name="com.lemanrus.radioman.ui.markings.SmdCapacitorsMarkingFragment" android:label="@string/smd_capacitors" />
+
+    <fragment android:id="@+id/calculationsFragment" android:name="com.lemanrus.radioman.ui.calculations.CalculationsFragment" android:label="@string/tab_calculations" />
+    <fragment android:id="@+id/converterFragment" android:name="com.lemanrus.radioman.ui.calculations.ConverterFragment" android:label="@string/converter_title" />
+    <fragment android:id="@+id/ledResistorFragment" android:name="com.lemanrus.radioman.ui.calculations.LedResistorFragment" android:label="@string/led_title" />
+    <fragment android:id="@+id/inductorSelectFragment" android:name="com.lemanrus.radioman.ui.calculations.InductorSelectFragment" android:label="@string/inductor_select_title" />
+    <fragment android:id="@+id/inductorInductionFragment" android:name="com.lemanrus.radioman.ui.calculations.InductorInductionFragment" android:label="@string/inductor_by_params" />
+    <fragment android:id="@+id/inductorSizeFragment" android:name="com.lemanrus.radioman.ui.calculations.InductorSizeFragment" android:label="@string/inductor_by_inductance" />
+    <fragment android:id="@+id/parallelResistorFragment" android:name="com.lemanrus.radioman.ui.calculations.ParallelResistorFragment" android:label="@string/parallel_resistor_title" />
+    <fragment android:id="@+id/serialCapacitorFragment" android:name="com.lemanrus.radioman.ui.calculations.SerialCapacitorFragment" android:label="@string/serial_capacitor_title" />
+    <fragment android:id="@+id/voltageDividerSelectFragment" android:name="com.lemanrus.radioman.ui.calculations.VoltageDividerSelectFragment" android:label="@string/voltage_divider_title" />
+    <fragment android:id="@+id/voltageDividerVoltageFragment" android:name="com.lemanrus.radioman.ui.calculations.VoltageDividerVoltageFragment" android:label="@string/divider_by_voltage" />
+    <fragment android:id="@+id/voltageDividerResistanceFragment" android:name="com.lemanrus.radioman.ui.calculations.VoltageDividerResistanceFragment" android:label="@string/divider_by_resistance" />
+    <fragment android:id="@+id/lmRegulatorSelectFragment" android:name="com.lemanrus.radioman.ui.calculations.LmRegulatorSelectFragment" android:label="@string/lm_regulator_title" />
+    <fragment android:id="@+id/lmRegulatorVoltageFragment" android:name="com.lemanrus.radioman.ui.calculations.LmRegulatorVoltageFragment" android:label="@string/lm_voltage" />
+    <fragment android:id="@+id/lmRegulatorCurrentFragment" android:name="com.lemanrus.radioman.ui.calculations.LmRegulatorCurrentFragment" android:label="@string/lm_current" />
+
+    <fragment android:id="@+id/handbookFragment" android:name="com.lemanrus.radioman.ui.handbook.HandbookFragment" android:label="@string/tab_handbook" />
+    <fragment android:id="@+id/theoryFragment" android:name="com.lemanrus.radioman.ui.handbook.TheoryFragment" android:label="@string/theory" />
+    <fragment android:id="@+id/schematicsFragment" android:name="com.lemanrus.radioman.ui.handbook.SchematicsFragment" android:label="@string/schematics" />
+    <fragment android:id="@+id/pinoutFragment" android:name="com.lemanrus.radioman.ui.handbook.PinoutFragment" android:label="@string/pinout" />
+    <fragment android:id="@+id/connectionsFragment" android:name="com.lemanrus.radioman.ui.handbook.ConnectionsFragment" android:label="@string/connections" />
+    <fragment android:id="@+id/chipsFragment" android:name="com.lemanrus.radioman.ui.handbook.ChipsFragment" android:label="@string/chips" />
+    <fragment android:id="@+id/chipsAnalogsSelectFragment" android:name="com.lemanrus.radioman.ui.handbook.ChipsAnalogsSelectFragment" android:label="@string/chips_analogs" />
+    <fragment android:id="@+id/chipsAnalogsFragment" android:name="com.lemanrus.radioman.ui.handbook.ChipsAnalogsFragment" android:label="@string/chips_analogs" />
+    <fragment android:id="@+id/lifehacksFragment" android:name="com.lemanrus.radioman.ui.handbook.LifehacksFragment" android:label="@string/lifehacks" />
+
+    <fragment android:id="@+id/helpFragment" android:name="com.lemanrus.radioman.ui.help.HelpFragment" android:label="@string/tab_help" />
+    <fragment android:id="@+id/howToFragment" android:name="com.lemanrus.radioman.ui.help.HowToFragment" android:label="@string/how_to" />
+    <fragment android:id="@+id/aboutFragment" android:name="com.lemanrus.radioman.ui.help.AboutFragment" android:label="@string/about" />
+</navigation>
