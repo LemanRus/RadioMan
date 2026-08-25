@@ -37,7 +37,8 @@ version = 0.8
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,https://github.com/kivymd/KivyMD/archive/master.zip,pillow,materialyoucolor,asynckivy,asyncgui
+# Use updated pyjnius from GitHub to fix Python 3.8+ compatibility (fixes 'long' type error)
+requirements = python3,kivy,https://github.com/kivymd/KivyMD/archive/master.zip,pillow,materialyoucolor,asynckivy,asyncgui,https://github.com/kivy/pyjnius/archive/master.zip
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -329,6 +330,10 @@ android.debug_artifact = apk
 
 # (str) extra command line arguments to pass when invoking pythonforandroid.toolchain
 #p4a.extra_args =
+
+# Fix for pyjnius compatibility with Python 3.8+
+# Use Python 3.10 for better compatibility
+p4a.branch = master
 
 
 #

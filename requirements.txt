@@ -3,7 +3,7 @@ Kivy==2.3.1
 kivymd@https://github.com/kivymd/KivyMD/archive/master.zip
 materialyoucolor==2.0.10
 pillow==11.3.0
-Cython==3.1.3
+Cython==0.29.36
 asynckivy==0.6.4
 asyncgui==0.6.3
 
